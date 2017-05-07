@@ -34,7 +34,7 @@ export default class HomePage extends Component {
           <Card style={style}>
             <CardTitle
               title="Public Workshops"
-              style={{ margin: 0, padding: 0 }}
+              style={{  marginBottom: ".5rem", padding: 0 }}
             />
             <CardText style={{ margin: 0, padding: 0 }}>
               Open-enrollment workshops at our training center in San Clemente, California.
@@ -46,7 +46,7 @@ export default class HomePage extends Component {
           <Card style={style}>
             <CardTitle
               title="Private Workshops"
-              style={{ margin: 0, padding: 0 }}
+              style={{ marginBottom: ".5rem", padding: 0 }}
             />
             <CardText style={{ margin: 0, padding: 0 }}>
               Schedule an on-site workshop at your company's location.
