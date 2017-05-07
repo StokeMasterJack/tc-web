@@ -7,7 +7,7 @@ import FlatButton from "material-ui/FlatButton";
 import moment from "moment";
 
 import firebase from "firebase/app";
-import firebaseDb from "firebase/database";
+import "firebase/database";
 
 const config = {
   apiKey: "AIzaSyD7V3jY16HarLDDVv1zMglUdrGbrgvUpC8",

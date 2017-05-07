@@ -48,22 +48,31 @@ exports.makeUppercase = functions.database
 const gmailEmail = encodeURIComponent("dford@smart-soft.com");
 const gmailPassword = encodeURIComponent("9805indian");
 const mailTransport = nodemailer.createTransport(
-    `smtps://${gmailEmail}:${gmailPassword}@smtp.gmail.com`);
+  `smtps://${gmailEmail}:${gmailPassword}@smtp.gmail.com`
+);
 
-exports.sendEmailConfirmation = functions.database
+exports.sendEvalEmail = functions.database
   .ref("/evals/{uid}")
   .onWrite(event => {
     const snapshot = event.data;
-    const val = snapshot.val();
+    const v = snapshot.val();
 
     const mailOptions = {
       from: '"David Ford" <dford@smart-soft.com>',
       to: '"David Ford" <dford@smart-soft.com>'
     };
 
-    mailOptions.subject = "New Eval!";
-    mailOptions.text = "New Eval";
+    mailOptions.subject = "Smart Soft Eval";
+    mailOptions.html = htmlEvalEmail(v);
     return mailTransport.sendMail(mailOptions).then(() => {
       console.log("New Eval info sent");
     });
   });
+
+const htmlEvalEmail = v => `<table border='1' cellpadding='5'>
+  <tr><td><b>Date:</b><td>${v.date}</td></tr>
+  <tr><td><b>Workshop:</b></td><td>${v.workshop}</td></tr>    
+  <tr><td><b>Name:</b><td>${v.name}</td></tr>    
+  <tr><td><b>Like Most:</b></td><td>${v.love}</td></tr>    
+  <tr><td><b>Like Least:</b></td><td>${v.hate}</td></tr>
+</table>`;

@@ -24,8 +24,9 @@ export default class HomePage extends Component {
           <img src={logo} alt="Smart Soft - Developer Training" />
         </Row>
         <Row justifyContent="center" alignItems="center" paddingTop="3rem">
-          <Block fontSize="2rem" textAlign="center">
-            <Block>React Training</Block>
+          <Block textAlign="center">
+            <Block fontSize="2rem" marginBottom="1rem">Instructor-led React Training</Block>
+            <Block fontSize="1.5rem">Five day hands-on workshop</Block>
           </Block>
         </Row>
 
@@ -39,10 +40,7 @@ export default class HomePage extends Component {
               Open-enrollment workshops at our training center in San Clemente, California.
             </CardText>
             <CardActions>
-              <FlatButton
-                label="Schedule"
-                onClick={() => alert("Todo")}
-              />
+              <FlatButton label="Schedule" onClick={() => alert("Todo")} />
             </CardActions>
           </Card>
           <Card style={style}>

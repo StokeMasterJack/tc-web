@@ -1,24 +1,25 @@
 import React, { Component } from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Block from "jsxstyle/Block";
+import Row from "jsxstyle/Row";
 import AppBar from "material-ui/AppBar";
 import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
-import { spaRedir } from "./util";
+import * as ss from "./util";
 import HomePage from "./HomePage";
 import Workshops from "./Workshops";
 import Contact from "./Contact";
 import Outline from "./Outline";
 import Eval from "./Eval";
 import Testimonials from "./Testimonials";
-import workshops from "./workshops.json";
-import testimonials from "./testimonials.json";
 import trimStart from "lodash/trimStart";
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import getMuiTheme from "material-ui/styles/getMuiTheme";
+import IconButton from "material-ui/IconButton";
+import CancelIcon from "material-ui/svg-icons/navigation/cancel";
 
 const muiTheme = getMuiTheme({
   palette: {
-    primary1Color: '#fc0303'
+    primary1Color: "#fc0303"
   }
 });
 
@@ -58,59 +59,44 @@ export default class App extends Component {
     };
   }
 
-  route(path) {
+  router(path) {
     const page = path.page;
-    if (page === "") return <HomePage workshops={workshops} />;
-    if (page === "workshops") return <Workshops workshops={workshops} />;
+    if (page === "") return <HomePage />;
+    if (page === "workshops") return <Workshops />;
     if (page === "contact") return <Contact />;
-    if (page === "testimonials") return <Testimonials testimonials={testimonials} />;
+    if (page === "testimonials") return <Testimonials />;
     if (page === "outline") return <Outline />;
-    if (page === "eval") return <Eval/>;
+    if (page === "eval") return <Eval />;
     return <div>Bad Route. You suck!</div>;
   }
 
-  onMenuButtonClick = () => {
+  onHamurgerClick = () => {
     this.setState({
       open: true
     });
   };
 
-  onHomeClick = () => {
-    spaRedir("");
-    this.setState({ open: false });
-  };
-
-  onWorkshopsClick = () => {
-    spaRedir("workshops");
-    this.setState({ open: false });
-  };
-
-  onContactClick = () => {
-    spaRedir("contact");
-    this.setState({ open: false });
-  };
-
-  onTestimonialsClick = () => {
-    spaRedir("testimonials");
-    this.setState({ open: false });
-  };
-
-  onEvalClick = () => {
-    spaRedir("eval");
-    this.setState({ open: false });
-  };
-
   render() {
     const path = parsePath();
-    const tab = this.route(path);
+    const tab = this.router(path);
+
+    const redir = route => {
+      ss.spaRedir(route);
+      this.setState({ open: false });
+    };
+
+    const menu = (route, label) => (
+      <MenuItem onTouchTap={() => redir(route)}>{label}</MenuItem>
+    );
+
     return (
-      <MuiThemeProvider  muiTheme={muiTheme}>
+      <MuiThemeProvider muiTheme={muiTheme}>
 
         <Block>
           <AppBar
             title={<span style={{ cursor: "pointer" }}>React Training</span>}
-            onLeftIconButtonTouchTap={this.onMenuButtonClick}
-            onTitleTouchTap={this.onHomeClick}
+            onLeftIconButtonTouchTap={this.onHamurgerClick}
+            onTitleTouchTap={() => redir("")}
           />
 
           <Drawer
@@ -119,15 +105,18 @@ export default class App extends Component {
             width={200}
             onRequestChange={open => this.setState({ open })}
           >
-            <MenuItem onClick={this.onHomeClick}>Home</MenuItem>
-            <MenuItem onClick={this.onWorkshopsClick}>Workshops</MenuItem>
-            <MenuItem onClick={this.onContactClick}>Contact Us</MenuItem>
-            <MenuItem onClick={this.onTestimonialsClick}>Testimonials</MenuItem>
-            <MenuItem onClick={this.onEvalClick}>Post Class Evaluation</MenuItem>
+            <Row justifyContent="flex-end" background="#fc0303" height="4rem" alignItems="center">
+              <IconButton onTouchTap={()=> this.setState({ open: false }) }>
+                <CancelIcon/>
+              </IconButton>
+            </Row>
+            {menu("", "Home")}
+            {menu("workshops", "Workshops")}
+            {menu("contact", "Contact Us")}
+            {menu("testimonials", "Testimonials")}
+            {menu("eval", "Post Class Evaluation")}
           </Drawer>
-
           {tab}
-
         </Block>
 
       </MuiThemeProvider>
