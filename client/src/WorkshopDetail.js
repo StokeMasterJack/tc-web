@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import data from "./data/thinking-in-react.js";
-import css from "./WorkshopDetail.css";
-
-const style = {
-  margin: "1rem"
-};
+import "./WorkshopDetail.css";
 
 export default class WorkshopDetail extends Component {
   constructor(props) {
@@ -17,6 +13,6 @@ export default class WorkshopDetail extends Component {
   }
 
   render() {
-    return <div style={style} dangerouslySetInnerHTML={this.createMarkup()} />;
+    return <div dangerouslySetInnerHTML={this.createMarkup()} />;
   }
 }

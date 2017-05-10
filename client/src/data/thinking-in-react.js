@@ -7,6 +7,8 @@ export default `<div class='workshop'><h1 class='workshop-title'>Thinking in Rea
 <p class='workshop-p'>Our public workshops have a maximum student count of 4. So each student is ensured and individualized training experience. We encourage you to bring in your projects and any special topics you'd like to cover. </p>
 <h2 class='workshop-h2'>Prerequisites</h2>
 <p class='workshop-p'>A basic, but not advanced, knowledge of JavaScript and HTML.</p>
+<h2 class='workshop-h2'>Price</h2>
+<p class='workshop-p'>$3,200</p>
 <h1 class='workshop-h1'>What You'll Learn</h1>
 <p class='workshop-p'>Below are the topics we'll cover in class. This list is open to customization. Some of these modules may be skipped or skimmed depending on the prerequisites and preferences of the students. Also, we are always happy to add topics if requested. </p>
 <h2 class='workshop-h2'>React in Context</h2>

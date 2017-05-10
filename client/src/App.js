@@ -9,6 +9,7 @@ import * as ss from "./util";
 import HomePage from "./HomePage";
 import Workshops from "./Workshops";
 import Contact from "./Contact";
+import Schedule from "./Schedule";
 // import Outline from "./Outline";
 import WorkshopDetail from "./WorkshopDetail";
 import Eval from "./Eval";
@@ -68,6 +69,7 @@ export default class App extends Component {
     if (page === "testimonials") return <Testimonials />;
     // if (page === "outline") return <Outline />;
     if (page === "workshopDetail") return <WorkshopDetail />;
+    if (page === "schedule") return <Schedule />;
     if (page === "eval") return <Eval />;
     return <div>Bad Route. You suck!</div>;
   }
@@ -118,6 +120,7 @@ export default class App extends Component {
             {menu("contact", "Contact Us")}
             {menu("testimonials", "Testimonials")}
             {menu("eval", "Post Class Evaluation")}
+            {menu("schedule", "Schedule")}
           </Drawer>
           {tab}
         </Block>

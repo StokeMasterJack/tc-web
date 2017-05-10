@@ -1,19 +1,13 @@
 import React, { Component } from "react";
 import Block from "jsxstyle/Block";
 import Row from "jsxstyle/Row";
-import Col from "jsxstyle/Col";
 import WorkshopDetail from "./WorkshopDetail";
 import Testimonials from "./Testimonials";
 import logo from "./ss-logo-transparent.png";
 import { Card, CardTitle, CardText, CardActions } from "material-ui/Card";
 import FlatButton from "material-ui/FlatButton";
-
-const workshopDetailStyle = {
-  margin: "1rem",
-  textAlign: "center",
-  padding: "1rem",
-  width: "70%"
-};
+import "./HomePage.css";
+import * as ss from "./util";
 
 export default class HomePage extends Component {
   render() {
@@ -41,6 +35,7 @@ export default class HomePage extends Component {
         fontSize="2rem"
         alignItems="center"
         paddingTop="3.2rem"
+        textAlign="center"
       >
         Instructor-led React Training
       </Row>
@@ -78,9 +73,9 @@ export default class HomePage extends Component {
             <Block marginTop="1rem">Max class size: 4 students.</Block>
           </CardText>
         </Block>
-        {/*<CardActions>
-          <FlatButton label="Schedule" onClick={() => alert("Todo")} />
-        </CardActions>*/}
+        <CardActions>
+          <FlatButton label="Schedule" onClick={() => ss.spaRedir("schedule") } />
+        </CardActions>
       </Card>
 
       <Card style={this.boxStyle}>
@@ -97,26 +92,26 @@ export default class HomePage extends Component {
 
           </CardText>
         </Block>
-        {/*<CardActions>
-          <FlatButton label="More Inforation" onClick={() => alert("Todo")} />
-        </CardActions>*/}
+        <CardActions>
+          <FlatButton label="More Inforation" onClick={() => ss.spaRe} />
+        </CardActions>
       </Card>
     </Row>
   );
 
   workshopDetail = () => (
-    <Row justifyContent="center" marginTop="2rem">
-      <Card style={workshopDetailStyle}>
+    <div className="HomePage-workshopDetail">
+      <Card style={{ padding: "1rem" }}>
         <WorkshopDetail />
       </Card>
-    </Row>
+    </div>
   );
 
   testimonials = () => (
-    <Row justifyContent="center" marginTop="2rem">
-      <Card style={workshopDetailStyle}>
+    <div className="HomePage-workshopDetail">
+      <Card>
         <Testimonials />
       </Card>
-    </Row>
+    </div>
   );
 }
