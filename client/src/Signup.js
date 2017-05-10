@@ -1,39 +1,42 @@
 import React, { Component } from "react";
 import Block from "jsxstyle/Block";
 import Row from "jsxstyle/Row";
-import { Card,CardTitle } from "material-ui/Card";
+import { Card, CardTitle } from "material-ui/Card";
 import TextField from "material-ui/TextField";
 import FlatButton from "material-ui/FlatButton";
 import moment from "moment";
+import validator from "email-validator";
 
 import firebase from "firebase/app";
 import "firebase/database";
 
 const style = {
   width: "40rem",
-  margin: "1rem",
+  margin: "1rem"
 };
 
 const inputStyle = {
   width: "100%"
 };
 
-export default class Eval extends Component {
+export default class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      workshop: "React",
-      love: "",
-      hate: "",
+      firstName: "",
+      lastName: "",
+      companyName: "",
+      phone: "",
+      email: "",
+      robot: "",
       isNew: true,
       done: false
     };
   }
 
   componentDidMount() {
-    const nameField = document.getElementById("evalName");
-    nameField.focus();
+    const firstField = document.getElementById("firstName");
+    firstField.focus();
   }
 
   onSubmit = ev => {
@@ -61,19 +64,16 @@ export default class Eval extends Component {
     ev.preventDefault();
     this.setState({ isNew: false });
     const database = firebase.database();
-    const evalsRef = database.ref("evals");
-    console.log("evalsRef", evalsRef);
+    const signupsRef = database.ref("signups");
+    console.log("signupsRef", signupsRef);
 
-    var newEvalRef = evalsRef.push();
-    newEvalRef
-      .set({
-        date: moment().format("YYYY-MM-DD"),
-        name: s.name,
-        workshop: s.workshop,
-        love: s.love,
-        hate: s.hate
-      })
-      .then(response => this.setState({ done: true }));
+    const today = moment().format("YYYY-MM-DD");
+    const copy = { ...this.state, date: today };
+    delete copy.isNew;
+    delete copy.done;
+
+    var newSignupRef = signupsRef.push();
+    newSignupRef.set(copy).then(response => this.setState({ done: true }));
   };
 
   ch = event => {
@@ -84,6 +84,30 @@ export default class Eval extends Component {
       [name]: value
     });
   };
+
+  errors() {
+    const s = this.state;
+    const e = {
+      firstName: "",
+      lastName: "",
+      companyName: "",
+      phone: "",
+      email: "",
+      robot: ""
+    };
+    if (this.state.isNew) {
+      return e;
+    }
+    if (!s.firstName) e.name = "Enter your First Name";
+    if (!s.lastName) e.name = "Enter your  Last Name";
+    if (!s.companyName) e.name = "Enter your Company Name";
+    if (!s.email) {
+      e.email = "Enter your email";
+    } else if (!validator.validate(s.email)) {
+      e.email = "Enter a valid email address";
+    }
+    return e;
+  }
 
   render() {
     const s = this.state;
@@ -96,47 +120,56 @@ export default class Eval extends Component {
       );
     }
 
+    const errors = this.errors();
+
     return (
       <Row justifyContent="center" paddingTop="2rem">
         <Card>
-          <CardTitle title="Post Class Evaluation" />
+          <CardTitle title="Smart Soft Signup Form" />
           <form autoComplete="off" style={style}>
             <TextField
-              id="evalName"
-              name="name"
+              id="firstName"
+              name="firstName"
               style={inputStyle}
-              floatingLabelText="Your name (optional)"
-              value={s.name}
+              floatingLabelText="First name"
+              value={s.firstName}
+              onChange={this.ch}
+              errorText={errors.firstName}
+            />
+
+            <TextField
+              name="lastName"
+              style={inputStyle}
+              floatingLabelText="Last name"
+              value={s.inputStyle}
+              onChange={this.ch}
+              errorText={errors.lastName}
+            />
+            <TextField
+              name="companyName"
+              style={inputStyle}
+              floatingLabelText="Company name"
+              value={s.inputStyle}
+              onChange={this.ch}
+              errorText={errors.companyName}
+            />
+
+            <TextField
+              name="phone"
+              style={inputStyle}
+              floatingLabelText="Phone"
+              value={s.phone}
               onChange={this.ch}
             />
 
             <TextField
-              name="workshop"
+              name="email"
               style={inputStyle}
-              hintText="Workshop"
-              floatingLabelText="Workshop"
-              value={s.workshop}
+              floatingLabelText="Email"
+              value={s.email}
               onChange={this.ch}
-            />
-            <TextField
-              name="love"
-              style={inputStyle}
-              floatingLabelText="What did you like most about workshop? (optional)"
-              value={s.love}
-              onChange={this.ch}
-              multiLine={true}
-              rows={3}
             />
 
-            <TextField
-              name="hate"
-              style={inputStyle}
-              floatingLabelText="What did you like least about workshop? (optional)"
-              value={s.hate}
-              onChange={this.ch}
-              multiLine={true}
-              rows={3}
-            />
             <FlatButton
               label="Submit"
               style={{ width: "100%" }}

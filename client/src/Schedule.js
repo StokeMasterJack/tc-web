@@ -4,6 +4,7 @@ import Block from "jsxstyle/Block";
 import Col from "jsxstyle/Col";
 import { Card, CardText,CardActions } from "material-ui/Card";
 import FlatButton from "material-ui/FlatButton";
+import * as ss from "./util";
 
 const dates = ["2017-06-05", "2017-07-10", "2017-08-07", "2017-09-11"];
 
@@ -27,7 +28,7 @@ function ScheduleCard(props) {
         <Block fontSize="1.2rem">Thinking in React - San Clemente, CA</Block>
       </CardText>
       <CardActions style={{display:"flex",justifyContent:"center"}}>
-        <FlatButton label="Register Now" onClick={() => alert("Todo")} />
+        <FlatButton label="Register Now" onClick={() => ss.spaRedir("signup")} />
       </CardActions>
     </Card>
   );
