@@ -9,7 +9,8 @@ import * as ss from "./util";
 import HomePage from "./HomePage";
 import Workshops from "./Workshops";
 import Contact from "./Contact";
-import Outline from "./Outline";
+// import Outline from "./Outline";
+import WorkshopDetail from "./WorkshopDetail";
 import Eval from "./Eval";
 import Testimonials from "./Testimonials";
 import trimStart from "lodash/trimStart";
@@ -65,7 +66,8 @@ export default class App extends Component {
     if (page === "workshops") return <Workshops />;
     if (page === "contact") return <Contact />;
     if (page === "testimonials") return <Testimonials />;
-    if (page === "outline") return <Outline />;
+    // if (page === "outline") return <Outline />;
+    if (page === "workshopDetail") return <WorkshopDetail />;
     if (page === "eval") return <Eval />;
     return <div>Bad Route. You suck!</div>;
   }
@@ -111,7 +113,8 @@ export default class App extends Component {
               </IconButton>
             </Row>
             {menu("", "Home")}
-            {menu("workshops", "Workshops")}
+            {/*{menu("workshops", "Workshops")}*/}
+            {menu("workshopDetail", "Thinking in React")}
             {menu("contact", "Contact Us")}
             {menu("testimonials", "Testimonials")}
             {menu("eval", "Post Class Evaluation")}

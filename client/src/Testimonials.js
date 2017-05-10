@@ -2,7 +2,7 @@ import React from "react";
 import Block from "jsxstyle/Block";
 import TestimonialCard from "./TestimonialCard";
 import { CardTitle } from "material-ui/Card";
-import testimonials from "./testimonials.json";
+import testimonials from "./data/testimonials.json";
 
 export default function Testimonials(props) {
   return (

@@ -4,7 +4,7 @@ import FlatButton from "material-ui/FlatButton";
 import { spaRedir } from "./util";
 
 function onOutlineClick(outlineUrl) {
-  spaRedir("outline");
+  spaRedir("workshopDetail");
 }
 
 const WorkshopCard = props => {

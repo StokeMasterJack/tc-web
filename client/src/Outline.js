@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Block from "jsxstyle/Block";
 import Node from "./Node";
-import outline from "./outline.json";
+import outline from "./data/outline.json";
 
 function buildRootNode(nodes) {
   const rootNode = {
