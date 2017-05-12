@@ -69,7 +69,7 @@ export default class App extends Component {
     if (page === "contact") return <Contact />;
     if (page === "testimonials") return <Testimonials />;
     // if (page === "outline") return <Outline />;
-    if (page === "workshopDetail") return <WorkshopDetail />;
+    if (page === "workshopDetail") return <Block margin="1rem"><WorkshopDetail /></Block>;
     if (page === "schedule") return <Schedule />;
     if (page === "signup") return <Signup />;
     if (page === "eval") return <Eval />;

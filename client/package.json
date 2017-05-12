@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "email-validator": "^1.0.7",
-    "faunadb": "^1.1.1",
     "firebase": "^3.9.0",
     "jsxstyle": "^1.0.2",
     "lodash": "^4.17.4",

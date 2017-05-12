@@ -1,18 +1,20 @@
 export default `<div class='workshop'><h1 class='workshop-title'>Thinking in React</h1>
 <div class='workshop-subtitle'>5 day hands-on workshop</div>
-<p class='workshop-p'>We often see React beginners waste hundreds of hours and suffer needless complexity because they are <i>fighting the framework</i>. Once you learn to <i>Think in React</i>, you'll find that complex tasks become simple. This workshop will teach you everything you need to know in order to build sophisticated, real-world applications in React. </p>
+<p class='workshop-p'>We often see React beginners waste hundreds of hours and suffer needless complexity because they are <i>fighting the framework</i>. Once you learn to <i>Think in React</i> you'll find that complex tasks become simple. </p>
+
+<p class='workshop-p'>This workshop will teach you everything you need to know in order to build sophisticated, real-world applications in React. This is an in-depth coverage of the React API and surrounding technologies.</p>
 <h2 class='workshop-h2'>Workshop Format</h2>
-<p class='workshop-p'>In this workshop we build a project together over the course of the week. Much of this work is in the form of "do on your own" exercises. We cover the depth and breadth of React and related topics as they arise in the course of building this application. You'll gain an in-depth understanding of the React API, the React ecosystem and the React way of thinking. </p>
+<p class='workshop-p'>In this workshop we build a project together over the course of the week. Much of this work is in the form of "do on your own" exercises. We cover the depth and breadth of the React API and related topics as they arise in the course of building this application. You'll gain an in-depth understanding of the React API, the React ecosystem and the React way of thinking. </p>
 <h2 class='workshop-h2'>Class Size</h2>
-<p class='workshop-p'>Our public workshops have a maximum student count of 4. So each student is ensured and individualized training experience. We encourage you to bring in your projects and any special topics you'd like to cover. </p>
+<p class='workshop-p'>Our public workshops have a maximum student count of 4. So each student is ensured an individualized training experience. We encourage you to bring in your projects and any special topics you'd like to cover. </p>
 <h2 class='workshop-h2'>Prerequisites</h2>
 <p class='workshop-p'>A basic, but not advanced, knowledge of JavaScript and HTML.</p>
 <h2 class='workshop-h2'>Price</h2>
 <p class='workshop-p'>$3,200</p>
 <h1 class='workshop-h1'>What You'll Learn</h1>
-<p class='workshop-p'>Below are the topics we'll cover in class. This list is open to customization. Some of these modules may be skipped or skimmed depending on the prerequisites and preferences of the students. Also, we are always happy to add topics if requested. </p>
+<p class='workshop-p'>Below are the topics we cover in this workshop. This list is open to customization. Some of these modules may be skipped or skimmed depending on the prerequisites and preferences of the students. Also, we are always happy to add topics if requested. </p>
 <h2 class='workshop-h2'>React in Context</h2>
-<p class='workshop-p'>What is React? What problems does it solve? How does it fit into the JavaScript ecosystem? The key to understanding React, is understanding the problems it was designed to solve.</p>
+<p class='workshop-p'>What is React? What problems does it solve? How does it fit into the JavaScript ecosystem? The key to understanding React is understanding the problems it was designed to solve.</p>
 
 <ul  class='workshop-ul'><li class='workshop-li'>Single Page Apps</li>
 <li class='workshop-li'>Programmatically building and updating HTML trees</li>
@@ -53,7 +55,7 @@ export default `<div class='workshop'><h1 class='workshop-title'>Thinking in Rea
 <li class='workshop-li'>JavaScript Module bundlers</li>
 <li class='workshop-li'>CLI's</li></ul>
 <h2 class='workshop-h2'>Development and Build Environment</h2>
-<p class='workshop-p'>The React ecosystem provides a dozen different ways to setup your development and build environment. Here we'll discuss some of the options and I'll share my recommendations for a simple and optimal setup.</p>
+<p class='workshop-p'>The React ecosystem provides a dozen of different ways to setup your development and build environment. Here we'll discuss some of the options and I'll share my recommendations for a simple and optimal setup.</p>
 
 <ul  class='workshop-ul'><li class='workshop-li'>Configuring your editor/IDE for React</li>
 <li class='workshop-li'>Setting up your build system for dev and production</li>
@@ -62,9 +64,10 @@ export default `<div class='workshop'><h1 class='workshop-title'>Thinking in Rea
 <li class='workshop-li'>Babel</li>
 <li class='workshop-li'>Create React App</li></ul>
 <h2 class='workshop-h2'>Thinking Functional</h2>
-<p class='workshop-p'>We often see people waste huge amounts of time trying to fight the framework. 80% of "Thinking in React" is "Thinking Functional". React is simple as long you do things the React way. And that means functional. Functional concepts can be a big paradigm shift. We introduce these concepts here and continue to reinforce them throughout the workshop.</p>
+<p class='workshop-p'>80% of "Thinking in React" is "Thinking Functional". React is simple as long you do things the React way. And that means functional. Functional concepts can be a big paradigm shift. We introduce these concepts here and continue to reinforce them throughout the workshop.</p>
 
-<ul  class='workshop-ul'><li class='workshop-li'>Higher order functions</li>
+<ul  class='workshop-ul'><li class='workshop-li'>view = f(model)</li>
+<li class='workshop-li'>Higher order functions</li>
 <li class='workshop-li'>Map/Filter/Reduce</li>
 <li class='workshop-li'>Transforms versus mutations</li>
 <li class='workshop-li'>Function programming with complex data structures</li></ul>
@@ -75,10 +78,10 @@ export default `<div class='workshop'><h1 class='workshop-title'>Thinking in Rea
 <li class='workshop-li'>ES6 class components</li>
 <li class='workshop-li'>The render method</li>
 <li class='workshop-li'>Valid return types for the render method</li>
-<li class='workshop-li'>Simple components: local variable or local function in lieu components</li>
+<li class='workshop-li'>Component-ish: using a local variable or function in lieu components</li>
 <li class='workshop-li'>Passing and consuming props</li></ul>
 <h2 class='workshop-h2'>Using JSX</h2>
-<p class='workshop-p'>JSX augments the JavaScript language with native support for HTML. And this is one of defining features of React. It's also the primary reason we need <i>build step</i>. </p>
+<p class='workshop-p'>JSX augments the JavaScript language with native support for HTML. And this is one of the defining features of React. It's also the primary reason we need a <i>build step</i>. </p>
 
 <ul  class='workshop-ul'><li class='workshop-li'>JSX expressions</li>
 <li class='workshop-li'>JSX vs templates</li>
@@ -103,10 +106,10 @@ export default `<div class='workshop'><h1 class='workshop-title'>Thinking in Rea
 <h2 class='workshop-h2'>Conditional Rendering</h2>
 <p class='workshop-p'>Using JavaScript and JSX to show and hide content based on some condition. This can be frustrating if you don't learn how to do this in the "React way".</p>
 
-<ul  class='workshop-ul'><li class='workshop-li'>If expressions</li>
-<li class='workshop-li'>And expressions</li>
-<li class='workshop-li'>Function with if statement</li>
-<li class='workshop-li'>Returning null</li></ul>
+<ul  class='workshop-ul'><li class='workshop-li'><i>If</i> expressions</li>
+<li class='workshop-li'><i>And</i> expressions</li>
+<li class='workshop-li'>Function with <i>if</i> statement</li>
+<li class='workshop-li'>Returning <i>null</i></li></ul>
 <h2 class='workshop-h2'>Repeating Elements</h2>
 <p class='workshop-p'>Most UI frameworks have some type of looping construct to create tables and lists. React does things a bit differently.</p>
 <ul  class='workshop-ul'><li class='workshop-li'>UI Map functions</li>
@@ -125,7 +128,7 @@ export default `<div class='workshop'><h1 class='workshop-title'>Thinking in Rea
 <li class='workshop-li'>Passing event handlers down the component tree</li>
 <li class='workshop-li'>React's event handling under the covers</li></ul>
 <h2 class='workshop-h2'>Managing State</h2>
-<p class='workshop-p'>Understanding state is critical to building React apps. Doing this wrong can lead to extra work and pain. State is how you update the UI in React. State is how you create interactive and dynamic applications in React.</p>
+<p class='workshop-p'>Understanding <i>state</i> is critical to building React apps. Doing this wrong can lead to extra work and pain. State is how you update the UI in React. State is how you create interactive and dynamic applications in React.</p>
 
 <ul  class='workshop-ul'><li class='workshop-li'>State versus props</li>
 <li class='workshop-li'>Initial state</li>
