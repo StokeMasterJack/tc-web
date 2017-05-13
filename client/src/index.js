@@ -1,13 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import App from './App';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import injectTapEventPlugin from "react-tap-event-plugin";
+import App from "./App";
+import "./index.css";
+import firebase from "firebase/app";
+import "firebase/database";
 
 injectTapEventPlugin();
 
-import firebase from "firebase/app";
-import "firebase/database";
+window.addEventListener("popstate", e => {
+  render();
+});
 
 const config = {
   apiKey: "AIzaSyD7V3jY16HarLDDVv1zMglUdrGbrgvUpC8",
@@ -19,7 +22,12 @@ const config = {
 };
 firebase.initializeApp(config);
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+
+function render() {
+  ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+  );
+}
+render();
+

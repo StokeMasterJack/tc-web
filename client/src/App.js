@@ -11,6 +11,8 @@ import Workshops from "./Workshops";
 import Contact from "./Contact";
 import Schedule from "./Schedule";
 import Signup from "./Signup";
+import SignupRecord from "./SignupRecord";
+import * as t from "./types";
 // import Outline from "./Outline";
 import WorkshopDetail from "./WorkshopDetail";
 import Eval from "./Eval";
@@ -26,8 +28,9 @@ const muiTheme = getMuiTheme({
   }
 });
 
-function parsePath() {
+function parsePath():t.Path {
   let path = window.location.pathname;
+  console.log("path: ", path);
   path = trimStart(path, "/");
   const a = path.split("/");
   if (a.length === 0 || a[0] === "") {
@@ -53,17 +56,16 @@ function parsePath() {
 export default class App extends Component {
   constructor(props) {
     super(props);
-    window.addEventListener("popstate", e => {
-      this.forceUpdate();
-    });
-
     this.state = {
       open: false
     };
   }
 
-  router(path) {
+
+  router(path:t.Path) {
+    console.log("path 2: ", path);
     const page = path.page;
+    const id = path.id;
     if (page === "") return <HomePage />;
     if (page === "workshops") return <Workshops />;
     if (page === "contact") return <Contact />;
@@ -73,17 +75,18 @@ export default class App extends Component {
     if (page === "schedule") return <Schedule />;
     if (page === "signup") return <Signup />;
     if (page === "eval") return <Eval />;
+    if (page === "signupRecord") return <SignupRecord id={id}/>;
     return <div>Bad Route. You suck!</div>;
   }
 
-  onHamurgerClick = () => {
+  onHamburgerClick = () => {
     this.setState({
       open: true
     });
   };
 
   render() {
-    const path = parsePath();
+    const path:t.Path = parsePath();
     const tab = this.router(path);
 
     const redir = route => {
@@ -101,7 +104,7 @@ export default class App extends Component {
         <Block>
           <AppBar
             title={<span style={{ cursor: "pointer" }}>React Training</span>}
-            onLeftIconButtonTouchTap={this.onHamurgerClick}
+            onLeftIconButtonTouchTap={this.onHamburgerClick}
             onTitleTouchTap={() => redir("")}
           />
 

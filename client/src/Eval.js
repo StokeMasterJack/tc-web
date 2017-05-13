@@ -19,8 +19,8 @@ const inputStyle = {
 };
 
 export default class Eval extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       name: "",
       workshop: "React",
@@ -35,26 +35,6 @@ export default class Eval extends Component {
     const nameField = document.getElementById("evalName");
     nameField.focus();
   }
-
-  onSubmit = ev => {
-    const s = this.state;
-    ev.preventDefault();
-    this.setState({ isNew: false });
-    const database = firebase.database();
-    const evalsRef = database.ref("evals");
-    console.log("evalsRef", evalsRef);
-
-    var newEvalRef = evalsRef.push();
-    newEvalRef
-      .set({
-        date: moment().format("YYYY-MM-DD"),
-        name: s.name,
-        workshop: s.workshop,
-        love: s.love,
-        hate: s.hate
-      })
-      .then(response => this.setState({ done: true }));
-  };
 
   onSubmit = ev => {
     const s = this.state;

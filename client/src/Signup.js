@@ -1,82 +1,134 @@
-import React, { Component } from "react";
-import Block from "jsxstyle/Block";
+// @flow
+import React, {Component} from "react";
+import SignupRecord from "./SignupRecord";
 import Row from "jsxstyle/Row";
-import { Card, CardTitle } from "material-ui/Card";
+import {Card, CardTitle} from "material-ui/Card";
 import TextField from "material-ui/TextField";
 import FlatButton from "material-ui/FlatButton";
 import moment from "moment";
 import validator from "email-validator";
+import * as ss from "./util";
+import * as t from "./types";
 
 import firebase from "firebase/app";
 import "firebase/database";
+import Block from "jsxstyle/Block";
+import workshops from "./workshops.json";
 
 const style = {
-  width: "40rem",
-  margin: "1rem"
+  padding: "1rem"
 };
 
 const inputStyle = {
   width: "100%"
 };
 
+interface Data {
+  name: string,
+  companyName: string,
+  phone: string,
+  email: string
+}
+
+interface State extends Data {
+  isNew: boolean,
+  key: string
+}
+
+
+// interface Props {
+//   workshop: Workshop
+// }
+
+const initData = () => ({
+  name: "",
+  companyName: "",
+  phone: "",
+  email: ""
+});
+
+
+const sampleData = () => ({
+  name: "Dave Ford",
+  companyName: "Smart Soft",
+  phone: "714 654 6550",
+  email: "dford@smart-soft.com"
+});
+
 export default class Signup extends Component {
-  constructor(props) {
-    super(props);
+  state: State;
+  // props: Props;
+
+  constructor() {
+    super();
     this.state = {
-      firstName: "",
-      lastName: "",
-      companyName: "",
-      phone: "",
-      email: "",
-      robot: "",
+      ...initData(),
       isNew: true,
-      done: false
+      key: ""
     };
   }
 
   componentDidMount() {
-    const firstField = document.getElementById("firstName");
+    const firstField = document.getElementById("name");
+    if (firstField === null) throw Error();
     firstField.focus();
+
+
+    const event: t.Event = {
+      workshopKey: "react",
+      date: "2017-01-01",
+      days: 5,
+      price: 3200
+    };
+
+
   }
 
-  onSubmit = ev => {
-    const s = this.state;
-    ev.preventDefault();
-    this.setState({ isNew: false });
-    const database = firebase.database();
-    const evalsRef = database.ref("evals");
-    console.log("evalsRef", evalsRef);
-
-    var newEvalRef = evalsRef.push();
-    newEvalRef
-      .set({
-        date: moment().format("YYYY-MM-DD"),
-        name: s.name,
-        workshop: s.workshop,
-        love: s.love,
-        hate: s.hate
-      })
-      .then(response => this.setState({ done: true }));
+  onSubmit = (event: Event) => {
+    event.preventDefault();
+    this.setState({isNew: false});
+    const ae = this.anyErrors();
+    if (!ae) this.submitSignup();
   };
 
-  onSubmit = ev => {
-    const s = this.state;
-    ev.preventDefault();
-    this.setState({ isNew: false });
+  tEvent = (): t.Event => {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      workshopKey: params.get("workshopKey"),
+      date: params.get("date"),
+      days: params.get("days"),
+      price: params.get("price")
+    }
+  };
+
+  /*
+   eventDate: "2017-01-01"
+   workshopKey: "react"
+   signupDate: "2017-01-01"
+   firstName:
+   lastName:
+   companyName:
+   phone:
+   email:
+   */
+  submitSignup = () => {
+
+    const event:t.Event = this.tEvent();
+
     const database = firebase.database();
     const signupsRef = database.ref("signups");
-    console.log("signupsRef", signupsRef);
-
     const today = moment().format("YYYY-MM-DD");
-    const copy = { ...this.state, date: today };
+    const copy = {...this.state, signupDate: today, eventDate: event.date, workshopKey: event.workshopKey};
     delete copy.isNew;
-    delete copy.done;
-
-    var newSignupRef = signupsRef.push();
-    newSignupRef.set(copy).then(response => this.setState({ done: true }));
+    delete copy.key;
+    const newSignupRef = signupsRef.push();
+    console.log("newSignupRef: ", newSignupRef.key);
+    this.setState({key: newSignupRef.key});
+    //newSignupRef.on("value", v => console.log("v: ", v));
+    newSignupRef.set(copy);
   };
 
-  ch = event => {
+  ch = (event: any) => {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
@@ -85,22 +137,35 @@ export default class Signup extends Component {
     });
   };
 
-  errors() {
-    const s = this.state;
-    const e = {
-      firstName: "",
-      lastName: "",
-      companyName: "",
-      phone: "",
-      email: "",
-      robot: ""
-    };
-    if (this.state.isNew) {
-      return e;
+  dateRangeFormatted = () => {
+    const event:t.Event = this.tEvent();
+    const d1 = moment(event.date);
+    const d2 = moment(d1).add(4, 'days');
+    return d1.format("ddd MMM D") + " - " + d2.format("ddd MMM D");
+  };
+
+  anyErrors() {
+    const e: Data = this.errors();
+    const eValues = Object.values(e);
+    console.log("e", e);
+    return eValues.some(v => !!v);
+  }
+
+  errorsUI() {
+    if (this.state.isNew) return initData();
+    return this.errors();
+  }
+
+  errors(): Data {
+    const s: State = this.state;
+    const e: Data = initData();
+    if (!s.name) e.name = "Enter your Name";
+    if (!s.companyName) e.companyName = "Enter your Company Name";
+    if (!s.phone) {
+      e.phone = "Enter your Phone Number";
+    } else if (!ss.isValidPhoneNumber(s.phone)) {
+      e.phone = "Enter a valid Phone Number";
     }
-    if (!s.firstName) e.name = "Enter your First Name";
-    if (!s.lastName) e.name = "Enter your  Last Name";
-    if (!s.companyName) e.name = "Enter your Company Name";
     if (!s.email) {
       e.email = "Enter your email";
     } else if (!validator.validate(s.email)) {
@@ -110,74 +175,79 @@ export default class Signup extends Component {
   }
 
   render() {
-    const s = this.state;
+    const state = this.state;
 
-    if (s.done) {
-      return (
-        <Block>
-          <CardTitle title="Thank You" />
-        </Block>
-      );
+    if (state.key) {
+      ss.spaRedir("signupRecord/"+state.key);
+      return null;
     }
 
-    const errors = this.errors();
+    const errors = this.errorsUI();
+
+    const event:t.Event = this.tEvent();
 
     return (
-      <Row justifyContent="center" paddingTop="2rem">
-        <Card>
-          <CardTitle title="Smart Soft Signup Form" />
-          <form autoComplete="off" style={style}>
-            <TextField
-              id="firstName"
-              name="firstName"
-              style={inputStyle}
-              floatingLabelText="First name"
-              value={s.firstName}
-              onChange={this.ch}
-              errorText={errors.firstName}
-            />
+      <Row justifyContent="center" paddingTop="1rem">
+        <Block width="40rem">
+          <Card style={style}>
+            <CardTitle title="Smart Soft Signup Form" style={{margin: 0, padding: 0, marginBottom: '1rem'}}/>
+            <Block fontSize="1.2rem">{workshops[event.workshopKey]}</Block>
+            <Block>{event.days} Day Hands-on Workshop</Block>
+            <Block>{this.dateRangeFormatted()}</Block>
+            <Block>{ss.formatCurrency(event.price)}</Block>
+          </Card>
+          <button onClick={(event: Event) => {
+            event.preventDefault();
+            this.setState(sampleData())
+          }}>Sample Data
+          </button>
+          <Card style={style}>
+            <form autoComplete="off">
+              <TextField
+                id="name"
+                name="name"
+                style={inputStyle}
+                floatingLabelText="Name"
+                value={state.name}
+                onChange={this.ch}
+                errorText={errors.name}
+              />
+              <TextField
+                name="companyName"
+                style={inputStyle}
+                floatingLabelText="Company name"
+                value={state.companyName}
+                onChange={this.ch}
+                errorText={errors.companyName}
+              />
 
-            <TextField
-              name="lastName"
-              style={inputStyle}
-              floatingLabelText="Last name"
-              value={s.inputStyle}
-              onChange={this.ch}
-              errorText={errors.lastName}
-            />
-            <TextField
-              name="companyName"
-              style={inputStyle}
-              floatingLabelText="Company name"
-              value={s.inputStyle}
-              onChange={this.ch}
-              errorText={errors.companyName}
-            />
+              <TextField
+                name="phone"
+                style={inputStyle}
+                floatingLabelText="Phone"
+                value={state.phone}
+                onChange={this.ch}
+                errorText={errors.phone}
+              />
 
-            <TextField
-              name="phone"
-              style={inputStyle}
-              floatingLabelText="Phone"
-              value={s.phone}
-              onChange={this.ch}
-            />
+              <TextField
+                name="email"
+                style={inputStyle}
+                floatingLabelText="Email"
+                value={state.email}
+                onChange={this.ch}
+                errorText={errors.email}
+              />
 
-            <TextField
-              name="email"
-              style={inputStyle}
-              floatingLabelText="Email"
-              value={s.email}
-              onChange={this.ch}
-            />
+              <FlatButton
+                label="Submit"
+                style={{width: "100%"}}
+                onClick={this.onSubmit}
+              />
 
-            <FlatButton
-              label="Submit"
-              style={{ width: "100%" }}
-              onClick={this.onSubmit}
-            />
-
-          </form>
-        </Card>
+            </form>
+          </Card>
+        </Block>
       </Row>
     );
   }
