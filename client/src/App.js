@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Block from "jsxstyle/Block";
 import Row from "jsxstyle/Row";
@@ -28,9 +28,8 @@ const muiTheme = getMuiTheme({
   }
 });
 
-function parsePath():t.Path {
+function parsePath(): t.Path {
   let path = window.location.pathname;
-  console.log("path: ", path);
   path = trimStart(path, "/");
   const a = path.split("/");
   if (a.length === 0 || a[0] === "") {
@@ -62,8 +61,7 @@ export default class App extends Component {
   }
 
 
-  router(path:t.Path) {
-    console.log("path 2: ", path);
+  router(path: t.Path) {
     const page = path.page;
     const id = path.id;
     if (page === "") return <HomePage />;
@@ -73,7 +71,7 @@ export default class App extends Component {
     // if (page === "outline") return <Outline />;
     if (page === "workshopDetail") return <Block margin="1rem"><WorkshopDetail /></Block>;
     if (page === "schedule") return <Schedule />;
-    if (page === "signup") return <Signup />;
+    if (page === "signup") return <Signup eventId={id}/>;
     if (page === "eval") return <Eval />;
     if (page === "signupRecord") return <SignupRecord id={id}/>;
     return <div>Bad Route. You suck!</div>;
@@ -86,12 +84,12 @@ export default class App extends Component {
   };
 
   render() {
-    const path:t.Path = parsePath();
+    const path: t.Path = parsePath();
     const tab = this.router(path);
 
     const redir = route => {
       ss.spaRedir(route);
-      this.setState({ open: false });
+      this.setState({open: false});
     };
 
     const menu = (route, label) => (
@@ -103,7 +101,7 @@ export default class App extends Component {
 
         <Block>
           <AppBar
-            title={<span style={{ cursor: "pointer" }}>React Training</span>}
+            title={<span style={{cursor: "pointer"}}>React Training</span>}
             onLeftIconButtonTouchTap={this.onHamburgerClick}
             onTitleTouchTap={() => redir("")}
           />
@@ -112,10 +110,10 @@ export default class App extends Component {
             open={this.state.open}
             docked={false}
             width={200}
-            onRequestChange={open => this.setState({ open })}
+            onRequestChange={open => this.setState({open})}
           >
             <Row justifyContent="flex-end" background="#fc0303" height="4rem" alignItems="center">
-              <IconButton onTouchTap={()=> this.setState({ open: false }) }>
+              <IconButton onTouchTap={() => this.setState({open: false}) }>
                 <CancelIcon/>
               </IconButton>
             </Row>

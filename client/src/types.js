@@ -5,6 +5,13 @@ export interface Event {
   price: number;
 }
 
+export interface Signup {
+  name: string,
+  companyName: string,
+  phone: string,
+  email: string
+}
+
 export interface Path {
   page: string,
   id: string

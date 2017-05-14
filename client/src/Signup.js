@@ -1,6 +1,5 @@
 // @flow
 import React, {Component} from "react";
-import SignupRecord from "./SignupRecord";
 import Row from "jsxstyle/Row";
 import {Card, CardTitle} from "material-ui/Card";
 import TextField from "material-ui/TextField";
@@ -13,7 +12,8 @@ import * as t from "./types";
 import firebase from "firebase/app";
 import "firebase/database";
 import Block from "jsxstyle/Block";
-import workshops from "./workshops.json";
+import workshops from "./data/workshops.json";
+import publicEvents from "./data/publicEvents.json";
 
 const style = {
   padding: "1rem"
@@ -23,14 +23,9 @@ const inputStyle = {
   width: "100%"
 };
 
-interface Data {
-  name: string,
-  companyName: string,
-  phone: string,
-  email: string
-}
 
-interface State extends Data {
+
+interface State extends t.Signup {
   isNew: boolean,
   key: string
 }
@@ -55,9 +50,8 @@ const sampleData = () => ({
   email: "dford@smart-soft.com"
 });
 
-export default class Signup extends Component {
+export default class Signup extends Component{
   state: State;
-  // props: Props;
 
   constructor() {
     super();
@@ -72,16 +66,6 @@ export default class Signup extends Component {
     const firstField = document.getElementById("name");
     if (firstField === null) throw Error();
     firstField.focus();
-
-
-    const event: t.Event = {
-      workshopKey: "react",
-      date: "2017-01-01",
-      days: 5,
-      price: 3200
-    };
-
-
   }
 
   onSubmit = (event: Event) => {
@@ -92,13 +76,9 @@ export default class Signup extends Component {
   };
 
   tEvent = (): t.Event => {
-    const params = new URLSearchParams(window.location.search);
-    return {
-      workshopKey: params.get("workshopKey"),
-      date: params.get("date"),
-      days: params.get("days"),
-      price: params.get("price")
-    }
+    const eventId = this.props.eventId;
+    console.log("eventId: ", eventId);
+    return publicEvents[eventId];
   };
 
   /*
@@ -113,18 +93,17 @@ export default class Signup extends Component {
    */
   submitSignup = () => {
 
+    const eventId = this.props.eventId;
     const event:t.Event = this.tEvent();
 
     const database = firebase.database();
     const signupsRef = database.ref("signups");
     const today = moment().format("YYYY-MM-DD");
-    const copy = {...this.state, signupDate: today, eventDate: event.date, workshopKey: event.workshopKey};
+    const copy = {...this.state, signupDate: today, eventId};
     delete copy.isNew;
     delete copy.key;
     const newSignupRef = signupsRef.push();
-    console.log("newSignupRef: ", newSignupRef.key);
     this.setState({key: newSignupRef.key});
-    //newSignupRef.on("value", v => console.log("v: ", v));
     newSignupRef.set(copy);
   };
 
@@ -145,9 +124,8 @@ export default class Signup extends Component {
   };
 
   anyErrors() {
-    const e: Data = this.errors();
+    const e: Signup = this.errors();
     const eValues = Object.values(e);
-    console.log("e", e);
     return eValues.some(v => !!v);
   }
 
@@ -156,9 +134,9 @@ export default class Signup extends Component {
     return this.errors();
   }
 
-  errors(): Data {
+  errors(): t.Signup {
     const s: State = this.state;
-    const e: Data = initData();
+    const e: t.Signup = initData();
     if (!s.name) e.name = "Enter your Name";
     if (!s.companyName) e.companyName = "Enter your Company Name";
     if (!s.phone) {
@@ -185,13 +163,17 @@ export default class Signup extends Component {
     const errors = this.errorsUI();
 
     const event:t.Event = this.tEvent();
+    console.log("event: ", event);
+
+    const xx = workshops[event.workshopKey];
+    console.log("xx: ", xx.title);
 
     return (
       <Row justifyContent="center" paddingTop="1rem">
         <Block width="40rem">
           <Card style={style}>
             <CardTitle title="Smart Soft Signup Form" style={{margin: 0, padding: 0, marginBottom: '1rem'}}/>
-            <Block fontSize="1.2rem">{workshops[event.workshopKey]}</Block>
+            <Block fontSize="1.2rem">{workshops[event.workshopKey].title}</Block>
             <Block>{event.days} Day Hands-on Workshop</Block>
             <Block>{this.dateRangeFormatted()}</Block>
             <Block>{ss.formatCurrency(event.price)}</Block>

@@ -10,30 +10,25 @@ import publicEvents from "./data/publicEvents.json";
 import workshops from "./data/workshops.json";
 import * as t from "./types";
 
-function eventKey(e: t.Event): string {
-  return e.date + "-" + e.workshopKey + "-" + e.instructor;
-}
-
 export default function Schedule() {
+
+  const ids = Object.keys(publicEvents);
+
   return (
     <Col margin="1rem" alignItems="center">
-      {publicEvents.map((event: t.Event) => <ScheduleCard key={eventKey(event)} event={event}/>)}
+      {ids.map((eventId: t.Event) => <ScheduleCard key={eventId} id={eventId} event={publicEvents[eventId]}/>)}
     </Col>
   );
 }
 
-function qs(e:t.Event){
-  return `workshopKey=${e.workshopKey}&date=${e.date}&days=${e.days}&price=${e.price}`;
-}
-
-function ScheduleCard({event}: { event: t.Event }) {
+function ScheduleCard({id,event}: { id:string,event: t.Event }) {
   const date1 = moment(event.date);
   const date2 = moment(date1).add(4, 'days');
   const dateString = date1.format("ddd MMM D") + " - " + date2.format("ddd MMM D");
 
   const workshop = workshops[event.workshopKey];
   const workshopTitle = workshop.title;
-  const url = "signup?" + qs(event);
+  const url = "signup/" + id;
 
   return (
     <Card style={{maxWidth: "23rem", margin: "1rem"}}>
