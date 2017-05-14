@@ -1,4 +1,4 @@
-{
+export default {
   "react": {
     "title": "Thinking in React"
   },

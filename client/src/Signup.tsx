@@ -1,19 +1,18 @@
-// @flow
-import React, {Component} from "react";
-import Row from "jsxstyle/Row";
+import * as React from "react";
+import * as Row from "jsxstyle/Row";
 import {Card, CardTitle} from "material-ui/Card";
 import TextField from "material-ui/TextField";
 import FlatButton from "material-ui/FlatButton";
-import moment from "moment";
-import validator from "email-validator";
+import * as moment from "moment";
+import * as validator from "email-validator";
 import * as ss from "./util";
 import * as t from "./types";
 
-import firebase from "firebase/app";
+import * as firebase from "firebase/app";
 import "firebase/database";
-import Block from "jsxstyle/Block";
-import workshops from "./data/workshops.json";
-import publicEvents from "./data/publicEvents.json";
+import * as Block from "jsxstyle/Block";
+import workshops from "./data/workshops";
+import publicEvents from "./data/publicEvents";
 
 const style = {
   padding: "1rem"
@@ -22,7 +21,6 @@ const style = {
 const inputStyle = {
   width: "100%"
 };
-
 
 
 interface State extends t.Signup {
@@ -50,8 +48,7 @@ const sampleData = () => ({
   email: "dford@smart-soft.com"
 });
 
-export default class Signup extends Component{
-  state: State;
+export default class Signup extends React.Component<any, State> {
 
   constructor() {
     super();
@@ -77,7 +74,6 @@ export default class Signup extends Component{
 
   tEvent = (): t.Event => {
     const eventId = this.props.eventId;
-    console.log("eventId: ", eventId);
     return publicEvents[eventId];
   };
 
@@ -94,7 +90,6 @@ export default class Signup extends Component{
   submitSignup = () => {
 
     const eventId = this.props.eventId;
-    const event:t.Event = this.tEvent();
 
     const database = firebase.database();
     const signupsRef = database.ref("signups");
@@ -117,15 +112,16 @@ export default class Signup extends Component{
   };
 
   dateRangeFormatted = () => {
-    const event:t.Event = this.tEvent();
+    const event: t.Event = this.tEvent();
     const d1 = moment(event.date);
-    const d2 = moment(d1).add(4, 'days');
+    const d2 = moment(d1).add(4, "days");
     return d1.format("ddd MMM D") + " - " + d2.format("ddd MMM D");
   };
 
   anyErrors() {
-    const e: Signup = this.errors();
-    const eValues = Object.values(e);
+    const e: t.Signup = this.errors();
+    const eValues = Object.keys(e).map(key => e[key]);
+    // const eValues = Object.values(e);
     return eValues.some(v => !!v);
   }
 
@@ -152,37 +148,33 @@ export default class Signup extends Component{
     return e;
   }
 
+  onSampleDataClick = (event) => {
+    event.preventDefault();
+    this.setState(sampleData());
+  };
+
   render() {
     const state = this.state;
 
     if (state.key) {
-      ss.spaRedir("signupRecord/"+state.key);
+      ss.spaRedir("signupRecord/" + state.key);
       return null;
     }
 
     const errors = this.errorsUI();
-
-    const event:t.Event = this.tEvent();
-    console.log("event: ", event);
-
-    const xx = workshops[event.workshopKey];
-    console.log("xx: ", xx.title);
+    const event: t.Event = this.tEvent();
 
     return (
       <Row justifyContent="center" paddingTop="1rem">
         <Block width="40rem">
           <Card style={style}>
-            <CardTitle title="Smart Soft Signup Form" style={{margin: 0, padding: 0, marginBottom: '1rem'}}/>
+            <CardTitle title="Smart Soft Signup Form" style={{margin: 0, padding: 0, marginBottom: "1rem"}}/>
             <Block fontSize="1.2rem">{workshops[event.workshopKey].title}</Block>
             <Block>{event.days} Day Hands-on Workshop</Block>
             <Block>{this.dateRangeFormatted()}</Block>
             <Block>{ss.formatCurrency(event.price)}</Block>
           </Card>
-          <button onClick={(event: Event) => {
-            event.preventDefault();
-            this.setState(sampleData())
-          }}>Sample Data
-          </button>
+          <button onClick={this.onSampleDataClick}>Sample Data</button>
           <Card style={style}>
             <form autoComplete="off">
               <TextField

@@ -1,9 +1,7 @@
-// @flow
-
 export function spaRedir(to: string) {
   const url = "/" + to;
   window.history.pushState(null, null, url);
-  window.dispatchEvent(new window.PopStateEvent("popstate"));
+  window.dispatchEvent(new PopStateEvent("popstate"));
 }
 
 export function capFirstLetter(s: string): string {

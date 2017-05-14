@@ -1,15 +1,14 @@
-import React, { Component } from "react";
-import Block from "jsxstyle/Block";
-import Row from "jsxstyle/Row";
+import * as React from "react";
+import * as Block from "jsxstyle/Block";
+import * as Row from "jsxstyle/Row";
 import WorkshopDetail from "./WorkshopDetail";
 import Testimonials from "./Testimonials";
-import logo from "./ss-logo-transparent.png";
 import { Card, CardTitle, CardText, CardActions } from "material-ui/Card";
 import FlatButton from "material-ui/FlatButton";
 import "./HomePage.css";
 import * as ss from "./util";
 
-export default class HomePage extends Component {
+export default class HomePage extends React.Component<any,any> {
   render() {
     return (
       <Block paddingTop="2rem">
@@ -28,7 +27,7 @@ export default class HomePage extends Component {
         justifyContent="center"
         alignItems="center"
       >
-        <img src={logo} alt="Smart Soft - Developer Training" />
+        <img src="./ss-logo-transparent.png" alt="Smart Soft - Developer Training" />
       </Row>
       <Row
         justifyContent="center"
@@ -74,7 +73,7 @@ export default class HomePage extends Component {
           </CardText>
         </Block>
         <CardActions>
-          <FlatButton label="Schedule" onClick={() => ss.spaRedir("schedule") } />
+          <FlatButton label="Schedule" onClick={() => ss.spaRedir("schedule")} />
         </CardActions>
       </Card>
 
@@ -93,7 +92,7 @@ export default class HomePage extends Component {
           </CardText>
         </Block>
         <CardActions>
-          <FlatButton label="More Inforation" onClick={() => ss.spaRe} />
+          <FlatButton label="More Information" onClick={() => alert("Todo")} />
         </CardActions>
       </Card>
     </Row>

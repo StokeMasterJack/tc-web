@@ -1,9 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import injectTapEventPlugin from "react-tap-event-plugin";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import * as injectTapEventPlugin from "react-tap-event-plugin";
 import App from "./App";
 import "./index.css";
-import firebase from "firebase/app";
+import * as firebase from "firebase/app";
 import "firebase/database";
 
 injectTapEventPlugin();
@@ -22,12 +22,10 @@ const config = {
 };
 firebase.initializeApp(config);
 
-
 function render() {
   ReactDOM.render(
     <App />,
-    document.getElementById('root')
+    document.getElementById("root")
   );
 }
 render();
-

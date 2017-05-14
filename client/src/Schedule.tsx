@@ -1,13 +1,12 @@
-//@flow
-import React from "react";
-import moment from "moment";
-import Block from "jsxstyle/Block";
-import Col from "jsxstyle/Col";
+import * as React from "react";
+import * as moment from "moment";
+import * as Block from "jsxstyle/Block";
+import * as Col from "jsxstyle/Col";
 import {Card, CardActions, CardText} from "material-ui/Card";
 import FlatButton from "material-ui/FlatButton";
 import * as ss from "./util";
-import publicEvents from "./data/publicEvents.json";
-import workshops from "./data/workshops.json";
+import publicEvents from "./data/publicEvents";
+import workshops from "./data/workshops";
 import * as t from "./types";
 
 export default function Schedule() {
@@ -16,7 +15,7 @@ export default function Schedule() {
 
   return (
     <Col margin="1rem" alignItems="center">
-      {ids.map((eventId: t.Event) => <ScheduleCard key={eventId} id={eventId} event={publicEvents[eventId]}/>)}
+      {ids.map((eventId: any) => <ScheduleCard key={eventId} id={eventId} event={publicEvents[eventId]} />)}
     </Col>
   );
 }

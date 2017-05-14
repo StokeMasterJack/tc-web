@@ -1,13 +1,12 @@
-//@flow
-import React from "react";
-import Block from "jsxstyle/Block";
+import * as React from "react";
+import * as Block from "jsxstyle/Block";
 import * as t from "./types";
-import firebase from "firebase/app";
+import * as firebase from "firebase/app";
 
 interface Props {
   id: string
 }
-export default class SignupRecord extends React.Component {
+export default class SignupRecord extends React.Component<any,any> {
 
   props: Props;
   state: t.Signup;
@@ -36,7 +35,6 @@ export default class SignupRecord extends React.Component {
         <h1>SignupRecord</h1>
         {s.name}
         {s.companyName}
-        {s.eventDate}
       </Block>
     );
   }

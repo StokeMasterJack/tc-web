@@ -1,7 +1,7 @@
-import React, {Component} from "react";
+import * as React from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import Block from "jsxstyle/Block";
-import Row from "jsxstyle/Row";
+import * as Block from "jsxstyle/Block.js";
+import * as Row from "jsxstyle/Row";
 import AppBar from "material-ui/AppBar";
 import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
@@ -17,7 +17,7 @@ import * as t from "./types";
 import WorkshopDetail from "./WorkshopDetail";
 import Eval from "./Eval";
 import Testimonials from "./Testimonials";
-import trimStart from "lodash/trimStart";
+import * as trimStart from "lodash/trimStart";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import IconButton from "material-ui/IconButton";
 import CancelIcon from "material-ui/svg-icons/navigation/cancel";
@@ -38,21 +38,23 @@ function parsePath(): t.Path {
       id: ""
     };
   }
-  if (a.length === 1) {
+  else if (a.length === 1) {
     return {
       page: a[0],
       id: ""
     };
   }
-  if (a.length === 2) {
+  else if (a.length === 2) {
     return {
       page: a[0],
       id: a[1]
     };
+  } else {
+    throw Error("Unsupported URL path[" + path + "]");
   }
 }
 
-export default class App extends Component {
+export default class App extends React.Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
@@ -83,6 +85,10 @@ export default class App extends Component {
     });
   };
 
+  onCloseDrawerClick = () => {
+    this.setState({open: false});
+  };
+
   render() {
     const path: t.Path = parsePath();
     const tab = this.router(path);
@@ -98,14 +104,12 @@ export default class App extends Component {
 
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-
         <Block>
           <AppBar
             title={<span style={{cursor: "pointer"}}>React Training</span>}
             onLeftIconButtonTouchTap={this.onHamburgerClick}
             onTitleTouchTap={() => redir("")}
           />
-
           <Drawer
             open={this.state.open}
             docked={false}
@@ -113,8 +117,8 @@ export default class App extends Component {
             onRequestChange={open => this.setState({open})}
           >
             <Row justifyContent="flex-end" background="#fc0303" height="4rem" alignItems="center">
-              <IconButton onTouchTap={() => this.setState({open: false}) }>
-                <CancelIcon/>
+              <IconButton onTouchTap={this.onCloseDrawerClick}>
+                <CancelIcon />
               </IconButton>
             </Row>
             {menu("", "Home")}
@@ -128,7 +132,6 @@ export default class App extends Component {
           </Drawer>
           {tab}
         </Block>
-
       </MuiThemeProvider>
     );
   }

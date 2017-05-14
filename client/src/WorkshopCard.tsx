@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Card, CardActions, CardTitle, CardText } from "material-ui/Card";
 import FlatButton from "material-ui/FlatButton";
 import { spaRedir } from "./util";

@@ -1,6 +1,6 @@
-import React from "react";
+import * as React from "react";
 import { Card, CardText } from "material-ui/Card";
-import Block from "jsxstyle/Block";
+import * as Block from "jsxstyle/Block";
 
 export default function TestimonialCard(props) {
   const t = props.testimonial;

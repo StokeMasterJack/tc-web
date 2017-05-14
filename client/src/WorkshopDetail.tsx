@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import data from "./data/thinking-in-react.js";
+import * as React from "react";
+import data from "./data/thinking-in-react";
 import "./WorkshopDetail.css";
 
-export default class WorkshopDetail extends Component {
+export default class WorkshopDetail extends React.Component<any,any> {
   constructor(props) {
     super(props);
     this.state = {};

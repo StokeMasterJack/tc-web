@@ -1,12 +1,12 @@
-import React from "react";
-import Block from "jsxstyle/Block";
+import * as React from "react";
+import * as Block from "jsxstyle/Block";
 import {
   Card,
   CardHeader,
   CardTitle,
   CardText
 } from "material-ui/Card";
-import Row from "jsxstyle/Row";
+import * as Row from "jsxstyle/Row";
 
 export default function Contact(props) {
   return (

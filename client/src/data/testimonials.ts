@@ -1,4 +1,4 @@
-[
+export default [
   {
     "id": 0,
     "text": "I THOROUGHLY enjoyed your class.\n            It was very well taught and the material\n            was very well organized for maximum learning!\n        ",

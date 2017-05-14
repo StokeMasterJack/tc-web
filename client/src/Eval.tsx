@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import Block from "jsxstyle/Block";
-import Row from "jsxstyle/Row";
+import * as React from "react";
+import * as Block from "jsxstyle/Block";
+import * as Row from "jsxstyle/Row";
 import { Card,CardTitle } from "material-ui/Card";
 import TextField from "material-ui/TextField";
 import FlatButton from "material-ui/FlatButton";
-import moment from "moment";
+import * as moment from "moment";
 
-import firebase from "firebase/app";
+import * as firebase from "firebase/app";
 import "firebase/database";
 
 const style = {
@@ -18,7 +18,7 @@ const inputStyle = {
   width: "100%"
 };
 
-export default class Eval extends Component {
+export default class Eval extends React.Component<any,any> {
   constructor() {
     super();
     this.state = {

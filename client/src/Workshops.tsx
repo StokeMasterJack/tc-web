@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import Block from "jsxstyle/Block";
+import * as React from "react";
+import * as Block from "jsxstyle/Block";
 import WorkshopCard from "./WorkshopCard";
-import workshops from "./workshops.json";
+import workshops from "./data/workshops2";
 
-export default class HomePage extends Component {
+export default class HomePage extends React.Component<any,any> {
 
   render() {
     return (
