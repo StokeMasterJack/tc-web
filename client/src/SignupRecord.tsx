@@ -6,10 +6,12 @@ import * as firebase from "firebase/app";
 interface Props {
   id: string
 }
-export default class SignupRecord extends React.Component<any,any> {
+type State = t.Signup | null;
+
+export default class SignupRecord extends React.Component<Props, State> {
 
   props: Props;
-  state: t.Signup;
+  state: State;
   mounted: boolean;
 
   constructor(props: Props) {
@@ -43,8 +45,9 @@ export default class SignupRecord extends React.Component<any,any> {
     const id = this.props.id;
     const database = firebase.database();
     const signupRef = database.ref("signups/" + id);
-    signupRef.on('value', snapshot => {
+    signupRef.on("value", snapshot => {
+      if(snapshot === null) throw Error();
       this.setState(snapshot.val());
-    })
+    });
   }
 }

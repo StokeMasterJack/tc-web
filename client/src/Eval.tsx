@@ -33,7 +33,7 @@ export default class Eval extends React.Component<any,any> {
 
   componentDidMount() {
     const nameField = document.getElementById("evalName");
-    nameField.focus();
+    nameField!.focus();
   }
 
   onSubmit = ev => {

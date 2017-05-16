@@ -98,7 +98,9 @@ export default class Signup extends React.Component<any, State> {
     delete copy.isNew;
     delete copy.key;
     const newSignupRef = signupsRef.push();
-    this.setState({key: newSignupRef.key});
+    let k = newSignupRef.key;
+    if(k === null) throw Error();
+    this.setState({key: k});
     newSignupRef.set(copy);
   };
 

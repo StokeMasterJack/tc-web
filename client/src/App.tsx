@@ -17,7 +17,7 @@ import * as t from "./types";
 import WorkshopDetail from "./WorkshopDetail";
 import Eval from "./Eval";
 import Testimonials from "./Testimonials";
-import * as trimStart from "lodash/trimStart";
+import * as lodash from "lodash";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import IconButton from "material-ui/IconButton";
 import CancelIcon from "material-ui/svg-icons/navigation/cancel";
@@ -30,7 +30,7 @@ const muiTheme = getMuiTheme({
 
 function parsePath(): t.Path {
   let path = window.location.pathname;
-  path = trimStart(path, "/");
+  path = lodash.trimStart(path, "/");
   const a = path.split("/");
   if (a.length === 0 || a[0] === "") {
     return {
