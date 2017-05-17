@@ -24,7 +24,8 @@ import CancelIcon from "material-ui/svg-icons/navigation/cancel";
 
 const muiTheme = getMuiTheme({
   palette: {
-    primary1Color: "#fc0303"
+    primary1Color: "#fc0303",
+    primary2Color: "#9a0000" 
   }
 });
 

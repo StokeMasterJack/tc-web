@@ -22,7 +22,7 @@ export default function Schedule() {
 
 function ScheduleCard({id,event}: { id:string,event: t.Event }) {
   const date1 = moment(event.date);
-  const date2 = moment(date1).add(4, 'days');
+  const date2 = moment(date1).add(event.days - 1, 'days');
   const dateString = date1.format("ddd MMM D") + " - " + date2.format("ddd MMM D");
 
   const workshop = workshops[event.workshopKey];

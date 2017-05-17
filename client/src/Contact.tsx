@@ -15,7 +15,7 @@ export default function Contact(props) {
       <Card>
         <CardHeader
           title="Dave Ford"
-          subtitle="Lead Instructor"
+          subtitle="Owner and Lead Instructor"
           avatar="https://scontent-sjc2-1.xx.fbcdn.net/v/t1.0-1/c17.0.166.166/1779141_10151867592682581_329363085_n.jpg?oh=e5fca7ad25c8fdbbefc8d12ec88290b0&oe=597A6F65"
         />
 

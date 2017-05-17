@@ -33,7 +33,8 @@ interface State extends t.Signup {
 //   workshop: Workshop
 // }
 
-const initData = () => ({
+const initData = (eventId) => ({
+  eventId: eventId?eventId:"",
   name: "",
   companyName: "",
   phone: "",
@@ -42,6 +43,7 @@ const initData = () => ({
 
 
 const sampleData = () => ({
+  eventId: "1",
   name: "Dave Ford",
   companyName: "Smart Soft",
   phone: "714 654 6550",
@@ -53,7 +55,7 @@ export default class Signup extends React.Component<any, State> {
   constructor() {
     super();
     this.state = {
-      ...initData(),
+      ...initData(1), //todo
       isNew: true,
       key: ""
     };
@@ -122,19 +124,18 @@ export default class Signup extends React.Component<any, State> {
 
   anyErrors() {
     const e: t.Signup = this.errors();
-    const eValues = Object.keys(e).map(key => e[key]);
-    // const eValues = Object.values(e);
+    const eValues = Object.values(e);
     return eValues.some(v => !!v);
   }
 
   errorsUI() {
-    if (this.state.isNew) return initData();
+    if (this.state.isNew) return initData("");
     return this.errors();
   }
 
   errors(): t.Signup {
     const s: State = this.state;
-    const e: t.Signup = initData();
+    const e: t.Signup = initData("");
     if (!s.name) e.name = "Enter your Name";
     if (!s.companyName) e.companyName = "Enter your Company Name";
     if (!s.phone) {
@@ -166,17 +167,25 @@ export default class Signup extends React.Component<any, State> {
     const errors = this.errorsUI();
     const event: t.Event = this.tEvent();
 
+    const headItemStyle = {
+      margin:0,
+      padding:0
+    };
+
     return (
       <Row justifyContent="center" paddingTop="1rem">
+
         <Block width="40rem">
+          <CardTitle title="Smart Soft Signup Form" style={{margin: 0, padding: 0, marginBottom: "1rem"}}/>
           <Card style={style}>
-            <CardTitle title="Smart Soft Signup Form" style={{margin: 0, padding: 0, marginBottom: "1rem"}}/>
-            <Block fontSize="1.2rem">{workshops[event.workshopKey].title}</Block>
-            <Block>{event.days} Day Hands-on Workshop</Block>
-            <Block>{this.dateRangeFormatted()}</Block>
-            <Block>{ss.formatCurrency(event.price)}</Block>
+            <Block fontSize="1.2rem" marginBottom=".5rem"><b>{workshops[event.workshopKey].title}</b></Block>
+            <li style={headItemStyle}>{event.days} Day Hands-on Workshop</li>
+            <li style={headItemStyle}>{this.dateRangeFormatted()}</li>
+            <li style={headItemStyle}>{ss.formatCurrency(event.price)}</li>
           </Card>
-          <button onClick={this.onSampleDataClick}>Sample Data</button>
+          <Block height="1rem" props={{onClick:this.onSampleDataClick}}>
+              &nbsp;
+          </Block>
           <Card style={style}>
             <form autoComplete="off">
               <TextField
