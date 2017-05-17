@@ -13,7 +13,6 @@ import Schedule from "./Schedule";
 import Signup from "./Signup";
 import SignupRecord from "./SignupRecord";
 import * as t from "./types";
-// import Outline from "./Outline";
 import WorkshopDetail from "./WorkshopDetail";
 import Eval from "./Eval";
 import Testimonials from "./Testimonials";
@@ -129,7 +128,7 @@ export default class App extends React.Component<any, any> {
             {menu("testimonials", "Testimonials")}
             {menu("eval", "Post Class Evaluation")}
             {menu("schedule", "Schedule")}
-            {menu("signup", "Signup")}
+            {menu("signup/1", "Signup")}
           </Drawer>
           {tab}
         </Block>

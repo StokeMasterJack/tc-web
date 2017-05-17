@@ -36,7 +36,7 @@ function ScheduleCard({id,event}: { id:string,event: t.Event }) {
         <Block fontSize="1.2rem">{workshopTitle} - San Clemente, CA</Block>
       </CardText>
       <CardActions style={{display: "flex", justifyContent: "center"}}>
-        <FlatButton label="Register Now" onClick={() => ss.spaRedir(url)}/>
+        <FlatButton label="Signup" primary={true} onClick={() => ss.spaRedir(url)}/>
       </CardActions>
     </Card>
   );
