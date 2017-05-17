@@ -12,6 +12,7 @@ import Contact from "./Contact";
 import Schedule from "./Schedule";
 import Signup from "./Signup";
 import SignupRecord from "./SignupRecord";
+import PrivateWorkshops from "./PrivateWorkshops";
 import * as t from "./types";
 import WorkshopDetail from "./WorkshopDetail";
 import Eval from "./Eval";
@@ -76,6 +77,7 @@ export default class App extends React.Component<any, any> {
     if (page === "signup") return <Signup eventId={id}/>;
     if (page === "eval") return <Eval />;
     if (page === "signupRecord") return <SignupRecord id={id}/>;
+    if (page === "privateWorkshops") return <PrivateWorkshops/>;
     return <div>Bad Route. You suck!</div>;
   }
 
@@ -108,7 +110,7 @@ export default class App extends React.Component<any, any> {
           <AppBar
             title={<span style={{cursor: "pointer"}}>React Training</span>}
             onLeftIconButtonTouchTap={this.onHamburgerClick}
-            onTitleTouchTap={() => redir("")}
+            onTitleTouchTap={() => redir("/")}
           />
           <Drawer
             open={this.state.open}
@@ -121,14 +123,15 @@ export default class App extends React.Component<any, any> {
                 <CancelIcon />
               </IconButton>
             </Row>
-            {menu("", "Home")}
+            {menu("/", "Home")}
             {/*{menu("workshops", "Workshops")}*/}
-            {menu("workshopDetail", "Thinking in React")}
-            {menu("contact", "Contact Us")}
-            {menu("testimonials", "Testimonials")}
-            {menu("eval", "Post Class Evaluation")}
-            {menu("schedule", "Schedule")}
-            {menu("signup/1", "Signup")}
+            {menu("/workshopDetail", "Thinking in React")}
+            {menu("/contact", "Contact Us")}
+            {menu("/testimonials", "Testimonials")}
+            {menu("/eval", "Post Class Evaluation")}
+            {menu("/schedule", "Schedule")}
+            {menu("/signup/1", "Signup")}
+            {menu("/privateWorkshops", "Private Workshops")}
           </Drawer>
           {tab}
         </Block>

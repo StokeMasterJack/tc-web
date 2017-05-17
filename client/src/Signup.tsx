@@ -160,7 +160,7 @@ export default class Signup extends React.Component<any, State> {
     const state = this.state;
 
     if (state.key) {
-      ss.spaRedir("signupRecord/" + state.key);
+      ss.spaRedir("/signupRecord/" + state.key);
       return null;
     }
 

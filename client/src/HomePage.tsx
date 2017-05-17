@@ -73,7 +73,7 @@ export default class HomePage extends React.Component<any,any> {
           </CardText>
         </Block>
         <CardActions>
-          <FlatButton primary={true}  label="Schedule" onClick={() => ss.spaRedir("schedule")} />
+          <FlatButton primary={true}  label="Schedule" onClick={() => ss.spaRedir("/schedule")} />
         </CardActions>
       </Card>
 
@@ -92,7 +92,7 @@ export default class HomePage extends React.Component<any,any> {
           </CardText>
         </Block>
         <CardActions>
-          <FlatButton primary={true}  label="More Information" onClick={() => alert("Todo")} />
+          <FlatButton primary={true}  label="More Information" onClick={()=>ss.spaRedir("/privateWorkshops")} />
         </CardActions>
       </Card>
     </Row>

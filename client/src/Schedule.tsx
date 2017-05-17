@@ -27,7 +27,7 @@ function ScheduleCard({id,event}: { id:string,event: t.Event }) {
 
   const workshop = workshops[event.workshopKey];
   const workshopTitle = workshop.title;
-  const url = "signup/" + id;
+  const url = "/signup/" + id;
 
   return (
     <Card style={{maxWidth: "23rem", margin: "1rem"}}>

@@ -5,6 +5,7 @@ import * as t from "./types";
 import * as firebase from "firebase/app";
 import publicEvents from "./data/publicEvents";
 import workshops from "./data/workshops";
+import Link from "./Link";
 
 const h2Style = {marginBottom: ".5rem", marginTop: "1rem"};
 
@@ -87,7 +88,7 @@ export default class SignupRecord extends React.Component<Props, State> {
         <a id="payByCreditCard" name="payByCreditCard"/>
         <Block>
           <h2 style={h2Style}>Pay by Credit Card</h2>
-          Please <a href="/contact">call</a> to make a
+          Please <Link to="/contact">call</Link> to make a
           credit card payment by phone.
         </Block>
 

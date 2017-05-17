@@ -1,5 +1,4 @@
-export function spaRedir(to: string) {
-  const url = "/" + to;
+export function spaRedir(url: string) {
   window.history.pushState(null, "ignore", url);
   window.dispatchEvent(new PopStateEvent("popstate"));
 }

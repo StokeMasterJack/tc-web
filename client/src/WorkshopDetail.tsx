@@ -19,13 +19,13 @@ export default class WorkshopDetail extends React.Component<any, any> {
   render() {
     return <Block>
       <CardActions style={{ display:"flex",justifyContent:"space-between"}}>
-        <FlatButton label="View Schedule" primary={true}  onClick={() => ss.spaRedir("schedule")} />
-        <FlatButton label="Signup Now!" primary={true} onClick={() => ss.spaRedir("schedule")} />
+        <FlatButton label="View Schedule" primary={true}  onClick={() => ss.spaRedir("/schedule")} />
+        <FlatButton label="Signup Now!" primary={true} onClick={() => ss.spaRedir("/schedule")} />
       </CardActions>
       <div dangerouslySetInnerHTML={this.createMarkup()}/>
       <CardActions style={{ display:"flex",justifyContent:"space-between"}}>
-        <FlatButton label="View Schedule" primary={true}  onClick={() => ss.spaRedir("schedule")} />
-        <FlatButton label="Signup Now!" primary={true} onClick={() => ss.spaRedir("schedule")} />
+        <FlatButton label="View Schedule" primary={true}  onClick={() => ss.spaRedir("/schedule")} />
+        <FlatButton label="Signup Now!" primary={true} onClick={() => ss.spaRedir("/schedule")} />
       </CardActions>
     </Block>;
   }
