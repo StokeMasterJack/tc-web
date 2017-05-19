@@ -47,6 +47,9 @@ function processItem(item, listCounters) {
   if (item.getType() == DocumentApp.ElementType.PARAGRAPH) {
     switch (item.getHeading()) {
       // Add a # for each heading level. No break, so we accumulate the right number.
+      case DocumentApp.ParagraphHeading.HEADING3:
+              (prefix = "<h3 class='workshop-h3'>"), (suffix = "</h3>");
+              break;
       case DocumentApp.ParagraphHeading.HEADING2:
         (prefix = "<h2 class='workshop-h2'>"), (suffix = "</h2>");
         break;

@@ -38,6 +38,17 @@ export default class HomePage extends React.Component<any,any> {
       >
         Instructor-led React Training
       </Row>
+
+      <Row
+        justifyContent="center"
+        fontSize="1.6rem"
+        alignItems="center"
+        paddingTop=".8rem"
+        textAlign="center"
+        fontStyle="italic"
+      >
+        by Dave Ford
+      </Row>
     </Block>
   );
 
@@ -67,7 +78,7 @@ export default class HomePage extends React.Component<any,any> {
           />
           <CardText style={{ margin: 0, padding: 0 }}>
             <Block>
-              Open-enrollment workshops at our training center in San Clemente, California.
+              Open-enrollment workshops at our training center in <a target="_blank" href="https://www.tripadvisor.com/Tourism-g33012-San_Clemente_California-Vacations.html">San Clemente</a>, California.
             </Block>
             <Block marginTop="1rem">Max class size: 4 students.</Block>
           </CardText>

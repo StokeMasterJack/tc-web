@@ -1,15 +1,15 @@
 export default `<div class='workshop'><h1 class='workshop-title'>Thinking in React</h1>
-<div class='workshop-subtitle'>5 day hands-on workshop</div>
+<div class='workshop-subtitle'>5-day hands-on workshop</div>
 <p class='workshop-p'>We often see React beginners waste hundreds of hours and suffer needless complexity because they are <i>fighting the framework</i>. Once you learn to <i>Think in React</i> you'll find that complex tasks become simple. </p>
 
 <p class='workshop-p'>This workshop will teach you everything you need to know in order to build sophisticated, real-world applications in React. This is an in-depth coverage of the React API and surrounding technologies.</p>
-<h2 class='workshop-h2'>Workshop Format</h2>
+<h3 class='workshop-h3'>Workshop Format</h3>
 <p class='workshop-p'>In this workshop we build a project together over the course of the week. Much of this work is in the form of "do on your own" exercises. We cover the depth and breadth of the React API and related topics as they arise in the course of building this application. You'll gain an in-depth understanding of the React API, the React ecosystem and the React way of thinking. </p>
-<h2 class='workshop-h2'>Class Size</h2>
+<h3 class='workshop-h3'>Class Size</h3>
 <p class='workshop-p'>Our public workshops have a maximum student count of 4. So each student is ensured an individualized training experience. We encourage you to bring in your projects and any special topics you'd like to cover. </p>
-<h2 class='workshop-h2'>Prerequisites</h2>
+<h3 class='workshop-h3'>Prerequisites</h3>
 <p class='workshop-p'>A basic, but not advanced, knowledge of JavaScript and HTML.</p>
-<h2 class='workshop-h2'>Price</h2>
+<h3 class='workshop-h3'>Price</h3>
 <p class='workshop-p'>$3,200</p>
 <h1 class='workshop-h1'>What You'll Learn</h1>
 <p class='workshop-p'>Below are the topics we cover in this workshop. This list is open to customization. Some of these modules may be skipped or skimmed depending on the prerequisites and preferences of the students. Also, we are always happy to add topics if requested. </p>
@@ -43,8 +43,7 @@ export default `<div class='workshop'><h1 class='workshop-title'>Thinking in Rea
 <li class='workshop-li'>Arrow functions</li>
 <li class='workshop-li'>Modules</li>
 <li class='workshop-li'>Class fields</li>
-<li class='workshop-li'>Promises</li>
-<li class='workshop-li'>Async/await</li></ul>
+<li class='workshop-li'>Promises & Async-await</li></ul>
 <h2 class='workshop-h2'>JavaScript Ecosystem Update for React</h2>
 <p class='workshop-p'>React also leans heavily on many modern and advanced aspects of the JavaScript ecosystem. This often overwhelms newcomers to React. We'll cover everything you need to feel comfortable in your new React setup.</p>
 
@@ -172,7 +171,8 @@ export default `<div class='workshop'><h1 class='workshop-title'>Thinking in Rea
 <li class='workshop-li'>Uncontrolled inputs</li>
 <li class='workshop-li'>Main form/subform</li>
 <li class='workshop-li'>Editable subtables</li>
-<li class='workshop-li'>Validation strategies</li></ul>
+<li class='workshop-li'>Validation strategies</li>
+<li class='workshop-li'>isDone and isNew</li></ul>
 <h2 class='workshop-h2'>Working with Server Data</h2>
 <p class='workshop-p'>React has no specific functionality for dealing with databases and HTTP services. But there are some React-specific skills and best practices you'll need to understand in order to work with your database and server-side data.</p>
 
@@ -259,6 +259,11 @@ export default `<div class='workshop'><h1 class='workshop-title'>Thinking in Rea
 <ul  class='workshop-ul'><li class='workshop-li'>JavaScript testing with Facebook's Jest</li>
 <li class='workshop-li'>The most convenient way to add testing to your workflow</li>
 <li class='workshop-li'>Testing React UI components</li></ul>
+<h2 class='workshop-h2'>Deploying for Production</h2>
+<ul  class='workshop-ul'><li class='workshop-li'>How to deal with dev vs prod</li>
+<li class='workshop-li'>App caching strategies</li>
+<li class='workshop-li'>Zipping and minification</li>
+<li class='workshop-li'>Don’t make users clear their cache after every app update</li></ul>
 <h2 class='workshop-h2'>Miscellaneous Topics</h2>
 <ul  class='workshop-ul'><li class='workshop-li'>10 React gotchas and how to avoid them.</li>
 <li class='workshop-li'>10 React best practices</li>

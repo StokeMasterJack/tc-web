@@ -1,6 +1,14 @@
+import * as ga from 'ga'
+
 export function spaRedir(url: string) {
   window.history.pushState(null, "ignore", url);
   window.dispatchEvent(new PopStateEvent("popstate"));
+
+  ga('set', 'page', url);
+  ga('send', 'pageview');
+
+
+
 }
 
 export function capFirstLetter(s: string): string {

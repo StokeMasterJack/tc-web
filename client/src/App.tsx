@@ -13,6 +13,7 @@ import Schedule from "./Schedule";
 import Signup from "./Signup";
 import SignupRecord from "./SignupRecord";
 import PrivateWorkshops from "./PrivateWorkshops";
+import PayWithCreditCard from "./PayWithCreditCard";
 import * as t from "./types";
 import WorkshopDetail from "./WorkshopDetail";
 import Eval from "./Eval";
@@ -78,6 +79,7 @@ export default class App extends React.Component<any, any> {
     if (page === "eval") return <Eval />;
     if (page === "signupRecord") return <SignupRecord id={id}/>;
     if (page === "privateWorkshops") return <PrivateWorkshops/>;
+    if (page === "payWithCreditCard") return <PayWithCreditCard/>;
     return <div>Bad Route. You suck!</div>;
   }
 
@@ -108,7 +110,7 @@ export default class App extends React.Component<any, any> {
       <MuiThemeProvider muiTheme={muiTheme}>
         <Block>
           <AppBar
-            title={<span style={{cursor: "pointer"}}>React Training</span>}
+            title={<span style={{cursor: "pointer"}}>React Training by Smart Soft</span>}
             onLeftIconButtonTouchTap={this.onHamburgerClick}
             onTitleTouchTap={() => redir("/")}
           />

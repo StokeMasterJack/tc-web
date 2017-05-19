@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/google.analytics": "^0.0.33",
     "@types/jest": "^19.2.3",
     "@types/moment": "^2.13.0",
     "@types/node": "^7.0.18",
@@ -10,6 +11,7 @@
     "@types/react-dom": "^15.5.0",
     "email-validator": "^1.0.7",
     "firebase": "^3.9.0",
+    "ga": "^0.0.2",
     "jsxstyle": "^1.0.2",
     "lodash": "^4.17.4",
     "material-ui": "0.17.4",

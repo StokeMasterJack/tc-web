@@ -30,12 +30,21 @@
     margin-top: 1rem;
     margin-bottom: .6rem;
     text-align: left;
+    font-style: italic;
+}
+
+.workshop-h3 {
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    margin-bottom: .6rem;
+    text-align: left;
 }
 
 .workshop-p {
     font-size: 1rem;
-    margin-top:0rem;
-    margin-bottom:1rem;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
     text-align: left;
 }
 
@@ -43,6 +52,25 @@
     margin-left: 2rem;
 }
 
-.workshop-li{
+.workshop-li {
     text-align: left;
 }
+
+body {
+    counter-reset: h2counter;
+}
+
+h1 {
+    counter-reset: h2counter;
+}
+
+h2.workshop-h2:before {
+    content: counter(h2counter) ".\0000a0\0000a0";
+    counter-increment: h2counter;
+    counter-reset: h3counter;
+}
+
+/*h3:before {*/
+    /*content: counter(h2counter) "." counter(h3counter) ".\0000a0\0000a0";*/
+    /*counter-increment: h3counter;*/
+/*}*/

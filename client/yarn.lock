@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@types/google.analytics@^0.0.33":
+  version "0.0.33"
+  resolved "https://registry.yarnpkg.com/@types/google.analytics/-/google.analytics-0.0.33.tgz#98e704ed6052214ea0b5fd30958d4c3d70ea0479"
+
 "@types/jest@^19.2.3":
   version "19.2.3"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-19.2.3.tgz#61748040e8589a891dfc2ec1d16a2dd74482980e"
@@ -1582,6 +1586,12 @@ fstream@^1.0.0, fstream@^1.0.10, fstream@^1.0.2:
 function-bind@^1.0.2:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.0.tgz#16176714c801798e4e8f2cf7f7529467bb4a5771"
+
+ga@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/ga/-/ga-0.0.2.tgz#0e78c4d6e90ea08f2189739dd3368356b887a800"
+  dependencies:
+    request "*"
 
 gauge@~2.7.1:
   version "2.7.4"
@@ -3884,7 +3894,7 @@ repeating@^2.0.0:
   dependencies:
     is-finite "^1.0.0"
 
-request@^2.79.0, request@^2.81.0:
+request@*, request@^2.79.0, request@^2.81.0:
   version "2.81.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.81.0.tgz#c6928946a0e06c5f8d6f8a9333469ffda46298a0"
   dependencies:
