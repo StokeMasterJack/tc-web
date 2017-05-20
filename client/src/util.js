@@ -1,11 +1,12 @@
-import * as ga from 'ga'
+// import * as ga from 'ga'
+import * as numeral from 'numeral'
 
 export function spaRedir(url: string) {
   window.history.pushState(null, "ignore", url);
   window.dispatchEvent(new PopStateEvent("popstate"));
 
-  ga('set', 'page', url);
-  ga('send', 'pageview');
+  // ga('set', 'page', url);
+  // ga('send', 'pageview');
 
 
 
@@ -30,8 +31,9 @@ export function isValidPhoneNumber(ph: string): boolean {
 
 
 //$FlowFixMe
-const currencyFormatter = new Intl.NumberFormat("en-US", {style: 'currency', currency: 'USD',maximumFractionDigits:0});
+// const currencyFormatter = new Intl.NumberFormat("en-US", {style: 'currency', currency: 'USD',maximumFractionDigits:0});
 
 export function formatCurrency(num: number): string {
-    return currencyFormatter.format(num)
+  return numeral(num).format('$0,0.00')
+    // return currencyFormatter.format(num)
 }

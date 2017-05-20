@@ -124,7 +124,8 @@ export default class Signup extends React.Component<any, State> {
 
   anyErrors() {
     const e: t.Signup = this.errors();
-    const eValues = Object.values(e);
+    // const eValues = Object.values(e);
+    const eValues = Object.keys(e).map(key => e[key]);
     return eValues.some(v => !!v);
   }
 

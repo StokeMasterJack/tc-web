@@ -27,6 +27,7 @@ export default function Contact(props) {
                 href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=1&amp;to=dford@smart-soft.com&amp;su=React Training"
                 data-reactid=".0.d.0.3.0"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 dford@smart-soft.com
               </a>

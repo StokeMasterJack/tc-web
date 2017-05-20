@@ -33,7 +33,7 @@ export default class Eval extends React.Component<any,any> {
 
   componentDidMount() {
     const nameField = document.getElementById("evalName");
-    nameField!.focus();
+    nameField.focus();
   }
 
   onSubmit = ev => {
@@ -44,7 +44,7 @@ export default class Eval extends React.Component<any,any> {
     const evalsRef = database.ref("evals");
     console.log("evalsRef", evalsRef);
 
-    var newEvalRef = evalsRef.push();
+    const newEvalRef = evalsRef.push();
     newEvalRef
       .set({
         date: moment().format("YYYY-MM-DD"),

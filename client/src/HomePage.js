@@ -78,7 +78,10 @@ export default class HomePage extends React.Component<any,any> {
           />
           <CardText style={{ margin: 0, padding: 0 }}>
             <Block>
-              Open-enrollment workshops at our training center in <a target="_blank" href="https://www.tripadvisor.com/Tourism-g33012-San_Clemente_California-Vacations.html">San Clemente</a>, California.
+              Open-enrollment workshops at our training center in <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.tripadvisor.com/Tourism-g33012-San_Clemente_California-Vacations.html">San Clemente</a>, California.
             </Block>
             <Block marginTop="1rem">Max class size: 4 students.</Block>
           </CardText>

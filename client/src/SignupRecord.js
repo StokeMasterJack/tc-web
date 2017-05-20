@@ -69,7 +69,7 @@ export default class SignupRecord extends React.Component<Props, State> {
 
         <Block marginTop="1rem">You should receive a confirmation email soon.</Block>
 
-        <a id="payByCheck" name="payByCheck"/>
+        <a id="payByCheck" name="payByCheck">payByCheck</a>
         <Block>
           <h2 style={h2Style}>Pay by Check</h2>
           <Block marginBottom=".5rem">Please mail check to:</Block>
@@ -85,7 +85,7 @@ export default class SignupRecord extends React.Component<Props, State> {
         </Block>
 
 
-        <a id="payByCreditCard" name="payByCreditCard"/>
+        <a id="payByCreditCard" name="payByCreditCard">payByCreditCard</a>
         <Block>
           <h2 style={h2Style}>Pay by Credit Card</h2>
           Please <Link to="/contact">call</Link> to make a
