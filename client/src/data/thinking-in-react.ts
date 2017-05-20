@@ -1,8 +1,10 @@
 export default `<div class='workshop'><h1 class='workshop-title'>Thinking in React</h1>
 <div class='workshop-subtitle'>5-day hands-on workshop</div>
+<p class='workshop-p'>This 5-day hands-on workshop will teach you everything you need to build sophisticated, real-world applications in React. This is an in-depth coverage of the React API and surrounding technologies.</p>
+
 <p class='workshop-p'>We often see React beginners waste hundreds of hours and suffer needless complexity because they are <i>fighting the framework</i>. Once you learn to <i>Think in React</i> you'll find that complex tasks become simple. </p>
 
-<p class='workshop-p'>This workshop will teach you everything you need to know in order to build sophisticated, real-world applications in React. This is an in-depth coverage of the React API and surrounding technologies.</p>
+
 <h3 class='workshop-h3'>Workshop Format</h3>
 <p class='workshop-p'>In this workshop we build a project together over the course of the week. Much of this work is in the form of "do on your own" exercises. We cover the depth and breadth of the React API and related topics as they arise in the course of building this application. You'll gain an in-depth understanding of the React API, the React ecosystem and the React way of thinking. </p>
 <h3 class='workshop-h3'>Class Size</h3>

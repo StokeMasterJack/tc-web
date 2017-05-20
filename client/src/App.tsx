@@ -110,7 +110,7 @@ export default class App extends React.Component<any, any> {
       <MuiThemeProvider muiTheme={muiTheme}>
         <Block>
           <AppBar
-            title={<span style={{cursor: "pointer"}}>React Training by Smart Soft</span>}
+            title={<span style={{cursor: "pointer"}}>Instructor-led React Training</span>}
             onLeftIconButtonTouchTap={this.onHamburgerClick}
             onTitleTouchTap={() => redir("/")}
           />

@@ -27,7 +27,7 @@ export default class HomePage extends React.Component<any,any> {
         justifyContent="center"
         alignItems="center"
       >
-        <img src="./ss-logo-transparent.png" alt="Smart Soft - Developer Training" />
+        <img src="./ss-logo-transparent.png" alt="Smart Soft - React Training" />
       </Row>
       <Row
         justifyContent="center"
@@ -47,7 +47,7 @@ export default class HomePage extends React.Component<any,any> {
         textAlign="center"
         fontStyle="italic"
       >
-        by Dave Ford
+        by Smart Soft
       </Row>
     </Block>
   );
