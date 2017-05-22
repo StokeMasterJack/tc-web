@@ -4,27 +4,27 @@
     "workshopKey": "react",
     "instructor": "djf",
     "days": 5,
-    "price": 3200
+    "price": 2950
   },
   "2": {
     "date": "2017-07-10",
     "workshopKey": "react",
     "instructor": "djf",
     "days": 5,
-    "price": 3200
+    "price": 2950
   },
   "3": {
     "date": "2017-08-07",
     "workshopKey": "react",
     "instructor": "djf",
     "days": 5,
-    "price": 3200
+    "price": 2950
   },
   "4": {
     "date": "2017-09-11",
     "workshopKey": "react",
     "instructor": "djf",
     "days": 5,
-    "price": 3200
+    "price": 2950
   }
 }

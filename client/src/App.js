@@ -23,12 +23,12 @@ import getMuiTheme from "material-ui/styles/getMuiTheme";
 import IconButton from "material-ui/IconButton";
 import CancelIcon from "material-ui/svg-icons/navigation/cancel";
 
-const muiTheme = getMuiTheme({
-  palette: {
-    primary1Color: "#fc0303",
-    primary2Color: "#9a0000" 
-  }
-});
+const palette = {
+  primary1Color: "#fc0303",
+  primary2Color: "#9a0000"
+};
+
+const muiTheme = getMuiTheme({palette});
 
 function parsePath(): t.Path {
   let path = window.location.pathname;
@@ -52,7 +52,11 @@ function parsePath(): t.Path {
       id: a[1]
     };
   } else {
-    throw Error("Unsupported URL path[" + path + "]");
+    console.log("Unsupported URL[" + path + "]");
+    return {
+      page: "",
+      id: ""
+    };
   }
 }
 
@@ -80,7 +84,7 @@ export default class App extends React.Component<any, any> {
     if (page === "signupRecord") return <SignupRecord id={id}/>;
     if (page === "privateWorkshops") return <PrivateWorkshops/>;
     if (page === "payWithCreditCard") return <PayWithCreditCard/>;
-    return <div>Bad Route. You suck!</div>;
+    return <HomePage />;
   }
 
   onHamburgerClick = () => {
@@ -95,6 +99,7 @@ export default class App extends React.Component<any, any> {
 
   render() {
     const path: t.Path = parsePath();
+    
     const tab = this.router(path);
 
     const redir = route => {
@@ -110,7 +115,7 @@ export default class App extends React.Component<any, any> {
       <MuiThemeProvider muiTheme={muiTheme}>
         <Block>
           <AppBar
-            title={<span style={{cursor: "pointer"}}>Instructor-led React Training</span>}
+            title={<span style={{cursor: "pointer"}}>React Training by Smart Soft</span>}
             onLeftIconButtonTouchTap={this.onHamburgerClick}
             onTitleTouchTap={() => redir("/")}
           />
@@ -136,6 +141,9 @@ export default class App extends React.Component<any, any> {
             {menu("/privateWorkshops", "Private Workshops")}
           </Drawer>
           {tab}
+          <Row justifyContent="center" background={palette.primary1Color} color="white" padding=".5rem" marginTop="1rem">
+            <Block>Smart Soft Developer Training - Southern California - USA</Block>
+          </Row>
         </Block>
       </MuiThemeProvider>
     );

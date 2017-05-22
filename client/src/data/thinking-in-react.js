@@ -3,8 +3,6 @@ export default `<div class='workshop'><h1 class='workshop-title'>Thinking in Rea
 <p class='workshop-p'>This 5-day hands-on workshop will teach you everything you need to build sophisticated, real-world applications in React. This is an in-depth coverage of the React API and surrounding technologies.</p>
 
 <p class='workshop-p'>We often see React beginners waste hundreds of hours and suffer needless complexity because they are <i>fighting the framework</i>. Once you learn to <i>Think in React</i> you'll find that complex tasks become simple. </p>
-
-
 <h3 class='workshop-h3'>Workshop Format</h3>
 <p class='workshop-p'>In this workshop we build a project together over the course of the week. Much of this work is in the form of "do on your own" exercises. We cover the depth and breadth of the React API and related topics as they arise in the course of building this application. You'll gain an in-depth understanding of the React API, the React ecosystem and the React way of thinking. </p>
 <h3 class='workshop-h3'>Class Size</h3>
@@ -12,7 +10,7 @@ export default `<div class='workshop'><h1 class='workshop-title'>Thinking in Rea
 <h3 class='workshop-h3'>Prerequisites</h3>
 <p class='workshop-p'>A basic, but not advanced, knowledge of JavaScript and HTML.</p>
 <h3 class='workshop-h3'>Price</h3>
-<p class='workshop-p'>$3,200</p>
+<p class='workshop-p'>$2,950</p>
 <h1 class='workshop-h1'>What You'll Learn</h1>
 <p class='workshop-p'>Below are the topics we cover in this workshop. This list is open to customization. Some of these modules may be skipped or skimmed depending on the prerequisites and preferences of the students. Also, we are always happy to add topics if requested. </p>
 <h2 class='workshop-h2'>React in Context</h2>

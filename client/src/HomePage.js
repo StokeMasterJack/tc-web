@@ -7,6 +7,7 @@ import { Card, CardTitle, CardText, CardActions } from "material-ui/Card";
 import FlatButton from "material-ui/FlatButton";
 import "./HomePage.css";
 import * as ss from "./util";
+import logo from "./images/ss-logo-transparent.png"
 
 export default class HomePage extends React.Component<any,any> {
   render() {
@@ -27,7 +28,7 @@ export default class HomePage extends React.Component<any,any> {
         justifyContent="center"
         alignItems="center"
       >
-        <img src="./ss-logo-transparent.png" alt="Smart Soft - React Training" />
+        <img src={logo} alt="Smart Soft - React Training" />
       </Row>
       <Row
         justifyContent="center"
