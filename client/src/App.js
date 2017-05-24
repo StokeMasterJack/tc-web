@@ -1,6 +1,6 @@
 import * as React from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import * as Block from "jsxstyle/Block.js";
+import * as Block from "jsxstyle/Block";
 import * as Row from "jsxstyle/Row";
 import AppBar from "material-ui/AppBar";
 import Drawer from "material-ui/Drawer";
