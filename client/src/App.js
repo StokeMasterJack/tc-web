@@ -32,6 +32,10 @@ const muiTheme = getMuiTheme({palette});
 
 function parsePath(): t.Path {
   let path = window.location.pathname;
+
+  if (path === "/signup/Signup1.html") return {page: "", id: ""};
+  if (path === "/signup/SignupForm.html") return {page: "", id: ""};
+
   path = lodash.trimStart(path, "/");
   const a = path.split("/");
   if (a.length === 0 || a[0] === "") {
@@ -99,7 +103,7 @@ export default class App extends React.Component<any, any> {
 
   render() {
     const path: t.Path = parsePath();
-    
+
     const tab = this.router(path);
 
     const redir = route => {

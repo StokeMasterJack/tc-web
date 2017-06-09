@@ -10,17 +10,16 @@ import workshops from "./data/workshops";
 import * as t from "./types";
 
 export default function Schedule() {
-
-  const ids = Object.keys(publicEvents);
-
+  const minDate = moment().add("days", 3).format("YYYY-MM-DD");
+  const ids = Object.keys(publicEvents).filter((id => publicEvents[id].date > minDate));
   return (
     <Col margin="1rem" alignItems="center">
-      {ids.map((eventId: any) => <ScheduleCard key={eventId} id={eventId} event={publicEvents[eventId]} />)}
+      {ids.map((eventId: any) => <ScheduleCard key={eventId} id={eventId} event={publicEvents[eventId]}/>)}
     </Col>
   );
 }
 
-function ScheduleCard({id,event}: { id:string,event: t.Event }) {
+function ScheduleCard({id, event}: { id: string, event: t.Event }) {
   const date1 = moment(event.date);
   const date2 = moment(date1).add(event.days - 1, 'days');
   const dateString = date1.format("ddd MMM D") + " - " + date2.format("ddd MMM D");

@@ -26,5 +26,12 @@
     "instructor": "djf",
     "days": 5,
     "price": 2950
+  },
+  "5": {
+    "date": "2017-10-16",
+    "workshopKey": "react",
+    "instructor": "djf",
+    "days": 5,
+    "price": 2950
   }
 }
