@@ -4,6 +4,21 @@ import * as showdown from "showdown"
 
 const converter = new showdown.Converter()
 
+/**
+ * converts "<p>foo</p>" to "foo"
+ * @param text
+ */
+function trimOuterP(text) {
+  if (text.startsWith("<p>") && text.endsWith("</p>")) {
+    const i1 = 3
+    const i2 = text.length - 4
+    return text.substring(i1, i2)
+  }
+  else {
+    return text
+  }
+}
+
 export default class Node extends Component {
   render() {
 
@@ -90,7 +105,7 @@ export default class Node extends Component {
   }
 
   renderMetaNode(n, map) {
-    const tags = n.tags;
+    const tags = n.tags
     console.assert(tags)
     if (tags.hasOwnProperty('title')) {
       return <h1 className="workshop-title">{n.content}</h1>
@@ -107,9 +122,7 @@ export default class Node extends Component {
     return (
       <Block>
         <h1 className="workshop-h1">What You'll Learn</h1>
-        <p className="workshop-p">The list below reflects the <i>topics</i> covered but not the <i>order</i> or flow of the workshop.
-          The flow of the workshop is like this: we build applications, and through this process,
-          we cover the various features of Kotlin as they naturally arise.</p>
+        {this.renderNotes(n)}
         {this.renderChildNodes(n, map)}
       </Block>
     )
@@ -125,6 +138,13 @@ export default class Node extends Component {
     )
   }
 
+  markdown(markdownText) {
+    const html = converter.makeHtml(markdownText.trim())
+    const htmlTrimmed = trimOuterP(html)
+    const o = {__html: htmlTrimmed}
+    return <span dangerouslySetInnerHTML={o}/>
+  }
+
   renderTopicNodeL2(n, map) {
     const depth = this.props.depth
     const maxDepth = this.props.maxDepth
@@ -132,7 +152,20 @@ export default class Node extends Component {
     const marginLeft = String(depth - 1) + "rem"
     return (
       <div className="workshop-li" style={{marginLeft, display: "list-item"}}>
-        {n.content}
+        {this.markdown(n.content)}
+        {this.renderChildNodes(n, map,true)}
+      </div>
+    )
+  }
+
+  renderTopicNodeL3(n, map) {
+    const depth = this.props.depth
+    const maxDepth = this.props.maxDepth
+    if (depth > maxDepth) return null
+    const marginLeft = String(depth - 1) + "rem"
+    return (
+      <div className="workshop-li" style={{marginLeft, display: "list-item"}}>
+        {this.markdown(n.content)}
       </div>
     )
   }
@@ -142,12 +175,13 @@ export default class Node extends Component {
     style={{marginTop: "1rem"}}
     dangerouslySetInnerHTML={{__html: converter.makeHtml(note.comment)}}/>) : null
 
-  renderChildNodes(n, map) {
+  renderChildNodes(n, map, skipMarginTop = false) {
     if (n.tasks.length === 0) return null
     const depth = this.props.depth
     const type = this.computeType(n, depth)
+    const marginTop = skipMarginTop?"":"1rem"
     return (
-      <Block marginTop="1rem">
+      <Block marginTop={marginTop}>
         {n.tasks.map(id => (
           <Node key={id} id={id} map={map} depth={depth + 1} maxDepth={this.props.maxDepth} type={type}/>
         ))}

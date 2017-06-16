@@ -61,7 +61,7 @@ export default class WorkshopDetail extends Component<Props, undefined> {
 
   resetTitleAndMeta(props: Props) {
     const seoTitle = this.computeSeoTitle(props)
-    const seoMetaDesc =  this.computeSeoMetaDesc(props)
+    const seoMetaDesc = this.computeSeoMetaDesc(props)
     window.document.title = seoTitle
     const meta = window.document.querySelector("meta[name='description']")
     meta.setAttribute("content", seoMetaDesc)
@@ -86,7 +86,7 @@ export default class WorkshopDetail extends Component<Props, undefined> {
         <div className="workshop-subtitle">{outline.subtitle}</div>
         {this.renderButtons()}
         <br/>
-        <Node id={0} map={map} depth={0} maxDepth="3  " type="Root"/>
+        <Node id={0} map={map} depth={0} maxDepth={4} type="Root"/>
         <br/>
         {this.renderButtons()}
       </Block>
@@ -96,7 +96,7 @@ export default class WorkshopDetail extends Component<Props, undefined> {
   renderButtons() {
 
     const bStyle = {
-      marginRight:".5rem"
+      marginRight: ".5rem"
     }
     const workshopKey: string = this.props.workshopKey
     const scheduleUrl: string = `/schedule/${workshopKey}`
@@ -117,7 +117,13 @@ export default class WorkshopDetail extends Component<Props, undefined> {
         secondary={true}
         onTouchTap={() => ss.spaRedir(scheduleUrl)}
         style={bStyle}/>
+      <RaisedButton
+        label="Test Checkvist"
+        secondary={true}
+        onTouchTap={() => service.loadOutlineAsync("kotlin")}
+        style={bStyle}/>
     </Row>
+
   }
 
 }
