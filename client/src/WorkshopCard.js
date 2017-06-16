@@ -1,29 +1,60 @@
-import * as React from "react";
-import { Card, CardActions, CardTitle, CardText } from "material-ui/Card";
-import FlatButton from "material-ui/FlatButton";
-import { spaRedir } from "./util";
+import * as React from "react"
+import {Card, CardActions, CardText, CardTitle} from "material-ui/Card"
+import RaisedButton from "material-ui/RaisedButton"
+import {spaRedir} from "./ssutil"
+import * as service from "./service"
+import * as ss from "./ssutil"
 
-function onOutlineClick(outlineUrl) {
-  spaRedir("workshopDetail");
+function extractFirstIntroParagraph(outline) {
+  for (const node of outline) {
+    if (node.content === "Intro") {
+      return node.notes[0].comment
+    }
+  }
+  throw Error()
 }
 
 const WorkshopCard = props => {
-  const workshop = props.workshop;
+  const workshop = props.workshop
+
+  const key: string = workshop.key
+  const title: string = workshop.title
+  const subtitle: string = workshop.subtitle
+
+  const outline = service.loadOutlineSync(key)
+
+  const introPara = extractFirstIntroParagraph(outline)
+
+  const detailsUrl: string = key.toLowerCase() + "-training"
+  const scheduleUrl: string = `/schedule/` + key
+  const datesMouseOver = `Schedule of Public ${ss.capFirstLetter(key)} Workshops`;
+
   return (
-    <Card style={{ width: "90%", margin: "1rem" }}>
-      <CardTitle title={workshop.title} subtitle={workshop.subtitle} />
+    <Card style={{width: "90%", margin: "1rem", maxWidth: "50rem"}}>
+      <CardTitle title={title} subtitle={subtitle}/>
       <CardText>
-        {workshop.description}
+        {introPara}
       </CardText>
       <CardActions>
-        <FlatButton
-          label="Outline"
-          onClick={() => onOutlineClick(workshop.outlineUrl)}
+        <RaisedButton
+          label="Details"
+          secondary={true}
+          onTouchTap={() => spaRedir(detailsUrl)}
         />
-        <FlatButton label="Upcoming Dates" />
+        <RaisedButton
+          label="Dates"
+          secondary={true}
+          title={datesMouseOver}
+          onTouchTap={() => spaRedir(scheduleUrl)}
+        />
+        <RaisedButton
+          label="Testimonials"
+          secondary={true}
+          onTouchTap={() => spaRedir("/testimonials")}
+        />
       </CardActions>
     </Card>
-  );
-};
+  )
+}
 
-export default WorkshopCard;
+export default WorkshopCard

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+    <head>
+        <title>Kotlin</title>
+        <dateModified>Thu, 15 Jun 2017 18:26:52 +0000</dateModified>
+        <ownerName>StokeMasterJack</ownerName>
+    </head>
+    <body>
+        <outline text="Meta">
+            <outline text="Thinking in React" tags="title"/>
+            <outline text="5" tags="days"/>
+        </outline>
+        <outline text="Intro">
+            <outline type="note" isComment="true" text="This 5-day hands-on workshop will teach you everything you need to build sophisticated, real-world applications in React. This is an in-depth coverage of the React API and surrounding technologies."/>
+            <outline type="note" isComment="true" text="We often see React beginners waste hundreds of hours and suffer needless complexity because they are *fighting the framework*. Once you learn to *Think in React* you'll find that complex tasks become simple"/>
+
+            <outline text="Workshop Format">
+                <outline type="note" isComment="true" text="In this workshop we build a project together over the course of the week. Much of this work is in the form of &quot;do on your own&quot; exercises. We cover the depth and breadth of the React API and related topics as they arise in the course of building this application. You'll gain an in-depth understanding of the React API, the React ecosystem and the React way of thinking. "/>
+            </outline>
+            <outline text="Class Size">
+                <outline type="note" isComment="true" text="Our public workshops have a maximum student count of 4. So each student is ensured an individualized training experience. We encourage you to bring in your projects and any special topics you'd like to cover. "/>
+            </outline>
+            <outline text="Prerequisites">
+                <outline type="note" isComment="true" text="A basic, but not advanced, knowledge of JavaScript and HTML."/>
+            </outline>
+            <outline text="Price">
+                <outline type="note" isComment="true" text="$3,200"/>
+            </outline>
+        </outline>
+        <outline text="Topics">
+            <outline text="React in Context">
+                <outline text="What is React? What problems does it solve? How does it fit into the JavaScript ecosystem? The key to understanding React is understanding the problems it was designed to solve." type="note" isComment="true"/>
+                <outline text="Single Page Apps"/>
+                <outline text="Programmatically building and updating HTML trees"/>
+                <outline text="Templates"/>
+                <outline text="Keeping different parts of the UI in sync"/>
+                <outline text="Comparison with other frameworks"/>
+                <outline text="Three problems React solves"/>
+            </outline>
+            <outline text="React Core Concepts">
+                <outline text="Here we lay the groundwork for the rest of the workshop with an overview of the most important concepts of React." type="note" isComment="true"/>
+                <outline text="How React solves the three problems mentioned above"/>
+                <outline text="MVC translated to React"/>
+                <outline text="Functional UI's"/>
+                <outline text="Virtual DOM"/>
+                <outline text="Components"/>
+                <outline text="State management"/>
+                <outline text="Unidirectional data flow"/>
+                <outline text="One-way vs two-way binding"/>
+                <outline text="JSX"/>
+                <outline text="Three problems with React"/>
+            </outline>
+            <outline text="JavaScript ES6 Update for React">
+                <outline text="React leans heavily on many new and advanced features of JavaScript. Mastering these aspects of JavaScript can make a big difference in your productivity with React." type="note" isComment="true"/>
+                <outline text="ES6 classes"/>
+                <outline text="Spread and rest operators"/>
+                <outline text="Arrow functions"/>
+                <outline text="Modules"/>
+                <outline text="Class fields"/>
+                <outline text="Promises and Async-await"/>
+            </outline>
+            <outline text="JavaScript Ecosystem Update for React">
+                <outline text="React also leans heavily on many modern and advanced aspects of the JavaScript ecosystem. This often overwhelms newcomers to React. We'll cover everything you need to feel comfortable in your new React setup." type="note" isComment="true"/>
+                <outline text="JavaScript build systems"/>
+                <outline text="Node.js"/>
+                <outline text="JavaScript package managers"/>
+                <outline text="JavaScript transpilers"/>
+                <outline text="JavaScript Module bundlers"/>
+                <outline text="CLI's"/>
+            </outline>
+            <outline text="Development and Build Environment">
+                <outline text="The React ecosystem provides a dozen of different ways to setup your development and build environment. Here we'll discuss some of the options and I'll share my recommendations for a simple and optimal setup." type="note" isComment="true"/>
+                <outline text="Configuring your editor/IDE for React"/>
+                <outline text="Setting up your build system for dev and production"/>
+                <outline text="Yarn and NPM"/>
+                <outline text="Webpack 2"/>
+                <outline text="Babel"/>
+                <outline text="Create React App"/>
+            </outline>
+            <outline text="Thinking Functional">
+                <outline text="80% of &quot;Thinking in React&quot; is &quot;Thinking Functional&quot;. React is simple as long you do things the React way. And that means functional. Functional concepts can be a big paradigm shift. We introduce these concepts here and continue to reinforce them throughout the workshop." type="note" isComment="true"/>
+                <outline text="view = f(model)"/>
+                <outline text="Higher order functions"/>
+                <outline text="Map/Filter/Reduce"/>
+                <outline text="Transforms versus mutations"/>
+                <outline text="Function programming with complex data structures"/>
+            </outline>
+            <outline text="Creating React Components">
+                <outline text="React is all about components. Everything is a component. It is one of the defining things of React. Here we cover the details of creating, using and understanding React components." type="note" isComment="true"/>
+                <outline text="Functional components"/>
+                <outline text="ES6 class components"/>
+                <outline text="The render method"/>
+                <outline text="Valid return types for the render method"/>
+                <outline text="Component-ish: using a local variable or function in lieu components"/>
+                <outline text="Passing and consuming props"/>
+            </outline>
+            <outline text="Using JSX">
+                <outline text="JSX augments the JavaScript language with native support for HTML. And this is one of the defining features of React. It's also the primary reason we need a .
+            " type="note" isComment="true"/>
+                <outline text="JSX expressions"/>
+                <outline text="JSX vs templates"/>
+                <outline text="JavaScript in HTML"/>
+                <outline text="HTML in JavaScript"/>
+                <outline text="Deep nesting: JS in HTML in JS in HTML in JS ad infinitum"/>
+                <outline text="Style and className"/>
+                <outline text="Comments"/>
+                <outline text="Camel Case"/>
+                <outline text="Event props"/>
+                <outline text="Components vs Elements"/>
+                <outline text="Single root rule"/>
+                <outline text="Component name scope"/>
+            </outline>
+            <outline text="More JSX">
+                <outline text="Valid return types of a JSX expression"/>
+                <outline text="Booleans, Null, and Undefined"/>
+                <outline text="Whitelist"/>
+                <outline text="Using the spread operator in JSX for props"/>
+                <outline text="Compiler translation"/>
+                <outline text="React.createElement()"/>
+                <outline text="What does createElement return and why does it matter?"/>
+            </outline>
+            <outline text="Conditional Rendering">
+                <outline text="Using JavaScript and JSX to show and hide content based on some condition. This can be frustrating if you don't learn how to do this in the &quot;React way&quot;." type="note" isComment="true"/>
+                <outline text="expressions"/>
+                <outline text="expressions"/>
+                <outline text="Function with statement"/>
+                <outline text="Returning"/>
+            </outline>
+            <outline text="Repeating Elements">
+                <outline text="Most UI frameworks have some type of looping construct to create tables and lists. React does things a bit differently." type="note" isComment="true"/>
+                <outline text="UI Map functions"/>
+                <outline text="Decomposing complex map functions"/>
+                <outline text="Choosing a correct key"/>
+                <outline text="Subtle bugs related to a bad key"/>
+            </outline>
+            <outline text="Event Handling">
+                <outline text="Synthetic events"/>
+                <outline text="React event names"/>
+                <outline text="Function pointer versus &quot;function call in a string&quot;"/>
+                <outline text="Passing args to an event handler"/>
+                <outline text="The best way to handle the wandering &quot;this&quot; problem in React"/>
+                <outline text="Event handler return values"/>
+                <outline text="How to create event handlers"/>
+                <outline text="Event handler scope: event handlers as local var, instance var or prop"/>
+                <outline text="Passing event handlers down the component tree"/>
+                <outline text="React's event handling under the covers"/>
+            </outline>
+            <outline text="Managing State">
+                <outline text="Understanding  is critical to building React apps. Doing this wrong can lead to extra work and pain. State is how you update the UI in React. State is how you create interactive and dynamic applications in React.
+            " type="note" isComment="true"/>
+                <outline text="State versus props"/>
+                <outline text="Initial state"/>
+                <outline text="How to programmatically update the UI"/>
+                <outline text="setState"/>
+                <outline text="How to programmatically update the UI"/>
+                <outline text="Where to put state"/>
+                <outline text="Is state bad?"/>
+                <outline text="Mutable vs immutable state"/>
+                <outline text="Where and how to update state"/>
+                <outline text="Managing state in complex applications"/>
+                <outline text="Lifting state up"/>
+                <outline text="The &quot;lowest common ancestor&quot; rule"/>
+                <outline text="Why are props immutable?"/>
+                <outline text="Child components that need to update the state of a parent component"/>
+                <outline text="Reading state after calling setState()"/>
+                <outline text="Calling setState with a callback (or componentDidUpdate)"/>
+                <outline text="When the &quot;next state&quot; depends on the &quot;previous state&quot;"/>
+                <outline text="Calling setState with an &quot;updater&quot; function"/>
+                <outline text="How to &quot;refresh&quot; the UI in React?"/>
+                <outline text="Keep state flat"/>
+                <outline text="Keep state normalized"/>
+            </outline>
+            <outline text="More about Components">
+                <outline text="Prop types"/>
+                <outline text="Default props"/>
+                <outline text="Props.children"/>
+                <outline text="Dave's preferred way to handle prop types and default props"/>
+                <outline text="Component lifecycle callbacks"/>
+                <outline text="Practical use-cases for the lifecycle callbacks"/>
+                <outline text="Context"/>
+            </outline>
+            <outline text="Working with Forms">
+                <outline text="How React handles forms"/>
+                <outline text="Controlled inputs"/>
+                <outline text="Value and onChange props"/>
+                <outline text="Selects, textareas and checkboxes"/>
+                <outline text="The value,value,value,checked issue"/>
+                <outline text="Two way binding - almost"/>
+            </outline>
+            <outline text="Advanced Forms">
+                <outline text="Creating your own custom input components"/>
+                <outline text="Uncontrolled inputs"/>
+                <outline text="Main form/subform"/>
+                <outline text="Editable subtables"/>
+                <outline text="Validation strategies"/>
+                <outline text="isDone and isNew"/>
+            </outline>
+            <outline text="Working with Server Data">
+                <outline text="React has no specific functionality for dealing with databases and HTTP services. But there are some React-specific skills and best practices you'll need to understand in order to work with your database and server-side data." type="note" isComment="true"/>
+                <outline text="How to get data from the server in a React app"/>
+                <outline text="Where is the best place to make server calls"/>
+                <outline text="How to merge server data into your component state"/>
+                <outline text="How to display a &quot;loading…&quot; component while waiting for server-data"/>
+                <outline text="Creating a CRUD app (AKA database app)"/>
+                <outline text="Introduction to GraphQL and Relay"/>
+            </outline>
+            <outline text="Refs: Bypassing React">
+                <outline text="React's functional way of doing things should work for 95% of your use-cases. But there are times when you need direct access to the browser's API. This is what  are for.
+            " type="note" isComment="true"/>
+                <outline text="Working with refs"/>
+                <outline text="Three valid use-cases for refs"/>
+                <outline text="When to use refs"/>
+            </outline>
+            <outline text="Multi-Screen Apps and Routing">
+                <outline text="Here we learn how to create complex apps with multiple screens. Some app need to support webby features like bookmarkable pages, the back button and deep linking." type="note" isComment="true"/>
+                <outline text="Basic multi-screen apps"/>
+                <outline text="What is a route?"/>
+                <outline text="Route as a state variable"/>
+                <outline text="Making your app &quot;webby&quot;"/>
+                <outline text="Route as a URL path."/>
+                <outline text="Making the back and forward buttons work"/>
+                <outline text="Deep linking"/>
+                <outline text="Why does reload put me back to the home screen?"/>
+                <outline text="Window.location"/>
+                <outline text="The history API"/>
+                <outline text="The popstate event"/>
+                <outline text="react-router"/>
+                <outline text="When to use react-router?"/>
+            </outline>
+            <outline text="CSS for React">
+                <outline text="We find that a large number of problems people have with React are actually problems with CSS. We'll provide a CSS update specific to the needs of React developers. We'll also explore the various strategies for integrating CSS into your React applications." type="note" isComment="true"/>
+                <outline text="FlexBox"/>
+                <outline text="CSS per Component"/>
+                <outline text="CSS in JS"/>
+                <outline text="CSS webpack imports"/>
+                <outline text="Component-based style reuse"/>
+                <outline text="Theming"/>
+            </outline>
+            <outline text="React Architectural Patterns">
+                <outline text="React, at it's heart,  an architectural pattern. But as your apps become more complex, there are some additional patterns to help manage that complexity.
+            " type="note" isComment="true"/>
+                <outline text="MVC: Where does MVC fit into the React world?"/>
+                <outline text="Event buses and pub/sub"/>
+                <outline text="Unidirectional dataflow"/>
+                <outline text="Functional state updates"/>
+                <outline text="The Flux pattern"/>
+                <outline text="Redux"/>
+                <outline text="Drawbacks to the flux pattern"/>
+                <outline text="Redux alternatives"/>
+            </outline>
+            <outline text="Redux">
+                <outline text="Redux is the most popular React add-on for managing events and state in complex applications." type="note" isComment="true"/>
+                <outline text="What problems does Redux solve?"/>
+                <outline text="What problems does Redux create?"/>
+                <outline text="When not to use Redux"/>
+                <outline text="Single global, immutable state tree"/>
+                <outline text="Single global reducer function"/>
+                <outline text="Actions"/>
+                <outline text="Redux bare"/>
+                <outline text="Redux with React binding"/>
+                <outline text="Redux middleware"/>
+                <outline text="Redux with server calls"/>
+            </outline>
+            <outline text="Legacy and 3rd Party Integration">
+                <outline text="Using React in a legacy single page app"/>
+                <outline text="Using React in a legacy server-page app"/>
+                <outline text="Using 3rd party libraries from React"/>
+                <outline text="Using 3rd party React components"/>
+                <outline text="Using 3rd party non-react components"/>
+                <outline text="Dave's favorite 3rd party components and libraries from the React ecosystem"/>
+            </outline>
+            <outline text="Introduction to FlowType">
+                <outline text="With FlowType you'll get more reliability, improved refactoring, self-documenting code and superior editor support." type="note" isComment="true"/>
+                <outline text="Adding FlowType to your project"/>
+                <outline text="Running the type checker"/>
+                <outline text="Adding FlowType file-by-file"/>
+                <outline text="Basic type annotations"/>
+                <outline text="Optional and maybe types"/>
+                <outline text="Declaring prop types and state types"/>
+                <outline text="Other complex type declarations"/>
+            </outline>
+            <outline text="Testing">
+                <outline text="The makers of React provide a great testing solution for your React and JavaScript code." type="note" isComment="true"/>
+                <outline text="JavaScript testing with Facebook's Jest"/>
+                <outline text="The most convenient way to add testing to your workflow"/>
+                <outline text="Testing React UI components"/>
+            </outline>
+            <outline text="Deploying for Production">
+                <outline text="How to deal with dev vs prod"/>
+                <outline text="App caching strategies"/>
+                <outline text="Zipping and minification"/>
+                <outline text="Don’t make users clear their cache after every app update"/>
+            </outline>
+            <outline text="Miscellaneous Topics">
+                <outline text="10 React gotchas and how to avoid them."/>
+                <outline text="10 React best practices"/>
+                <outline text="Syncing state using constructor + pros will update"/>
+                <outline text="Bypass encoding with dangerouslySetInnerHTML"/>
+                <outline text="Higher order components"/>
+                <outline text="Handling modal dialogs and popups in React"/>
+                <outline text="Avoiding inheritance"/>
+            </outline>
+        </outline>
+
+    </body>
+</opml>

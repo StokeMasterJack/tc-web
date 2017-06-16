@@ -1,4 +1,4 @@
-import {isValidPhoneNumber,formatCurrency} from "./util";
+import {isValidPhoneNumber,formatCurrency} from "./ssutil";
 
 
 it('test isValidPhoneNumber', () => {

@@ -1,42 +1,79 @@
-import * as React from "react";
-import * as moment from "moment";
-import * as Block from "jsxstyle/Block";
-import * as Col from "jsxstyle/Col";
-import {Card, CardActions, CardText} from "material-ui/Card";
-import FlatButton from "material-ui/FlatButton";
-import * as ss from "./util";
-import publicEvents from "./data/publicEvents";
-import workshops from "./data/workshops";
-import * as t from "./types";
+import * as React from "react"
+import * as moment from "moment"
+import * as Block from "jsxstyle/Block"
+import * as Col from "jsxstyle/Col"
+import Link from "./Link"
+import {Card, CardActions, CardText, CardTitle} from "material-ui/Card"
+import RaisedButton from "material-ui/RaisedButton"
+import * as ss from "./ssutil"
+import events from "./data/events"
+import * as service from "./service"
+import type {Event, Workshop} from "./types"
 
-export default function Schedule() {
-  const minDate = moment().add("days", 3).format("YYYY-MM-DD");
-  const ids = Object.keys(publicEvents).filter((id => publicEvents[id].date > minDate));
-  return (
-    <Col margin="1rem" alignItems="center">
-      {ids.map((eventId: any) => <ScheduleCard key={eventId} id={eventId} event={publicEvents[eventId]}/>)}
-    </Col>
-  );
+
+interface Props {
+  workshopKey: ?string
 }
 
-function ScheduleCard({id, event}: { id: string, event: t.Event }) {
-  const date1 = moment(event.date);
-  const date2 = moment(date1).add(event.days - 1, 'days');
-  const dateString = date1.format("ddd MMM D") + " - " + date2.format("ddd MMM D");
+export default function Schedule(props: Props) {
+  const workshopKey: ?string = props.workshopKey  //null for all
+  const workshopTitle = workshopKey ? service.loadWorkshopSync(workshopKey).title : ""
 
-  const workshop = workshops[event.workshopKey];
-  const workshopTitle = workshop.title;
-  const url = "/signup/" + id;
+  const filter = (event: Event) => {
+    const workshop: Workshop = service.loadWorkshopSync(event.workshopKey)
+
+    const leadTime = workshop.leadTime
+    const minDate = moment().add(leadTime, "days").format("YYYY-MM-DD")
+    return event.date > minDate && (!workshopKey || event.workshopKey === workshopKey)
+  }
+  const eventsFiltered = events.filter(filter).sort((a, b) => a.date.localeCompare(b.date))
+
+  if (eventsFiltered.length === 0) {
+    return <Block padding="2rem" textAlign="center">
+      <Block>No {workshopTitle} workshops currently scheduled.</Block>
+      <Block paddingTop="1rem">Send us an <Link to="/contact">email</Link> with your date preferences and we'll add one.</Block>
+    </Block>
+  }
 
   return (
-    <Card style={{maxWidth: "23rem", margin: "1rem"}}>
+    <Block>
+      <CardTitle title="Schedule of Public Workshops"/>
+      <Col alignItems="center">
+        {eventsFiltered.map((event: any) => <ScheduleCard
+          key={event.workshopKey + "-" + event.date}
+          workshopKey={event.workshopKey}
+          date={event.date}/>)}
+      </Col>
+    </Block>
+  )
+}
+
+function ScheduleCard({workshopKey, date}: { workshopKey: string, date: string }) {
+  const workshop = service.loadWorkshopSync(workshopKey)
+  const workshopTitle = workshop.title
+  const days = workshop.days
+  const date1 = moment(date)
+  const date2 = moment(date1).add(days - 1, 'days')
+  const dateString = date1.format("ddd MMM D") + " - " + date2.format("ddd MMM D")
+  const url = `/signup/${workshopKey}/${date}`
+  return (
+    <Card style={{maxWidth: "23rem", margin: "1rem", padding: "1rem"}}>
       <CardText>
-        <Block fontWeight="500" fontSize="1.5rem" marginBottom=".5rem">{dateString}</Block>
-        <Block fontSize="1.2rem">{workshopTitle} - San Clemente, CA</Block>
+        <Col alignItems="center">
+          <Block fontWeight="bold" fontSize="1.2rem" marginBottom="1rem">{workshopTitle}</Block>
+          <Block fontSize="1.2rem" marginBottom="1rem">{dateString}</Block>
+          <Block fontSize="1.2rem">San Clemente, CA</Block>
+        </Col>
       </CardText>
       <CardActions style={{display: "flex", justifyContent: "center"}}>
-        <FlatButton label="Signup" primary={true} onClick={() => ss.spaRedir(url)}/>
+
+        <RaisedButton
+          label="Signup"
+          secondary={true}
+          onTouchTap={() => ss.spaRedir(url)}
+        />
+
       </CardActions>
     </Card>
-  );
+  )
 }

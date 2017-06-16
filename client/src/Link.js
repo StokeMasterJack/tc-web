@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as ss from "./util";
+import * as ss from "./ssutil";
 
 type Props = {
     to:string,

@@ -1,52 +1,50 @@
-import * as React from "react";
-import * as Block from "jsxstyle/Block";
-import * as Row from "jsxstyle/Row";
-import * as t from "./types";
-import * as firebase from "firebase/app";
-import publicEvents from "./data/publicEvents";
-import workshops from "./data/workshops";
-import Link from "./Link";
+import * as React from "react"
+import * as Block from "jsxstyle/Block"
+import * as Row from "jsxstyle/Row"
+import * as t from "./types"
+import {Signup, Workshop} from "./types"
+import * as firebase from "firebase/app"
+import Link from "./Link"
+import * as service from "./service"
 
-const h2Style = {marginBottom: ".5rem", marginTop: "1rem"};
+const h2Style = {marginBottom: ".5rem", marginTop: "1rem", fontSize: "1.2rem"}
 
 interface Props {
   id: string
 }
-type State = t.Signup | null;
+type State = Signup | null;
 
 export default class SignupRecord extends React.Component<Props, State> {
 
-  props: Props;
-  state: State;
-  mounted: boolean;
+  props: Props
+  state: State
+  mounted: boolean
 
   constructor(props: Props) {
-    super(props);
-    this.state = null;
+    super(props)
+    this.state = null
   }
 
   componentDidMount() {
-    this.mounted = true;
-    this.fetchSignupRecord();
+    this.mounted = true
+    this.fetchSignupRecord()
   }
 
   componentWillUnmount() {
-    this.mounted = false;
+    this.mounted = false
   }
 
 
   render() {
-    if (this.state === null) return <div>Loading...</div>;
-    const s: t.Signup = this.state;
+    if (this.state === null) return <div>Loading...</div>
+    const s: Signup = this.state
 
-    const eventId: string = s.eventId;
-    const event: t.Event = publicEvents[eventId];
-    if (!event) throw Error();
+    const workshopKey: string = s.workshopKey
 
-    const workshop: t.Workshop = workshops[event.workshopKey];
+    const workshop: Workshop = service.loadWorkshopSync(workshopKey)
 
-    const d1 = t.eventStartDate(event, "ddd MMM D");
-    const d2 = t.eventEndDate(event, "ddd MMM D");
+    const d1 = t.eventStartDate(s.date, "ddd MMM D")
+    const d2 = t.eventEndDate(s.date, workshop.days,"ddd MMM D")
 
     return (
       <Block padding="1rem">
@@ -60,60 +58,57 @@ export default class SignupRecord extends React.Component<Props, State> {
 
         {this.field("Registration ID", s.id)}
         {this.field("Workshop", workshop.title)}
-        {this.field("Days", event.days)}
+        {this.field("Days", workshop.days)}
         {this.field("Start Date", d1)}
         {this.field("End Date", d2)}
         {this.field("Email", s.email)}
         {this.field("Company", s.companyName)}
-        {this.field("Price", "$" + String(event.price))}
+        {this.field("Price", "$" + String(workshop.price))}
 
         <Block marginTop="1rem">You should receive a confirmation email soon.</Block>
 
-        <a id="payByCheck" name="payByCheck"></a>
         <Block>
-          <h2 style={h2Style}>Pay by Check</h2>
+          <a id="payByCheck" name="payByCheck"><h2 style={h2Style}>Pay by Check</h2></a>
           <Block marginBottom=".5rem">Please mail check to:</Block>
 
           <i>
-          Smart Soft Training Inc.<br/>
-          14 Via Alonso<br/>
-          San Clemente, CA 92673<br/>
+            Smart Soft Training Inc.<br/>
+            14 Via Alonso<br/>
+            San Clemente, CA 92673<br/>
           </i>
 
-          <Block marginTop="1rem">Make check payable to <b>Smart Soft Training Inc.</b></Block>
+          <Block marginTop="1rem">Make check payable to <b>Smart Soft Training, Inc.</b></Block>
 
         </Block>
 
-
-        <a id="payByCreditCard" name="payByCreditCard"></a>
         <Block>
-          <h2 style={h2Style}>Pay by Credit Card</h2>
+          <a id="payByCreditCard" name="payByCreditCard"><h2 style={h2Style}>Pay by Credit Card</h2></a>
           Please <Link to="/contact">call</Link> to make a
           credit card payment by phone.
         </Block>
 
       </Block>
-    );
+    )
   }
 
   field = (label, data) => (
     <Row>
       <Block width="10rem" padding=".3rem" margin=".3rem" background="#DDDDDD" color="black" textAlign="right"
              fontStyle="italic">{label}:</Block>
-      <Block width="30rem" padding=".3rem" margin=".3rem" >{data}</Block>
+      <Block width="30rem" padding=".3rem" margin=".3rem">{data}</Block>
     </Row>
-  );
+  )
 
   fetchSignupRecord() {
-    const id = this.props.id;
-    const database = firebase.database();
-    const signupRef = database.ref("signups/" + id);
+    const id = this.props.id
+    const database = firebase.database()
+    const signupRef = database.ref("signups/" + id)
     signupRef.on("value", snapshot => {
-      if (snapshot === null) throw Error();
-      const signup = snapshot.val();
-      signup.id = id;
-      this.setState(signup);
-    });
+      if (snapshot === null) throw Error()
+      const signup = snapshot.val()
+      signup.id = id
+      this.setState(signup)
+    })
   }
 }
 

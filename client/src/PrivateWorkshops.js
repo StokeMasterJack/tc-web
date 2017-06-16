@@ -1,14 +1,19 @@
-import * as React from "react";
-import * as Block from "jsxstyle/Block";
-import Link from "./Link";
+import * as React from "react"
+import * as Block from "jsxstyle/Block"
+import Link from "./Link"
+import {CardTitle} from "material-ui/Card"
 
 export default function PrivateWorkshops() {
   return (
-    <Block margin="1rem">
-      <h1>Private Workshops</h1>
-      <br/>
-      <Link to="/contact">Contact us</Link> to schedule an on-site workshop or to request more information.
+    <Block >
+      <CardTitle title="Private Workshops"/>
+      <Block paddingLeft="1rem" maxWidth="50rem">
+        <p>Any of our workshops can be conducted privately for your company. If you have the facilities,
+          we can conduct the training workshop on-site at your location otherwise we can arrange an off-site
+          location that is convenient for your group.</p>
 
+        <p><Link to="/contact">Contact us</Link> to schedule an private workshop or request more information.</p>
+      </Block>
     </Block>
-  );
+  )
 }

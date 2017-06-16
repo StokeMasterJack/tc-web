@@ -1,4 +1,4 @@
-import * as moment from "moment";
+import * as moment from "moment"
 
 export interface Event {
   workshopKey: string;
@@ -7,37 +7,46 @@ export interface Event {
   price: number;
 }
 
-export function eventStartDate(event: Event, format?: string) {
+export function eventStartDate(date: string, format?: string) {
   if (format) {
-    return moment(event.date).format(format);
+    return moment(date).format(format)
   } else {
-    return event.date;
+    return date
   }
 }
 
-export function eventEndDate(event: Event, format?: string) {
-  const d2 = moment(event.date).add(event.days - 1, "days").format("YYYY-MM-DD");
+export function eventEndDate(date: string, days: number, format?: string) {
+  const d2 = moment(date).add(days - 1, "days").format("YYYY-MM-DD")
   if (format) {
-    return moment(d2).format(format);
+    return moment(d2).format(format)
   } else {
-    return d2;
+    return d2
   }
 }
 
+/*
+"key": "kotlin",
+"title": "Kotlin Training",
+"subtitle": "Instructor-led 5-day hands-on workshop",
+"price": 2950,
+"days": 5,
+"leadTime": 30
+ */
 export interface Workshop {
+  key:string;
   title: string;
+  subtitle:string;
+  price:number;
+  days: number;
+  leadTime:number;
 }
 
 export interface Signup {
   id?: string,
-  eventId: string,
+  workshopKey: string,  //react | kotlin | javascript | css
+  date: string,
   name: string,
   companyName: string,
   phone: string,
   email: string
-}
-
-export interface Path {
-  page: string,
-  id: string
 }

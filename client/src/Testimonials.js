@@ -6,7 +6,7 @@ import testimonials from "./data/testimonials";
 
 export default function Testimonials(props) {
   return (
-    <Block margin="1rem">
+    <Block>
       <CardTitle title="Testimonials" />
       {testimonials.map(t => <TestimonialCard key={t.id} testimonial={t} />)}
     </Block>

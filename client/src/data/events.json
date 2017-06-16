@@ -1,0 +1,34 @@
+[
+  {
+    "date": "2017-07-10",
+    "workshopKey": "react"
+  },
+  {
+    "date": "2017-07-17",
+    "workshopKey": "kotlin"
+  },
+  {
+    "date": "2017-08-07",
+    "workshopKey": "react"
+  },
+  {
+    "date": "2017-08-14",
+    "workshopKey": "kotlin"
+  },
+  {
+    "date": "2017-09-11",
+    "workshopKey": "react"
+  },
+  {
+    "date": "2017-09-18",
+    "workshopKey": "kotlin"
+  },
+  {
+    "date": "2017-10-16",
+    "workshopKey": "react"
+  },
+  {
+    "date": "2017-10-23",
+    "workshopKey": "kotlin"
+  }
+]

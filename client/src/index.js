@@ -3,6 +3,7 @@ import * as ReactDOM from "react-dom";
 import * as injectTapEventPlugin from "react-tap-event-plugin";
 import App from "./App";
 import "./index.css";
+import "./WorkshopDetail.css";
 import * as firebase from "firebase/app";
 import "firebase/database";
 

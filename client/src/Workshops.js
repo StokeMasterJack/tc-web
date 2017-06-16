@@ -1,15 +1,18 @@
-import * as React from "react";
-import * as Block from "jsxstyle/Block";
-import WorkshopCard from "./WorkshopCard";
-import workshops from "./data/workshops2";
+import * as React from "react"
+import * as Col from "jsxstyle/Col"
+import WorkshopCard from "./WorkshopCard"
+import workshops from "./data/workshops.json"
 
-export default class HomePage extends React.Component<any,any> {
+export default class Workshops extends React.Component<any, any> {
 
   render() {
     return (
-      <Block>
-        {workshops.map(workshop => <WorkshopCard key={workshop.id} workshop={workshop} />)}
-      </Block>
-    );
+      <Col alignItems="center" paddingTop="1rem">
+        {workshops.map(workshop => <WorkshopCard
+          key={workshop.key} workshop={workshop}
+        />)
+        }
+      </Col>
+    )
   }
 }

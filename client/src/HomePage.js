@@ -1,24 +1,23 @@
-import * as React from "react";
-import * as Block from "jsxstyle/Block";
-import * as Row from "jsxstyle/Row";
-import WorkshopDetail from "./WorkshopDetail";
-import Testimonials from "./Testimonials";
-import { Card, CardTitle, CardText, CardActions } from "material-ui/Card";
-import FlatButton from "material-ui/FlatButton";
-import "./HomePage.css";
-import * as ss from "./util";
-import logo from "./images/ss-logo-transparent.png"
+import * as React from "react"
+import * as Block from "jsxstyle/Block"
+import * as Row from "jsxstyle/Row"
+import Workshops from "./Workshops"
+import {Card, CardActions, CardText, CardTitle} from "material-ui/Card"
+import FlatButton from "material-ui/FlatButton"
+import "./HomePage.css"
+import * as ss from "./ssutil"
+// import logo from "./images/ss-logo-transparent.png"
+import logo2 from "./images/ss-logo-transparent-2.png"
 
-export default class HomePage extends React.Component<any,any> {
+export default class HomePage extends React.Component<any, any> {
   render() {
     return (
       <Block paddingTop="2rem">
         {this.header()}
         {this.boxes()}
-        {this.workshopDetail()}
-        {this.testimonials()}
+        <Workshops />
       </Block>
-    );
+    )
   }
 
   header = () => (
@@ -28,30 +27,22 @@ export default class HomePage extends React.Component<any,any> {
         justifyContent="center"
         alignItems="center"
       >
-        <img src={logo} alt="Smart Soft - React Training" />
-      </Row>
-      <Row
-        justifyContent="center"
-        fontSize="2rem"
-        alignItems="center"
-        paddingTop="3.2rem"
-        textAlign="center"
-      >
-        Instructor-led React Training
+        {/*<img src={logo} alt="Smart Soft - React Training"/>*/}
+        <img src={logo2} alt="Smart Soft - React Training"/>
       </Row>
 
-      <Row
-        justifyContent="center"
-        fontSize="1.6rem"
-        alignItems="center"
-        paddingTop=".8rem"
-        textAlign="center"
-        fontStyle="italic"
-      >
-        by Smart Soft
-      </Row>
+      {/*<Row*/}
+      {/*justifyContent="center"*/}
+      {/*fontSize="2rem"*/}
+      {/*alignItems="center"*/}
+      {/*paddingTop="3.2rem"*/}
+      {/*textAlign="center"*/}
+      {/*>*/}
+      {/*Instructor-led React Training*/}
+      {/*</Row>*/}
+
     </Block>
-  );
+  )
 
   boxStyle = {
     width: "19rem",
@@ -61,7 +52,7 @@ export default class HomePage extends React.Component<any,any> {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between"
-  };
+  }
 
   boxes = () => (
     <Row
@@ -71,24 +62,27 @@ export default class HomePage extends React.Component<any,any> {
       paddingLeft="1rem"
       paddingRight="1rem"
     >
+
       <Card style={this.boxStyle}>
         <Block>
           <CardTitle
             title="Public Workshops"
-            style={{ marginBottom: ".5rem", padding: 0 }}
+            style={{marginBottom: ".5rem", padding: 0}}
           />
-          <CardText style={{ margin: 0, padding: 0 }}>
+          <CardText style={{margin: 0, padding: 0}}>
             <Block>
-              Open-enrollment workshops at our training center in <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://www.tripadvisor.com/Tourism-g33012-San_Clemente_California-Vacations.html">San Clemente</a>, California.
+              Open-enrollment workshops at our training center in San Clemente, California.
             </Block>
-            <Block marginTop="1rem">Max class size: 4 students.</Block>
+            <Block marginTop="1rem">Max class size: 4 students</Block>
           </CardText>
         </Block>
         <CardActions>
-          <FlatButton primary={true}  label="Schedule" onClick={() => ss.spaRedir("/schedule")} />
+          <FlatButton
+            primary={true}
+            label="Schedule"
+            onClick={() => ss.spaRedir("/schedule")}
+            title="Schedule of Public Workshops"
+          />
         </CardActions>
       </Card>
 
@@ -96,36 +90,21 @@ export default class HomePage extends React.Component<any,any> {
         <Block>
           <CardTitle
             title="Private Workshops"
-            style={{ marginBottom: ".5rem", padding: 0 }}
+            style={{marginBottom: ".5rem", padding: 0}}
           />
-          <CardText style={{ margin: 0, padding: 0 }}>
+          <CardText style={{margin: 0, padding: 0}}>
             <Block>
               Schedule an on-site workshop at your company's location.
             </Block>
-            <Block marginTop="1rem">Max class size: 10 students.</Block>
+            <Block marginTop="1rem">Max class size: 10 students</Block>
 
           </CardText>
         </Block>
         <CardActions>
-          <FlatButton primary={true}  label="More Information" onClick={()=>ss.spaRedir("/privateWorkshops")} />
+          <FlatButton primary={true} label="More Information" onClick={() => ss.spaRedir("/privateWorkshops")}/>
         </CardActions>
       </Card>
     </Row>
-  );
+  )
 
-  workshopDetail = () => (
-    <div className="HomePage-workshopDetail">
-      <Card style={{ padding: "1rem" }}>
-        <WorkshopDetail />
-      </Card>
-    </div>
-  );
-
-  testimonials = () => (
-    <div className="HomePage-workshopDetail">
-      <Card>
-        <Testimonials />
-      </Card>
-    </div>
-  );
 }

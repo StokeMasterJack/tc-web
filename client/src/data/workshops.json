@@ -1,8 +1,18 @@
-{
-  "react": {
-    "title": "Thinking in React"
+[
+  {
+    "key": "kotlin",
+    "title": "Kotlin Training",
+    "subtitle": "Instructor-led 5-day hands-on workshop",
+    "price": 2950,
+    "days": 5,
+    "leadTime": 30
   },
-  "kotlin": {
-    "title": "Thinking in Kotlin"
+  {
+    "key": "react",
+    "title": "React Training",
+    "subtitle": "Instructor-led 5-day hands-on workshop",
+    "price": 2950,
+    "days": 5,
+    "leadTime": 2
   }
-}
+]
