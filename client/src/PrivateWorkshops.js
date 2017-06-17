@@ -13,6 +13,13 @@ export default function PrivateWorkshops() {
           location that is convenient for your group.</p>
 
         <p><Link to="/contact">Contact us</Link> to schedule an private workshop or request more information.</p>
+
+        <h3 className="workshop-h3">Pricing</h3>
+        <p>The price for an on-site 5-day instructor-led workshop is $9,750.
+          Price includes all travel and course materials.
+          Client to provide training facility and computers.
+          Smart Soft can arranges an off-site computer training facility for an extra charge.
+        </p>
       </Block>
     </Block>
   )
