@@ -25,8 +25,10 @@ private fun file(workshopKey: String): File {
 }
 
 private fun fetchOutlineSync(outlineId: String): String {
-    val url = "https://checkvist.com/checklists/$outlineId/tasks.json?with_notes=true"
+    val url = "https://beta.checkvist.com/checklists/$outlineId/tasks.json?with_notes=true"
+    println("Fetching outline[$url]...")
     val (request, response, text) = Fuel.get(url).responseString()
+    println("  Fetching outline complete!")
     return text.get()
 }
 

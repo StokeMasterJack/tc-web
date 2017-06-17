@@ -117,11 +117,6 @@ export default class WorkshopDetail extends Component<Props, undefined> {
         secondary={true}
         onTouchTap={() => ss.spaRedir(scheduleUrl)}
         style={bStyle}/>
-      <RaisedButton
-        label="Test Checkvist"
-        secondary={true}
-        onTouchTap={() => service.loadOutlineAsync("kotlin")}
-        style={bStyle}/>
     </Row>
 
   }

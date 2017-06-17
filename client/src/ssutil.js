@@ -5,6 +5,10 @@ export function spaRedir(url: string) {
   window.history.pushState(null, "ignore", url)
   window.dispatchEvent(new PopStateEvent("popstate"))
   window.document.body.scrollTop = 0
+
+  window.ga('set', 'page', url);
+  window.ga('send', 'pageview');
+
 }
 
 export function capFirstLetter(s: string): string {
