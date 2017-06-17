@@ -6,8 +6,11 @@ export function spaRedir(url: string) {
   window.dispatchEvent(new PopStateEvent("popstate"))
   window.document.body.scrollTop = 0
 
-  window.ga('set', 'page', url);
-  window.ga('send', 'pageview');
+  window.setTimeout(() => {
+    window.ga('set', 'page', url)
+    window.ga('send', 'pageview')
+  }, 20)
+
 
 }
 
