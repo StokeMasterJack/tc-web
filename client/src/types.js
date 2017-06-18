@@ -25,20 +25,20 @@ export function eventEndDate(date: string, days: number, format?: string) {
 }
 
 /*
-"key": "kotlin",
-"title": "Kotlin Training",
-"subtitle": "Instructor-led 5-day hands-on workshop",
-"price": 2950,
-"days": 5,
-"leadTime": 30
+ "key": "kotlin",
+ "title": "Kotlin Training",
+ "subtitle": "Instructor-led 5-day hands-on workshop",
+ "price": 2950,
+ "days": 5,
+ "leadTime": 30
  */
 export interface Workshop {
-  key:string;
+  key: string;
   title: string;
-  subtitle:string;
-  price:number;
+  subtitle: string;
+  price: number;
   days: number;
-  leadTime:number;
+  leadTime: number;
 }
 
 export interface Signup {
@@ -48,5 +48,7 @@ export interface Signup {
   name: string,
   companyName: string,
   phone: string,
-  email: string
+  email: string,
+  price: number,
+  paid: number
 }

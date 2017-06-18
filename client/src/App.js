@@ -1,5 +1,6 @@
 import * as React from "react"
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider"
+import * as qs from "./qs"
 import * as paths from "./paths"
 import * as Block from "jsxstyle/Block"
 import * as Row from "jsxstyle/Row"
@@ -7,12 +8,13 @@ import AppBar from "material-ui/AppBar"
 import Drawer from "material-ui/Drawer"
 import MenuItem from "material-ui/MenuItem"
 import * as ss from "./ssutil"
+import CcPayment from "./CcPayment"
 import WorkshopDetail from "./WorkshopDetail"
 import HomePage from "./HomePage"
 import WorkshopsPage from "./WorkshopsPage"
 import Contact from "./Contact"
 import Schedule from "./Schedule"
-import Signup from "./Signup"
+import SignupVu from "./SignupVu"
 import SignupRecord from "./SignupRecord"
 import PrivateWorkshops from "./PrivateWorkshops"
 import PayWithCreditCard from "./PayWithCreditCard"
@@ -48,7 +50,7 @@ export default class App extends React.Component<any, any> {
   }
 
 
-  router(path: string) {
+  router(path: string, search: string) {
     this.setGlobalTitleAndMetaDesc()
     if (paths.isRoot(path)) return <HomePage />
 
@@ -72,19 +74,33 @@ export default class App extends React.Component<any, any> {
       if (!id) throw Error()
       const workshopKey = paths.segmentAt(path, 1)
       const date = paths.segmentAt(path, 2)
-      return <Signup workshopKey={workshopKey} date={date}/>
+      return <SignupVu workshopKey={workshopKey} date={date}/>
     }
     if (page === "eval") return <Eval />
+
+
     if (page === "signupRecord") {
-      if (!id) throw Error()
-      return <SignupRecord id={id}/>
+      const signupId: string = paths.segmentAt(path, 1)
+      const testMode: boolean = qs.has(search, "test")
+      const isNewSignup: boolean = qs.has(search, "isNewSignup")
+
+      if (!signupId) throw Error()
+
+      return <SignupRecord id={signupId} testMode={testMode} isNewSignup={isNewSignup}/>
     }
+
+
     if (page === "privateWorkshops") return <PrivateWorkshops/>
     if (page === "payWithCreditCard") return <PayWithCreditCard/>
 
     if (page.endsWith("-training")) {
       const workshopKey = page.replace("-training", "")
       return <WorkshopDetail workshopKey={workshopKey}/>
+    }
+
+    if (page === "cc") {
+      const workshopKey = paths.segmentAt(path, 1)
+      return <CcPayment workshopKey={workshopKey}/>
     }
 
     return <HomePage />
@@ -101,7 +117,7 @@ export default class App extends React.Component<any, any> {
   }
 
   render() {
-    const tab = this.router(window.location.pathname)
+    const tab = this.router(window.location.pathname, window.location.search)
 
     const redir = route => {
       ss.spaRedir(route)
@@ -145,7 +161,7 @@ export default class App extends React.Component<any, any> {
           {tab}
 
           {/*<Row justifyContent="center" background={palette.primary1Color} color="white" padding=".5rem" marginTop="1rem">*/}
-            {/*<Block>Smart Soft Developer Training - Southern California - USA</Block>*/}
+          {/*<Block>Smart Soft Developer Training - Southern California - USA</Block>*/}
           {/*</Row>*/}
         </Block>
       </MuiThemeProvider>

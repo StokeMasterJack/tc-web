@@ -39,3 +39,8 @@ export function formatCurrency(num: number): string {
   return numeral(num).format('$0,0.00')
   // return currencyFormatter.format(num)
 }
+
+export function params(obj) {
+  return Object.keys(obj).map((k) => encodeURIComponent(k) + '=' + encodeURIComponent(obj[k])).join('&')
+}
+

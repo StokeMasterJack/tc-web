@@ -5,7 +5,7 @@ import TextField from "material-ui/TextField"
 import * as moment from "moment"
 import * as validator from "email-validator"
 import * as ss from "./ssutil"
-import * as t from "./types"
+import type {Signup, Workshop} from "./types"
 
 import * as firebase from "firebase/app"
 import "firebase/database"
@@ -21,8 +21,8 @@ const inputStyle = {
   width: "100%"
 }
 
-
-interface State extends t.Signup {
+interface State {
+  signup: Signup,
   isNew: boolean,
   key: string
 }
@@ -32,36 +32,59 @@ interface Props {
   date: string
 }
 
+const initSignup = (props: Props) => {
+  const today = moment().format("YYYY-MM-DD")
+  const workshop: Workshop = service.loadWorkshopSync(props.workshopKey)
+  return {
+    name: "",
+    companyName: "",
+    phone: "",
+    email: "",
+    signupDate: today,
+    workshopKey: props.workshopKey,
+    date: props.date,
+    price: workshop.price,
+    paid: 0
+  }
+}
 
-// interface Props {
-//   workshop: Workshop
-// }
+const initErrors = () => {
+  return {
+    name: "",
+    companyName: "",
+    phone: "",
+    email: "",
+  }
+}
 
-const initData = () => ({
-  name: "",
-  companyName: "",
-  phone: "",
-  email: ""
-})
+const sampleSignup = (props: Props) => {
+  const today = moment().format("YYYY-MM-DD")
+  const workshop: Workshop = service.loadWorkshopSync(props.workshopKey)
+  return {
+    name: "Dave Ford",
+    companyName: "Smart Soft",
+    phone: "714 654 6550",
+    email: "dford@smart-soft.com",
+    signupDate: today,
+    workshopKey: props.workshopKey,
+    date: props.date,
+    price: workshop.price,
+    paid: 0
+  }
+}
 
 
-const sampleData = () => ({
-  name: "Dave Ford",
-  companyName: "Smart Soft",
-  phone: "714 654 6550",
-  email: "dford@smart-soft.com"
-})
-
-export default class Signup extends React.Component<Props, State> {
+export default class SignupVu extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super()
     this.state = {
-      ...initData(props.workshopKey, props.date), //todo
+      signup: initSignup(props),
       isNew: true,
-      key: ""
+      key: "",
     }
   }
+
 
   componentDidMount() {
     const firstField = document.getElementById("name")
@@ -76,37 +99,28 @@ export default class Signup extends React.Component<Props, State> {
     if (!ae) this.submitSignup()
   }
 
-  /*
-   eventDate: "2017-01-01"
-   workshopKey: "react"
-   signupDate: "2017-01-01"
-   firstName:
-   lastName:
-   companyName:
-   phone:
-   email:
-   */
   submitSignup = () => {
-
     const database = firebase.database()
     const signupsRef = database.ref("signups")
-    const today = moment().format("YYYY-MM-DD")
-    const copy = {...this.state, signupDate: today, workshopKey: this.props.workshopKey, date: this.props.date}
-    delete copy.isNew
-    delete copy.key
     const newSignupRef = signupsRef.push()
-    let k = newSignupRef.key
-    if (k === null) throw Error()
-    this.setState({key: k})
-    newSignupRef.set(copy)
+    let newKey = newSignupRef.key
+    if (newKey === null) throw Error()
+
+    this.setState({key: newKey})
+
+    const url = "/signupRecord/" + newKey + "?isNewSignup=true"
+    ss.spaRedir(url)
+
+    newSignupRef.set(this.state.signup)
   }
 
   ch = (event: any) => {
     const target = event.target
     const value = target.type === "checkbox" ? target.checked : target.value
     const name = target.name
+    const copy = {...this.state.signup, [name]: value}
     this.setState({
-      [name]: value
+      signup: copy
     })
   }
 
@@ -117,20 +131,20 @@ export default class Signup extends React.Component<Props, State> {
   }
 
   anyErrors() {
-    const e: t.Signup = this.errors()
+    const e: Signup = this.errors()
     // const eValues = Object.values(e);
     const eValues = Object.keys(e).map(key => e[key])
     return eValues.some(v => !!v)
   }
 
   errorsUI() {
-    if (this.state.isNew) return initData("")
+    if (this.state.isNew) return initSignup(this.props)
     return this.errors()
   }
 
-  errors(): t.Signup {
-    const s: State = this.state
-    const e: t.Signup = initData("")
+  errors(): Signup {
+    const s: Signup = this.state.signup
+    const e: Signup = initErrors()
     if (!s.name) e.name = "Enter your Name"
     if (!s.companyName) e.companyName = "Enter your Company Name"
     if (!s.phone) {
@@ -148,16 +162,13 @@ export default class Signup extends React.Component<Props, State> {
 
   onSampleDataClick = (event) => {
     event.preventDefault()
-    this.setState(sampleData())
+    const ss = sampleSignup(this.props)
+    this.setState({signup: ss})
   }
 
   render() {
     const state = this.state
-
-    if (state.key) {
-      ss.spaRedir("/signupRecord/" + state.key)
-      return null
-    }
+    const signup = state.signup
 
     const errors = this.errorsUI()
 
@@ -193,7 +204,7 @@ export default class Signup extends React.Component<Props, State> {
                   name="name"
                   style={inputStyle}
                   floatingLabelText="Name"
-                  value={state.name}
+                  value={signup.name}
                   onChange={this.ch}
                   errorText={errors.name}
                 />
@@ -201,7 +212,7 @@ export default class Signup extends React.Component<Props, State> {
                   name="companyName"
                   style={inputStyle}
                   floatingLabelText="Company name"
-                  value={state.companyName}
+                  value={signup.companyName}
                   onChange={this.ch}
                   errorText={errors.companyName}
                 />
@@ -210,7 +221,7 @@ export default class Signup extends React.Component<Props, State> {
                   name="phone"
                   style={inputStyle}
                   floatingLabelText="Phone"
-                  value={state.phone}
+                  value={signup.phone}
                   onChange={this.ch}
                   errorText={errors.phone}
                 />
@@ -219,7 +230,7 @@ export default class Signup extends React.Component<Props, State> {
                   name="email"
                   style={inputStyle}
                   floatingLabelText="Email"
-                  value={state.email}
+                  value={signup.email}
                   onChange={this.ch}
                   errorText={errors.email}
                 />
@@ -227,7 +238,7 @@ export default class Signup extends React.Component<Props, State> {
                 <RaisedButton
                   label="Submit"
                   secondary={true}
-                  style={{width: "100%",marginTop:"1rem"}}
+                  style={{width: "100%", marginTop: "1rem"}}
                   onTouchTap={this.onSubmit}
                 />
 
@@ -235,6 +246,7 @@ export default class Signup extends React.Component<Props, State> {
             </Card>
           </Block>
         </Col>
+
       </Block>
     )
   }

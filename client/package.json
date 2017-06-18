@@ -16,6 +16,7 @@
     "react-dom": "^15.5.4",
     "react-icons": "^2.2.5",
     "react-modal": "^1.7.7",
+    "react-stripe-checkout": "^2.4.0",
     "react-tap-event-plugin": "^2.0.1",
     "showdown": "^1.7.1"
   },
