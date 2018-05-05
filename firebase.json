@@ -33,6 +33,24 @@
           "value": "max-age=31536000"
         }
       ]
+    },
+    {
+      "source": "**/workEntryWarning.*.png ",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "max-age=31536000"
+        }
+      ]
+    },
+    {
+      "source": "**/workEntryWarning.png ",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "max-age=31536000"
+        }
+      ]
     }
   ]
 }

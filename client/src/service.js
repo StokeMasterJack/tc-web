@@ -1,9 +1,11 @@
 import workshops from "./data/workshops.json"
+import flutterOutline from "./data/outlines/flutter-outline.json"
 import kotlinOutline from "./data/outlines/kotlin-outline.json"
 import reactOutline from "./data/outlines/react-outline.json"
 
 
 const outlines = {
+  flutter: flutterOutline,
   kotlin: kotlinOutline,
   react: reactOutline
 }

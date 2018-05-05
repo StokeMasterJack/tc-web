@@ -11,6 +11,10 @@ fun refreshReactOutline() {
     refreshOutline("react", "621287")
 }
 
+fun refreshFlutterOutline() {
+    refreshOutline("flutter", "671859")
+}
+
 private fun refreshOutline(workshopKey: String, outlineId: String) {
     val text = fetchOutlineSync(outlineId)
     saveOutline(workshopKey, text)

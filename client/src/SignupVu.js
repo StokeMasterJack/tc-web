@@ -5,6 +5,7 @@ import TextField from "material-ui/TextField"
 import * as moment from "moment"
 import * as validator from "email-validator"
 import * as ss from "./ssutil"
+import * as cfg from "./cfg"
 import type {Signup, Workshop} from "./types"
 
 import * as firebase from "firebase/app"
@@ -37,7 +38,7 @@ const initSignup = (props: Props) => {
   const workshop: Workshop = service.loadWorkshopSync(props.workshopKey)
   return {
     name: "",
-    companyName: "",
+    company: "",
     phone: "",
     email: "",
     signupDate: today,
@@ -51,7 +52,7 @@ const initSignup = (props: Props) => {
 const initErrors = () => {
   return {
     name: "",
-    companyName: "",
+    company: "",
     phone: "",
     email: "",
   }
@@ -62,7 +63,7 @@ const sampleSignup = (props: Props) => {
   const workshop: Workshop = service.loadWorkshopSync(props.workshopKey)
   return {
     name: "Dave Ford",
-    companyName: "Smart Soft",
+    company: "Smart Soft",
     phone: "714 654 6550",
     email: "dford@smart-soft.com",
     signupDate: today,
@@ -111,7 +112,23 @@ export default class SignupVu extends React.Component<Props, State> {
     const url = "/signupRecord/" + newKey + "?isNewSignup=true"
     ss.spaRedir(url)
 
-    newSignupRef.set(this.state.signup)
+    newSignupRef.set(this.state.signup).then((success) => {
+      this.submitSignupEmail(newKey)
+    })
+  }
+
+  submitSignupEmail = (newKey) => {
+    fetch(`${cfg.api}/signupEmail`, {
+      method: 'POST',
+      body: "signupId=" + newKey,
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+      },
+    }).then(response => {
+      response.json().then(json => {
+        console.log("Email sent")
+      })
+    })
   }
 
   ch = (event: any) => {
@@ -146,7 +163,7 @@ export default class SignupVu extends React.Component<Props, State> {
     const s: Signup = this.state.signup
     const e: Signup = initErrors()
     if (!s.name) e.name = "Enter your Name"
-    if (!s.companyName) e.companyName = "Enter your Company Name"
+    if (!s.company) e.company = "Enter your Company Name"
     if (!s.phone) {
       e.phone = "Enter your Phone Number"
     } else if (!ss.isValidPhoneNumber(s.phone)) {
@@ -209,12 +226,12 @@ export default class SignupVu extends React.Component<Props, State> {
                   errorText={errors.name}
                 />
                 <TextField
-                  name="companyName"
+                  name="company"
                   style={inputStyle}
                   floatingLabelText="Company name"
-                  value={signup.companyName}
+                  value={signup.company}
                   onChange={this.ch}
-                  errorText={errors.companyName}
+                  errorText={errors.company}
                 />
 
                 <TextField

@@ -9,6 +9,7 @@ import * as ss from "./ssutil"
 import events from "./data/events"
 import * as service from "./service"
 import type {Event, Workshop} from "./types"
+import muiThemeable from 'material-ui/styles/muiThemeable';
 
 
 interface Props {
@@ -41,17 +42,25 @@ export default function Schedule(props: Props) {
       <Col alignItems="center">
         {eventsFiltered.map((event: any) => <ScheduleCard
           key={event.workshopKey + "-" + event.date}
-          workshopKey={event.workshopKey}
-          date={event.date}/>)}
+          event={event}
+          workshopKey={event.workshopKey}/>)}
       </Col>
     </Block>
   )
 }
 
-function ScheduleCard({workshopKey, date}: { workshopKey: string, date: string }) {
+const ScheduleCard = muiThemeable()(ScheduleCardPrivate);
+function ScheduleCardPrivate({workshopKey, event,muiTheme}: { workshopKey: string, event: Event,muiTheme:Object }) {
+
+  console.log(muiTheme.palette);
+
+  const soldOutColor = muiTheme.palette.primary2Color;
+  console.log("soldOutColor: ", soldOutColor)
+
   const workshop = service.loadWorkshopSync(workshopKey)
   const workshopTitle = workshop.title
   const days = workshop.days
+  const date = event.date
   const date1 = moment(date)
   const date2 = moment(date1).add(days - 1, 'days')
   const dateString = date1.format("ddd MMM D") + " - " + date2.format("ddd MMM D")
@@ -62,7 +71,8 @@ function ScheduleCard({workshopKey, date}: { workshopKey: string, date: string }
         <Col alignItems="center">
           <Block fontWeight="bold" fontSize="1.2rem" marginBottom="1rem">{workshopTitle}</Block>
           <Block fontSize="1.2rem" marginBottom="1rem">{dateString}</Block>
-          <Block fontSize="1.2rem">San Clemente, CA</Block>
+          <Block fontSize="1.2rem"  marginBottom="1rem">San Clemente, CA</Block>
+          {event.status && event.status === "SoldOut" ? <Block fontSize="1.2rem" color={soldOutColor}>Sold out</Block> : ""}
         </Col>
       </CardText>
       <CardActions style={{display: "flex", justifyContent: "center"}}>

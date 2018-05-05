@@ -9,8 +9,12 @@ import * as service from "./service"
 import CcPayment from "./CcPayment"
 import {Snackbar} from "material-ui"
 import {CardTitle} from "material-ui/Card"
+import * as ss from "./ssutil"
+import * as cfg from "./cfg"
 
 export type Snack = "PaymentAccepted" | "PaymentDeclined" | "None"
+
+const TEST_TOKEN = "tok_visa"
 
 interface Props {
   id: string,
@@ -19,7 +23,8 @@ interface Props {
 }
 interface State {
   signup: ?Signup,
-  snack: Snack
+  snack: Snack,
+  badSignupId: ?string
 }
 
 function computeSnackbarMessage(snack: Snack) {
@@ -79,8 +84,41 @@ export default class SignupRecord extends React.Component<Props, State> {
     window.document.body.scrollTop = 1000
   }
 
+  /**
+   * In live mode, we use the token passed into this function.
+   * In test mode we use:
+   *    cc#:   "4242 4242 4242 4242"
+   *    token: "tok_visa"
+   */
+  onToken = (tokenGeneratedByStripe) => {
+
+    const signup = this.state.signup
+
+    const params = {
+      token: this.props.testMode ? TEST_TOKEN : JSON.stringify(tokenGeneratedByStripe),
+      signupId: this.props.id,
+      email: signup.email,
+      price: signup.price
+    }
+    console.log("params", params)
+    const qs = ss.params(params)
+    fetch(`${cfg.api}/charge`, {
+      method: 'POST',
+      body: qs,
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+      },
+    }).then(response => {
+      response.json().then(json => {
+        this.onCcComplete(json)
+      })
+    })
+  }
+
   render() {
+    if (this.state.badSignupId) return <Block margin="1rem">Bad signupId: {this.state.badSignupId}</Block>
     if (this.state.signup === null) return <div>Loading...</div>
+
 
     const s: Signup = this.state.signup
 
@@ -111,7 +149,7 @@ export default class SignupRecord extends React.Component<Props, State> {
 
           {testMode ? <Block color="red" marginBottom="1rem" fontWeight="bold" fontSize="1.5rem">SECRET TEST MODE</Block> : null}
 
-          {isNewSignup ? <Block marginBottom="1rem" fontStyle="italic" color="red" >Thank you. You are now registered. You should receive an email confirmation soon.</Block> : null}
+          {isNewSignup ? <Block marginBottom="1rem" fontStyle="italic" color="red">Thank you. You are now registered. You should receive an email confirmation soon.</Block> : null}
 
           {hasBalance ? <Block marginBottom="1rem" fontStyle="italic ">
             Note: your seat is not guaranteed until payment is received.
@@ -131,7 +169,9 @@ export default class SignupRecord extends React.Component<Props, State> {
           {this.field("Start Date", d1)}
           {this.field("End Date", d2)}
           {this.field("Email", s.email)}
-          {this.field("Company", s.companyName)}
+          {this.field("Phone", s.phone)}
+          {this.field("Name", s.name)}
+          {this.field("Company", s.company)}
           {this.field("Price", "$" + String(s.price))}
           {this.field("Paid", "$" + String(s.paid))}
           {this.field("Balance", "$" + String(balance), hasBalance)}
@@ -144,8 +184,12 @@ export default class SignupRecord extends React.Component<Props, State> {
                   <CcPayment
                     workshopKey={workshopKey}
                     email={s.email}
+                    price={s.price}
                     testMode={testMode}
-                    onComplete={this.onCcComplete}/>
+                    signupId={this.props.id}
+                    onComplete={this.onCcComplete}
+                    onToken={this.onToken}
+                  />
                   <p>Or, if you prefer, you can pay by credit card over the <Link to="/contact">phone</Link>.</p>
                 </Block>
               </Block>
@@ -197,11 +241,15 @@ export default class SignupRecord extends React.Component<Props, State> {
     signupRef.on("value", snapshot => {
       if (snapshot === null) throw Error()
       const signup = snapshot.val()
-      if (signup.test === null || signup.test === undefined) {
-        signup.test = false
+      if (signup == null) {
+        this.setState({badSignupId: id})
+      } else {
+        if (signup.test === null || signup.test === undefined) {
+          signup.test = false
+        }
+        signup.id = id
+        this.setState({signup})
       }
-      signup.id = id
-      this.setState({signup})
     })
   }
 }

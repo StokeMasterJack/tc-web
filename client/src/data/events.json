@@ -5,15 +5,18 @@
   },
   {
     "date": "2017-07-17",
-    "workshopKey": "kotlin"
+    "workshopKey": "kotlin",
+    "status": "SoldOut"
   },
   {
     "date": "2017-08-07",
-    "workshopKey": "react"
+    "workshopKey": "react",
+    "status": "SoldOut"
   },
   {
     "date": "2017-08-14",
-    "workshopKey": "kotlin"
+    "workshopKey": "kotlin",
+    "status": "SoldOut"
   },
   {
     "date": "2017-09-11",

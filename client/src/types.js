@@ -1,10 +1,13 @@
 import * as moment from "moment"
 
+export type EventStatus = "SoldOut" | undefined
+
 export interface Event {
   workshopKey: string;
   date: string;
   days: number;
   price: number;
+  status: EventStatus;
 }
 
 export function eventStartDate(date: string, format?: string) {
@@ -46,7 +49,7 @@ export interface Signup {
   workshopKey: string,  //react | kotlin | javascript | css
   date: string,
   name: string,
-  companyName: string,
+  company: string,
   phone: string,
   email: string,
   price: number,

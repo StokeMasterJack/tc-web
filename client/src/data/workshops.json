@@ -1,5 +1,13 @@
 [
   {
+    "key": "flutter",
+    "title": "Flutter Training",
+    "subtitle": "Instructor-led 5-day hands-on workshop",
+    "price": 2950,
+    "days": 5,
+    "leadTime": 2
+  },
+  {
     "key": "kotlin",
     "title": "Kotlin Training",
     "subtitle": "Instructor-led 5-day hands-on workshop",

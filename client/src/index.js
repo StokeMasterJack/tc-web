@@ -13,6 +13,7 @@ window.addEventListener("popstate", e => {
   render();
 });
 
+
 const config = {
   apiKey: "AIzaSyD7V3jY16HarLDDVv1zMglUdrGbrgvUpC8",
   authDomain: "tc-web-3362e.firebaseapp.com",

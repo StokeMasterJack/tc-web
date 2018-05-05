@@ -150,6 +150,7 @@ export default class App extends React.Component<any, any> {
             {menu("/", "Home")}
             {menu("/kotlin-training", "Kotlin Training")}
             {menu("/react-training", "React Training")}
+            {menu("/flutter-training", "Flutter Training")}
             {menu("workshops", "All Workshops")}
             {menu("/contact", "Contact Us")}
             {menu("/testimonials", "Testimonials")}
