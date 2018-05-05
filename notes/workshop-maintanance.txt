@@ -9,5 +9,7 @@ To add a new workshop:
 
 
 To deploy:
-1. From the tcWeb dir:
+1. From the tcWeb/client dir:
+    yarn build
+2. From the tcWeb dir:
    firebase deploy --only hosting

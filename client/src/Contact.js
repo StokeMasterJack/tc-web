@@ -12,12 +12,12 @@ export default function Contact(props) {
           <Block width="5rem">Email:</Block>
           <Block>
             <a
-              href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=1&amp;to=info@smart-soft.com&amp;su=Developer Training"
+              href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=1&amp;to=dford@smart-soft.com&amp;su=Developer Training"
               data-reactid=".0.d.0.3.0"
               target="_blank"
               rel="noopener noreferrer"
             >
-              info@smart-soft.com
+              dford@smart-soft.com
             </a>
           </Block>
         </Row>
