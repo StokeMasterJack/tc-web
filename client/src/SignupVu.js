@@ -118,17 +118,47 @@ export default class SignupVu extends React.Component<Props, State> {
   }
 
   submitSignupEmail = (newKey) => {
-    fetch(`${cfg.api}/signupEmail`, {
+    const url = `${cfg.api}/signupEmail`
+    fetch(url, {
       method: 'POST',
       body: "signupId=" + newKey,
       headers: {
         "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
       },
     }).then(response => {
-      response.json().then(json => {
-        console.log("Email sent")
-      })
-    })
+
+      if (response.status !== 200) {
+        console.log(`Error in submitSignupEmail see JS console for error message httpStatus[${response.status}]`)
+      } else {
+        const contentType = response.headers.get("content-type")
+        const contentLength = response.headers.get("content-length")
+        console.log("contentType", contentType)
+        console.log("contentLength", contentLength)
+        if (!contentType) {
+          console.log("No contentType")
+        }
+        else if (contentType.includes("application/json")) {
+          //this service is cuurently saying its OK 200 and application/json
+          //   when its really this:
+          /*
+          <html>
+          <head><title>502 Bad Gateway</title></head>
+          <body bgcolor="white">
+          <center><h1>502 Bad Gateway</h1></center>
+          <hr><center>nginx/1.4.6 (Ubuntu)</center>
+          </body>
+          </html>
+           */
+        }
+
+        response.text().then(text => {
+          console.log("Server Response: ")
+          console.log(text)
+        })
+      }
+
+
+    }).catch(error => console.error("Error in submitSignupEmail", error))
   }
 
   ch = (event: any) => {

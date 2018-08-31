@@ -56,7 +56,7 @@ export default class CcPayment extends React.Component {
           allowRememberMe={false}
           triggerEvent="onTouchTap"
           email={this.props.email}
-          closed={this.onCcClose}
+          closed={ (event) => console.log("onCcClose")  }
         />
       </Block>
     )
