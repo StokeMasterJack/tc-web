@@ -1,0 +1,27 @@
+company
+    id:
+    name:
+    
+Workshop
+    key: "react"
+    title: "Thinking in React"
+
+Event
+  date: "2017-01-01"
+  workshopKey: "react"
+  days: 5
+  price: 3200
+  company: 1234  (null for open enrollment)
+
+signup
+  eventDate: "2017-01-01"
+  workshopKey: "react"
+  signupDate: "2017-01-01"
+  firstName:
+  lastName:
+  companyName:
+  phone:
+  email:
+
+
+

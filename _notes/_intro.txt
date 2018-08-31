@@ -1,0 +1,14 @@
+smart-soft.com
+
+There are 2 intelliJ projects for the smart-soft.com web site: tc-web & tc-api.
+
+tc-web: 
+	Contains:
+    	React front-end: client/
+    	Some firebase server-side functions: functions/
+
+    Firebase: both of these are deployed to Firebase
+
+
+tc-api: Back-end kotlin functions that run on 
+
