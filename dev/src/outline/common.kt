@@ -21,11 +21,11 @@ private fun refreshOutline(workshopKey: String, outlineId: String) {
 }
 
 private fun saveOutline(workshopKey: String, text: String) {
-    file(workshopKey).writeText(text)
+    outlineFile(workshopKey).writeText(text)
 }
 
-private fun file(workshopKey: String): File {
-    return File("/Volumes/repos/tc-web/client/src/data/outlines/$workshopKey-outline.json")
+private fun outlineFile(workshopKey: String): File {
+    return File(Config.dir.outlines, "$workshopKey-outline.json")
 }
 
 private fun fetchOutlineSync(outlineId: String): String {
