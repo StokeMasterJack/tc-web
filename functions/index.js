@@ -46,7 +46,7 @@ exports.makeUppercase = functions.database
 // For other types of transports such as Sendgrid see https://nodemailer.com/transports/
 // TODO: Configure the `gmail.email` and `gmail.password` Google Cloud environment variables.
 const gmailEmail = encodeURIComponent("dford@smart-soft.com");
-const gmailPassword = encodeURIComponent("9805indian");
+const gmailPassword = encodeURIComponent("9805indian*&^");
 const mailTransport = nodemailer.createTransport(
   `smtps://${gmailEmail}:${gmailPassword}@smtp.gmail.com`
 );

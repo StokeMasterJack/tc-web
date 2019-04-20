@@ -106,3 +106,4 @@ dist
 .sass-cache
 bower_components
 webpackCache/
+.firebase/
