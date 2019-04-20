@@ -1,41 +1,76 @@
 [
   {
-    "date": "2018-07-09",
-    "workshopKey": "react"
-  },
-  {
-    "date": "2018-07-16",
-    "workshopKey": "kotlin"
-  },
-  {
-    "date": "2017-07-17",
-    "workshopKey": "kotlin",
+    "date": "2019-05-06",
+    "workshopKey": "flutter",
     "status": "SoldOut"
   },
   {
-    "date": "2017-08-07",
-    "workshopKey": "react",
-    "status": "SoldOut"
+    "date": "2019-05-13",
+    "workshopKey": "flutter"
   },
   {
-    "date": "2017-08-14",
-    "workshopKey": "kotlin",
-    "status": "SoldOut"
-  },
-  {
-    "date": "2017-09-11",
-    "workshopKey": "react"
-  },
-  {
-    "date": "2017-09-18",
+    "date": "2019-05-20",
     "workshopKey": "kotlin"
   },
   {
-    "date": "2017-10-16",
+    "date": "2019-05-27",
+    "workshopKey": "flutter",
+    "status": "SoldOut"
+  },
+  {
+    "date": "2019-06-03",
     "workshopKey": "react"
   },
   {
-    "date": "2017-10-23",
+    "date": "2019-06-10",
     "workshopKey": "kotlin"
+  },
+  {
+    "date": "2019-06-17",
+    "workshopKey": "flutter"
+  },
+  {
+    "date": "2019-06-24",
+    "workshopKey": "flutter"
+  },
+  {
+    "date": "2019-07-01",
+    "workshopKey": "react"
+  },
+  {
+    "date": "2019-07-08",
+    "workshopKey": "flutter"
+  },
+  {
+    "date": "2019-07-08",
+    "workshopKey": "kotlin"
+  },
+  {
+    "date": "2019-07-15",
+    "workshopKey": "flutter"
+  },
+  {
+    "date": "2019-07-22",
+    "workshopKey": "react"
+  },
+  {
+    "date": "2019-07-29",
+    "workshopKey": "kotlin"
+  },
+  {
+    "date": "2019-08-05",
+    "workshopKey": "flutter"
+  },
+  {
+    "date": "2019-08-12",
+    "workshopKey": "react"
+  },
+  {
+    "date": "2019-08-19",
+    "workshopKey": "kotlin"
+  },
+  {
+    "date": "2019-08-26",
+    "workshopKey": "flutter"
   }
 ]
