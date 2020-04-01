@@ -1,0 +1,2 @@
+from tc-web/client dir:
+npm run-script start

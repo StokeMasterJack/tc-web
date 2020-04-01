@@ -1,0 +1,42 @@
+[
+  {
+    "key": "flutter",
+    "title": "Flutter",
+    "price": 2950,
+    "days": 5,
+    "leadTime": 14,
+    "homePage": true
+  },
+  {
+    "key": "kotlin",
+    "title": "Kotlin",
+    "price": 2950,
+    "days": 5,
+    "leadTime": 14,
+    "homePage": true
+  },
+  {
+    "key": "react",
+    "title": "React",
+    "price": 2950,
+    "days": 5,
+    "leadTime": 7,
+    "homePage": true
+  },
+  {
+    "key": "oo",
+    "title": "Object Oriented Programming",
+    "price": 2950,
+    "days": 2,
+    "leadTime": 2,
+    "homePage": false
+  },
+  {
+    "key": "patterns",
+    "title": "Modern Software Analysis and Design Patterns:  A multi-paradigm approach",
+    "price": 2950,
+    "days": 5,
+    "leadTime": 5,
+    "homePage": false
+  }
+]

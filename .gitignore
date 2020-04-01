@@ -107,3 +107,4 @@ dist
 bower_components
 webpackCache/
 .firebase/
+lib/

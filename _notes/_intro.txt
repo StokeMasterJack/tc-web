@@ -10,5 +10,5 @@ tc-web:
     Firebase: both of these are deployed to Firebase
 
 
-tc-api: Back-end kotlin functions that run on 
+tc-api: Back-end kotlin functions that runs on ec2-ramko-test
 

@@ -1,26 +1,42 @@
 [
   {
     "key": "flutter",
-    "title": "Flutter Training",
-    "subtitle": "Instructor-led 5-day hands-on workshop",
+    "title": "Flutter",
     "price": 2950,
     "days": 5,
-    "leadTime": 2
+    "leadTime": 14,
+    "homePage": true
   },
   {
     "key": "kotlin",
-    "title": "Kotlin Training",
-    "subtitle": "Instructor-led 5-day hands-on workshop",
+    "title": "Kotlin",
     "price": 2950,
     "days": 5,
-    "leadTime": 30
+    "leadTime": 14,
+    "homePage": true
   },
   {
     "key": "react",
-    "title": "React Training",
-    "subtitle": "Instructor-led 5-day hands-on workshop",
+    "title": "React",
+    "price": 2950,
+    "days": 4,
+    "leadTime": 7,
+    "homePage": true
+  },
+  {
+    "key": "oo",
+    "title": "Object Oriented Programming",
+    "price": 2950,
+    "days": 2,
+    "leadTime": 2,
+    "homePage": false
+  },
+  {
+    "key": "patterns",
+    "title": "Modern Software Analysis and Design Patterns:  A multi-paradigm approach",
     "price": 2950,
     "days": 5,
-    "leadTime": 2
+    "leadTime": 5,
+    "homePage": false
   }
 ]
