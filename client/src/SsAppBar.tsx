@@ -7,46 +7,23 @@ import {ReactNode} from 'react';
 import {Row} from 'jsxstyle';
 import {spaRedir} from './util/ssutil';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import {isPhone} from './device';
-import {IconButton, Theme} from '@material-ui/core';
 import Link from '@material-ui/core/Link';
-import {useSsTheme} from './ACtx';
-
-export function HomeButton() {
-
-  const wLt400 = !useMediaQuery('(min-width:400px)');
-
-  const onClick = () => {
-    spaRedir('/');
-  };
-
-  return <IconButton onClick={onClick} edge="end" color="inherit" aria-label="Home" href={'/'}>
-    <Typography key="ss" variant={isPhone() ? 'h6' : 'h6'}
-                style={{paddingLeft: 0, marginLeft: 0, marginRight: '.5rem'}}>SmartSoft</Typography>
-    {/*<Home fontSize={isPhone() ? 'small' : 'default'}/>*/}
-
-  </IconButton>;
-}
 
 function Right() {
-  /*'
-   href={props.to}
-      title={props.title}
-      onClick={onClick}
-   */
+
   const onClick = (event: React.SyntheticEvent) => {
     event.preventDefault();
     console.log(111);
     spaRedir('/');
   };
 
-  const wLt400 = !useMediaQuery('(min-width:400px)');
+  // const wLt400 = !useMediaQuery('(min-width:400px)');
   const wLt370 = !useMediaQuery('(min-width:370px)');
   const text = wLt370 ? 'SS' : 'smart-soft';
   const tooltip = 'Kotlin Training - Flutter Training - React Training - TypeScript Training';
 
-  const theme: Theme = useSsTheme();
-  const rr = theme.palette.common.white;
+  // const theme: Theme = useSsTheme();
+  // const rr = theme.palette.common.white;
 
   return <Link variant={'h6'} href='/' color="inherit" onClick={onClick} title={tooltip} aria-label={tooltip}
                component={'a'}>
@@ -69,9 +46,9 @@ function Right() {
   //   </Typography>;
 }
 
-export default function ({left, title, actions, home}: { left?: ReactNode, title?: ReactNode, actions?: ReactNode | ReactNode[], home?: ReactNode }) {
+export default function ({left, title}: { left?: ReactNode, title?: ReactNode }) {
 
-  const wLt400 = !useMediaQuery('(min-width:400px)');
+  // const wLt400 = !useMediaQuery('(min-width:400px)');
   const wLt370 = !useMediaQuery('(min-width:370px)');
   const leftEffective = () => !!left ? left : <DrawerButton/>;
 
@@ -86,15 +63,15 @@ export default function ({left, title, actions, home}: { left?: ReactNode, title
                        style={{paddingLeft: 0, marginLeft: 0}}>{titleText}</Typography>;
   };
 
-  const actionsEffective = () => {
-    if (!actions) {
-      return [<HomeButton key='home'/>];
-    } else if (Array.isArray(actions)) {
-      return [...actions, <HomeButton key='home'/>];
-    } else {
-      return [actions, <HomeButton key='home'/>];
-    }
-  };
+  // const actionsEffective = () => {
+  //   if (!actions) {
+  //     return [<HomeButton key='home'/>];
+  //   } else if (Array.isArray(actions)) {
+  //     return [...actions, <HomeButton key='home'/>];
+  //   } else {
+  //     return [actions, <HomeButton key='home'/>];
+  //   }
+  // };
 
   const tbPad = wLt370 ? 8 : 16;
 

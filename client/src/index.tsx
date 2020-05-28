@@ -8,8 +8,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/database';
 
 
-ReactGA.initialize('UA-XXXXX-Y');
-ReactGA.pageview(window.location.pathname + window.location.search);
+ReactGA.initialize('UA-99576717-1');
 
 const config = {
   apiKey: 'AIzaSyD7V3jY16HarLDDVv1zMglUdrGbrgvUpC8',
@@ -23,6 +22,7 @@ const config = {
 firebase.initializeApp(config);
 
 function render() {
+  ReactGA.pageview(window.location.pathname + window.location.search);
   const rootDiv = document.getElementById('root');
   ReactDOM.render(<App/>, rootDiv);
 }

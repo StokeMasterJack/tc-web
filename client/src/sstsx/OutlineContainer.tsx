@@ -7,9 +7,9 @@ import {Theme} from "@material-ui/core/styles/createMuiTheme";
 import makeStyles from "@material-ui/styles/makeStyles";
 import useTheme from "@material-ui/styles/useTheme";
 
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography/Typography";
-import Clear from "@material-ui/icons/Clear";
+// import IconButton from "@material-ui/core/IconButton";
+// import Typography from "@material-ui/core/Typography/Typography";
+// import Clear from "@material-ui/icons/Clear";
 
 
 import {Box, BoxEmpty, boxFrom} from "../util/box";
@@ -138,8 +138,7 @@ export default function OutlineContainer(props: Props) {
     // logBox(contentBox, "Content");
     
     const classes = useStyles();
-    const legendWidth = labelBox.bounding.width ;
-    
+
     return <Col className={classes.root} backgroundColor={""}>
         <Block className={classes.label} props={{ref: labelRef}}  >{label}</Block>
         <Col className={classes.fieldsetParent} width={contentBox.offset.width + 20} height={contentBox.offset.height + 8} backgroundColor={""}>

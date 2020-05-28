@@ -3,8 +3,8 @@ import * as admin from 'firebase-admin';
 import * as nodemailer from 'nodemailer';
 import {Transporter} from 'nodemailer';
 
-import {CEvent, Signup} from 'types';
-import {ensure} from 'util/ass';
+import {CEvent, Signup} from './types';
+import {ensure} from './util/ass';
 import * as service from 'service';
 
 console.log('ss:tcWeb init 1');

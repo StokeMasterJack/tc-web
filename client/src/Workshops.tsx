@@ -3,8 +3,6 @@ import {Col} from 'jsxstyle';
 import WorkshopCard from './WorkshopCard';
 import * as service from './service';
 import {CWorkshop} from './types';
-import SsAppBar from './SsAppBar';
-import PageHead from './tctsx/PageHead';
 
 export default function (filter: { homePage?: boolean }) {
 
@@ -19,12 +17,12 @@ export default function (filter: { homePage?: boolean }) {
   </Col>;
 
 
-  return <>
-    <SsAppBar title='All Workshops'/>
-    <PageHead title='All Workshops'/>
-    <Col maxWidth='60rem' backgroundColor='' alignItems={'center'}>
-      {/*{testimonials.map(t => <TestimonialCard key={t.id} testimonial={t}/>)}*/}
-      {workshops.map(card)}
-    </Col>
-  </>;
+  // return <>
+  //   <SsAppBar title='All Workshops'/>
+  //   <PageHead title='All Workshops'/>
+  //   <Col maxWidth='60rem' backgroundColor='' alignItems={'center'}>
+  //     {/*{testimonials.map(t => <TestimonialCard key={t.id} testimonial={t}/>)}*/}
+  //     {workshops.map(card)}
+  //   </Col>
+  // </>;
 }

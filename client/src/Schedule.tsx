@@ -3,10 +3,9 @@ import {Block, Col, Row} from 'jsxstyle';
 import Lnk from './Lnk';
 
 import * as service from './service';
-import {CEvent, CWorkshop, Signup, WorkshopKey} from './types';
+import {CEvent, CWorkshop, Signup} from './types';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
 
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -15,10 +14,10 @@ import Typography from '@material-ui/core/Typography';
 import SsAppBar from './SsAppBar';
 import PageHead from './tctsx/PageHead';
 import {TcButton} from './tctsx/TcButton';
-import WorkshopPicker from './tctsx/WorkshopPicker';
+// import WorkshopPicker from './tctsx/WorkshopPicker';
 import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery';
-import {spaRedir} from './util/ssutil';
-import {Urls} from './util/globals';
+// import {spaRedir} from './util/ssutil';
+// import {Urls} from './util/globals';
 
 
 //workshopKey=null for all
@@ -33,15 +32,15 @@ export default function Schedule({workshopKey}: { workshopKey?: string }) {
     return <BodyNotEmpty events={events}/>;
   }
 
-  const onFilterChange = ({value}: { value?: WorkshopKey }) => {
-    spaRedir(Urls.schedule(value));
-  };
+  // const onFilterChange = ({value}: { value?: WorkshopKey }) => {
+  //   spaRedir(Urls.schedule(value));
+  // };
 
-  const picker = <WorkshopPicker value={workshopKey} onChange={onFilterChange} label={widthGt400?'Filter':undefined}/>;
+  // const picker = <WorkshopPicker value={workshopKey} onChange={onFilterChange} label={widthGt400?'Filter':undefined}/>;
   //  <Col backgroundColor='' alignItems={'center'} paddingBottom='1rem' margin={0} padding={0}>
   const workshopTitle = (widthGt400 || true) && !!workshopKey?service.loadWorkshopSync(workshopKey).title:'';
   return <>
-    <SsAppBar title='Schedule' actions={picker}/>
+    <SsAppBar title='Schedule' />
     <PageHead title='Schedule' subtitle={`Public ${workshopTitle} workshops`}/>
     <Col maxWidth='60rem' backgroundColor='' alignItems={'center'}>
       <Body/>

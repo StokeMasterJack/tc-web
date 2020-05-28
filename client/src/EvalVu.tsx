@@ -6,15 +6,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/database';
 import {Envelope} from './Envelope';
 import {TcButton} from './tctsx/TcButton';
-import {Select} from '@material-ui/core';
-import {WorkshopKey} from './types';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import OutlineContainer from './sstsx/OutlineContainer';
 import WorkshopPicker from './tctsx/WorkshopPicker';
-import {Row} from 'jsxstyle';
 
 const style = {
   width: '40rem',
@@ -42,26 +34,26 @@ function initEval(): Eval {
   };
 }
 
-function SSelect({name, value, onChange}: { name: string, value: WorkshopKey, onChange: (event: React.ChangeEvent<{ name?: string; value: unknown }>, child: React.ReactNode) => void }) {
-  return <FormControl variant="outlined">
-    <InputLabel>
-      Workshop name
-    </InputLabel>
-    <Select
-      autoWidth={true}
-      value={value}
-      onChange={onChange}
-      // style={{width: '18rem'}}
-      variant={'outlined'}
-      input={<OutlinedInput labelWidth={120} name={name} inputProps={{size: 600}}/>}
-    >
-      <MenuItem value='Kotlin'>Kotlin</MenuItem>
-      <MenuItem value='Flutter'>Flutter</MenuItem>
-      <MenuItem value='React'>React</MenuItem>
-      <MenuItem value='TypeScript'>TypeScript</MenuItem>
-    </Select>
-  </FormControl>;
-}
+// function SSelect({name, value, onChange}: { name: string, value: WorkshopKey, onChange: (event: React.ChangeEvent<{ name?: string; value: unknown }>, child: React.ReactNode) => void }) {
+//   return <FormControl variant="outlined">
+//     <InputLabel>
+//       Workshop name
+//     </InputLabel>
+//     <Select
+//       autoWidth={true}
+//       value={value}
+//       onChange={onChange}
+//       // style={{width: '18rem'}}
+//       variant={'outlined'}
+//       input={<OutlinedInput labelWidth={120} name={name} inputProps={{size: 600}}/>}
+//     >
+//       <MenuItem value='Kotlin'>Kotlin</MenuItem>
+//       <MenuItem value='Flutter'>Flutter</MenuItem>
+//       <MenuItem value='React'>React</MenuItem>
+//       <MenuItem value='TypeScript'>TypeScript</MenuItem>
+//     </Select>
+//   </FormControl>;
+// }
 
 export default function () {
 
@@ -110,7 +102,6 @@ export default function () {
     <Envelope title='Post Class Evaluation'>
       <form autoComplete="off" style={style}>
 
-
         <TextField
           autoFocus={true}
           name="name"
@@ -120,24 +111,11 @@ export default function () {
           value={ev.name}
           onChange={ch}
           variant={'outlined'}
-          InputLabelProps={{shrink: true}}
         />
-        <div style={{padding: '.5rem'}}>
-          <OutlineContainer label='Workshop'>
-            <Row padding={'.5rem'}>
-              <WorkshopPicker name='workshop' value={ev.workshop} onChange={onWorkshopChange}/>
-            </Row>
-          </OutlineContainer>
 
-        </div>
-        {/*<TextField*/}
-        {/*  name="workshop"*/}
-        {/*  style={inputStyle}*/}
-        {/*  label="Workshop"*/}
-        {/*  value={ev.workshop}*/}
-        {/*  onChange={ch}*/}
-        {/*  variant={'outlined'}*/}
-        {/*/>*/}
+
+        <WorkshopPicker name='workshop' value={ev.workshop} onChange={onWorkshopChange}/>
+
         <TextField
           name="love"
           style={inputStyle}
@@ -148,7 +126,6 @@ export default function () {
           multiline={true}
           rowsMax={10}
           variant={'outlined'}
-          InputLabelProps={{shrink: true}}
         />
 
         <TextField
@@ -161,7 +138,6 @@ export default function () {
           multiline={true}
           rowsMax={10}
           variant={'outlined'}
-          InputLabelProps={{shrink: true}}
         />
         <div style={{display: 'flex', justifyContent: 'center', padding: '1rem'}}>
           <TcButton

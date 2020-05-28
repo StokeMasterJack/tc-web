@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import moment from 'moment';
 import * as validator from 'email-validator';
 import * as ss from './util/ssutil';
-import * as cfg from './cfg';
+// import * as cfg from './cfg';
 import {DWorkshop, Signup} from './types';
 
 import * as firebase from 'firebase/app';
@@ -23,11 +23,11 @@ const inputStyle = {
   marginBottom: '1rem'
 };
 
-interface State {
-  signup: Signup,
-  isNew: boolean,
-  key: string
-}
+// interface State {
+//   signup: Signup,
+//   isNew: boolean,
+//   key: string
+// }
 
 
 const initSignup = (workshopKey: string, date: string) => {
@@ -77,7 +77,7 @@ export default function ({workshopKey, date}: { workshopKey: string, date: strin
 
   const [signup, setSignup] = useState<Signup>(initSignup(workshopKey, date));
   const [isNew, setIsNew] = useState<boolean>(true);
-  const [key, setKey] = useState<string>('');
+  // const [key, setKey] = useState<string>('');
 
   const onSubmit = (event: any) => {
     event.preventDefault();
@@ -93,59 +93,60 @@ export default function ({workshopKey, date}: { workshopKey: string, date: strin
     const newKey = newSignupRef.key;
     if (!newKey) throw Error();
 
-    setKey(newKey);
+    // setKey(newKey);
 
     const url = '/signupRecord/' + newKey + '?isNewSignup=true';
     ss.spaRedir(url);
 
-    newSignupRef.set(signup).then((success) => {
+    newSignupRef.set(signup).then((_) => {
       // submitSignupEmail(key);
       //i turned off server
     });
   };
 
-  const submitSignupEmail = (newKey: string) => {
-    const url = `${cfg.api}/signupEmail`;
-    fetch(url, {
-      method: 'POST',
-      body: 'signupId=' + newKey,
-      headers: {
-        'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      }
-    }).then(response => {
-
-      if (response.status !== 200) {
-        console.log(`Error in submitSignupEmail see JS console for error message httpStatus[${response.status}]`);
-      } else {
-        const contentType = response.headers.get('content-type');
-        const contentLength = response.headers.get('content-length');
-        console.log('contentType', contentType);
-        console.log('contentLength', contentLength);
-        if (!contentType) {
-          console.log('No contentType');
-        } else if (contentType.includes('application/json')) {
-          //this service is currently saying its OK 200 and application/json
-          //   when its really this:
-          /*
-          <html>
-          <head><title>502 Bad Gateway</title></head>
-          <body bgcolor="white">
-          <center><h1>502 Bad Gateway</h1></center>
-          <hr><center>nginx/1.4.6 (Ubuntu)</center>
-          </body>
-          </html>
-           */
-        }
-
-        response.text().then(text => {
-          console.log('Server Response: ');
-          console.log(text);
-        });
-      }
-
-
-    }).catch(error => console.error('Error in submitSignupEmail', error));
-  };
+  // noinspection JSUnusedLocalSymbols
+  // const submitSignupEmail = (newKey: string) => {
+  //   const url = `${cfg.api}/signupEmail`;
+  //   fetch(url, {
+  //     method: 'POST',
+  //     body: 'signupId=' + newKey,
+  //     headers: {
+  //       'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
+  //     }
+  //   }).then(response => {
+  //
+  //     if (response.status !== 200) {
+  //       console.log(`Error in submitSignupEmail see JS console for error message httpStatus[${response.status}]`);
+  //     } else {
+  //       const contentType = response.headers.get('content-type');
+  //       const contentLength = response.headers.get('content-length');
+  //       console.log('contentType', contentType);
+  //       console.log('contentLength', contentLength);
+  //       if (!contentType) {
+  //         console.log('No contentType');
+  //       } else if (contentType.includes('application/json')) {
+  //         //this service is currently saying its OK 200 and application/json
+  //         //   when its really this:
+  //         /*
+  //         <html>
+  //         <head><title>502 Bad Gateway</title></head>
+  //         <body bgcolor="white">
+  //         <center><h1>502 Bad Gateway</h1></center>
+  //         <hr><center>nginx/1.4.6 (Ubuntu)</center>
+  //         </body>
+  //         </html>
+  //          */
+  //       }
+  //
+  //       response.text().then(text => {
+  //         console.log('Server Response: ');
+  //         console.log(text);
+  //       });
+  //     }
+  //
+  //
+  //   }).catch(error => console.error('Error in submitSignupEmail', error));
+  // };
 
   const ch = (event: any) => {
     const target = event.target;
