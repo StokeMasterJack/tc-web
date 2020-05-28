@@ -12,8 +12,8 @@ export default function () {
 
 
   return <>
-    <SsAppBar title='All Workshops'/>
-    <PageHead title='All Workshops'/>
+    <SsAppBar title='Workshops'/>
+    <PageHead title='Workshops'/>
     <Col maxWidth='60rem' backgroundColor='' alignItems={'center'}>
       <Workshops/>
     </Col>

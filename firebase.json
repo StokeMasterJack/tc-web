@@ -22,43 +22,16 @@
     ],
     "headers": [
       {
-        "source": "**/main.*.js",
+        "source": "index.html",
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=31536000"
+            "value": "no-cache"
           }
         ]
       },
       {
-        "source": "**/main.*.css",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "max-age=31536000"
-          }
-        ]
-      },
-      {
-        "source": "**/ss-logo-transparent.*.png ",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "max-age=31536000"
-          }
-        ]
-      },
-      {
-        "source": "**/workEntryWarning.*.png ",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "max-age=31536000"
-          }
-        ]
-      },
-      {
-        "source": "**/workEntryWarning.png ",
+        "source": "/static/**",
         "headers": [
           {
             "key": "Cache-Control",

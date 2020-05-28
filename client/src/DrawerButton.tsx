@@ -11,6 +11,7 @@ import {Theme} from '@material-ui/core';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import MenuIcon from '@material-ui/icons/Menu';
 import {isPhone} from './device';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 export default function () {
   const theme: Theme = createMuiTheme();
@@ -39,14 +40,15 @@ export default function () {
 
   const menu = (route: string, label: string) => <MenuItem onClick={() => redir(route)}>{label}</MenuItem>;
 
+  const wLt370 = !useMediaQuery('(min-width:370px)');
 
   return <React.Fragment>
     <IconButton onClick={onHamburgerClick} edge="start" color="inherit" aria-label="Menu">
-      <MenuIcon fontSize={isPhone()?'small':'default'}/>
+      <MenuIcon fontSize={wLt370?'small':'default'}/>
     </IconButton>
     <Drawer open={open} onClose={onDrawerClose}>
       <Row justifyContent="space-between" background={theme.palette.primary.main} height="4rem" alignItems="center">
-        <Typography variant="h6" onClick={onTitleClick} style={{
+        <Typography variant={wLt370?'h6':'h6'} onClick={onTitleClick} style={{
           paddingLeft: '.5rem',
           cursor: 'pointer',
           color: theme.palette.getContrastText(theme.palette.primary.main)
