@@ -16,13 +16,4 @@ export default function (filter: { homePage?: boolean }) {
     {workshops.map(card)}
   </Col>;
 
-
-  // return <>
-  //   <SsAppBar title='All Workshops'/>
-  //   <PageHead title='All Workshops'/>
-  //   <Col maxWidth='60rem' backgroundColor='' alignItems={'center'}>
-  //     {/*{testimonials.map(t => <TestimonialCard key={t.id} testimonial={t}/>)}*/}
-  //     {workshops.map(card)}
-  //   </Col>
-  // </>;
 }

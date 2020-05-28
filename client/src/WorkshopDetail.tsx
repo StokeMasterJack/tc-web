@@ -75,9 +75,9 @@ export default function WorkshopDetail({workshopKey}: { workshopKey: string }) {
   const map = buildMap(outline);
 
   return <>
-    <SsAppBar title={outline.title + ' Training'}/>
+    <SsAppBar title={outline.title}/>
 
-    <PageHead title={outline.title + ' Training'} subtitle={outline.subtitle}/>
+    <PageHead title={outline.title} subtitle={outline.subtitle}/>
 
 
     {/*<div style={{marginBottom: '1rem', maxWidth: '50rem', paddingLeft: '1rem', paddingRight: '1rem'}}>*/}

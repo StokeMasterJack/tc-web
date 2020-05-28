@@ -25,7 +25,7 @@ function HeadDesktop() {
   return <>
     <PageHead
       title={<span>Professional Developer Training</span>}
-      subtitle='Kotlin - Flutter - React - TypeScript'
+      subtitle='Kotlin - Flutter - React'
       logo={true}
     />
 

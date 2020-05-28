@@ -27,7 +27,7 @@ const WorkshopCard = (props: { workshop: CWorkshop }) => {
 
   return (
     <Card style={{margin: '1rem', marginBottom: '1rem', maxWidth: '50rem'}}>
-      <CardHeader title={w.title + ' Training'} subheader={w.subtitle}/>
+      <CardHeader title={w.title} subheader={w.subtitle}/>
       <CardContent style={{marginTop: 0, paddingTop: 0, marginBottom: 0, paddingBottom: 0}}>
         {introPara}
       </CardContent>
