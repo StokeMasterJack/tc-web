@@ -16,7 +16,7 @@
     "firebase": "^4.0.0",
     "intl": "^1.2.5",
     "jsxstyle": "^2.1.5",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.19",
     "mobile-detect": "^1.4.3",
     "moment": "^2.24.0",
     "numeral": "^2.0.6",
